@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: PlayerPresetA
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerProfilePreset
+  m_Script: {fileID: 11500000, guid: 3922f94683b6d514a986225a9cba6127, type: 3}
+  m_Name: PlayerProfileA
+  m_EditorClassIdentifier: 
   happiness: 100
-  money: 30000
+  money: 3000

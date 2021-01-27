@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerProfiles:
-  - {fileID: 11400000, guid: 6142baefaa7980c838c063d70772da18, type: 2}
-  - {fileID: 11400000, guid: b347d87dc93bf694d81fb225befde33b, type: 2}
+  - {fileID: 11400000, guid: 8edb21faddcedc57db4fda93f3a1d914, type: 2}
+  - {fileID: 11400000, guid: 51ca2f15f59e3fd8498a7c2816d1c008, type: 2}
