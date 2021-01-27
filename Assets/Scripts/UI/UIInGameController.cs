@@ -10,10 +10,11 @@ public class UIInGameController : MonoBehaviour
 
     enum Panel
     {
-        Pause,
+        InGame,
         GoalNote,
         Alert,
-        InGame
+        PlayerProfile,
+        Pause
     }
 
     Panel currentPanel;
@@ -34,8 +35,10 @@ public class UIInGameController : MonoBehaviour
             Debug.LogError("Game hasn't start properly...");
         }
 
+        GameController.Instance?.ShowProfile();
+
         HideAll();
-        Show(Panel.GoalNote);
+        Show(Panel.PlayerProfile);
     }
 
     void SubscribeEvent()
