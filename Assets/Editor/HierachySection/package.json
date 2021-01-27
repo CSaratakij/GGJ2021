@@ -1,0 +1,9 @@
+{
+    "name": "com.csaratakij.hierachysection",
+    "displayName": "HierachySection",
+    "version": "1.0.3",
+    "unity": "2019.1",
+    "description": "Create section in hierachy easier.\n\nTo find out more, click the \"View Documentation\" link.",
+    "keywords": ["hierachy", "section", "HierachySection"],
+    "category": "Tools"
+}
