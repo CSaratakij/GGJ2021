@@ -30,6 +30,7 @@ public class UIMainMenuController : MonoBehaviour
             [(int)ButtonIndex.Start].
             onClick.
             AddListener(() => {
+                    GameController.Instance?.GameStart();
                     GameController.Instance?.ChangeScene(SceneIndex.Level);
         });
 
