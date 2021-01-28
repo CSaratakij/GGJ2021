@@ -200,7 +200,7 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  image: {fileID: 0}
+  npc: {fileID: 0}
   message: Got it~
   choices: []
 --- !u!114 &11400000
@@ -217,15 +217,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: -7664878808797345818}
-  - {fileID: 2850989802514318397}
   - {fileID: 4480539656482415764}
-  - {fileID: -1983652271575135412}
   - {fileID: -8726310333817590440}
-  - {fileID: 7415133976807811452}
   - {fileID: 4926987910581336581}
-  - {fileID: 1506018372857145020}
   - {fileID: -3506439832496864737}
   - {fileID: 3994180150655103712}
+  - {fileID: 1506018372857145020}
+  - {fileID: 7415133976807811452}
+  - {fileID: -1983652271575135412}
+  - {fileID: 2850989802514318397}
 --- !u!114 &1506018372857145020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  image: {fileID: 0}
+  npc: {fileID: 0}
   message: 'Cyberpunk hype has end...
 
     I''m lucky, glad to not pre-order.'
@@ -364,7 +364,7 @@ MonoBehaviour:
       _dynamic: 1
   input: {fileID: 0}
   output: {fileID: 0}
-  image: {fileID: 0}
+  npc: {fileID: 0}
   message: Cyberpunk have a pre-order, Pre-order now?
   choices:
   - Yes
@@ -568,7 +568,7 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  image: {fileID: 0}
+  npc: {fileID: 0}
   message: 'Cyberpunk hype has end...
 
     Game is full of bug, You get upset.'

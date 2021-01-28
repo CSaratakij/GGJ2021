@@ -98,6 +98,6 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  image: {fileID: 0}
+  npc: {fileID: 0}
   message: Hello World
   choices: []
