@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: Time Skip
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 760, y: 168}
+  position: {x: 760, y: 152}
   ports:
     keys:
     - input
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: Time Skip
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 760, y: -40}
+  position: {x: 760, y: -72}
   ports:
     keys:
     - input

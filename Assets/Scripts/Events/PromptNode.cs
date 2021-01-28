@@ -7,14 +7,7 @@ using XNode;
 public class PromptNode : DialogNode
 {
     [Input(backingValue = ShowBackingValue.Never)] public DialogNode input;
-    [Output(dynamicPortList=true)] public PromptInfo[] choices; 
-
-    [System.Serializable]
-    public class PromptInfo
-    {
-        public Sprite image;
-        public string name;
-    }
+    [Output(dynamicPortList=true)] public ItemScriptableObject[] choices; 
 
 	protected override void Init()
     {

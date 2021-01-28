@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName="PlayerProfilePreset")]
+[CreateAssetMenu(fileName="PlayerProfilePreset", menuName = "Profile/Player")]
 public class PlayerProfilePreset : ScriptableObject
 {
     public int happiness;
