@@ -763,6 +763,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000, guid: 8579ab36d6ce08c679d5621f1b9d47cc, type: 2}
+  root: {fileID: 0}
+  currentNode: {fileID: 0}
 --- !u!1 &1253134558
 GameObject:
   m_ObjectHideFlags: 0

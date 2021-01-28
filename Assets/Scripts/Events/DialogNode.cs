@@ -12,7 +12,9 @@ public abstract class DialogNode : Node
         Start,
         Event,
         Result,
+        LateResult,
         Random,
+        MultiRandom,
         Math,
         End
     }

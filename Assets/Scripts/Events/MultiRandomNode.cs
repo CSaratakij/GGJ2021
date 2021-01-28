@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using XNode;
 
-public class RandomNode : DialogNode
+public class MultiRandomNode : DialogNode
 {
     [Input(backingValue = ShowBackingValue.Never)] public DialogNode input;
-    [Output(backingValue = ShowBackingValue.Never)] public DialogNode output;
-    public int chances = 50;
+    [Output(dynamicPortList=true)] public int[] chances; 
 
 	protected override void Init()
     {
 		base.Init();
-        DialogType = Dialog.Random;
+        DialogType = Dialog.MultiRandom;
 	}
 
 	public override object GetValue(NodePort port)
     {
-		return null;
+		return null; // Replace this
 	}
 }
 
