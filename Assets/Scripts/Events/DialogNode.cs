@@ -10,13 +10,14 @@ public abstract class DialogNode : Node
     public enum Dialog
     {
         Start,
-        Event,
+        Message,
         Result,
         LateResult,
         Random,
         MultiRandom,
         Math,
-        End
+        End,
+        Prompt
     }
 }
 
