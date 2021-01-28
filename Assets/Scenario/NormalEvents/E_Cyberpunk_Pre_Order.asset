@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Name: Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1224, y: 248}
+  position: {x: 1176, y: 264}
   ports:
     keys:
     - input
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Name: Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1640, y: -120}
+  position: {x: 1592, y: -120}
   ports:
     keys:
     - input
@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1272, y: -136}
+  position: {x: 1240, y: -136}
   ports:
     keys:
     - input

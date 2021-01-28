@@ -17,7 +17,8 @@ public abstract class DialogNode : Node
         MultiRandom,
         Math,
         End,
-        Prompt
+        Prompt,
+        TimeSkip
     }
 }
 
