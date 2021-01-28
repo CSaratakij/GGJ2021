@@ -13,9 +13,7 @@ public class ResultAction
     {
         Add,
         Remove,
-        Set,
-        LateAdd,
-        LateRemove
+        Set
     }
 
     public StatusType status;
