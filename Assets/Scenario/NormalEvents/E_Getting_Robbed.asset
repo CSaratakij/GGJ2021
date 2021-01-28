@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 520, y: 184}
+  position: {x: 456, y: 184}
   ports:
     keys:
     - input
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 520, y: -88}
+  position: {x: 456, y: -88}
   ports:
     keys:
     - input
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: Random
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 248, y: 72}
+  position: {x: 200, y: 72}
   ports:
     keys:
     - input
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Name: Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 888, y: 184}
+  position: {x: 792, y: 184}
   ports:
     keys:
     - input
