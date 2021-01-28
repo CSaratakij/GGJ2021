@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: Multi Random
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1192, y: 88}
+  position: {x: 1176, y: 120}
   ports:
     keys:
     - input
@@ -357,6 +357,61 @@ MonoBehaviour:
   - status: 0
     action: 0
     amount: 5000
+--- !u!114 &-3355168220592269005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ba01de6fa39ad32917f1a477f80394, type: 3}
+  m_Name: Message
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1704, y: -104}
+  ports:
+    keys:
+    - input
+    - output
+    - choices
+    values:
+    - _fieldName: input
+      _node: {fileID: -3355168220592269005}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 7062062865718345880}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -3355168220592269005}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: -3355168220592269005}
+      _typeQualifiedName: System.String[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  npc: {fileID: 0}
+  message: I might receive this in the future
+  choices: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +439,8 @@ MonoBehaviour:
   - {fileID: 3748290696603581055}
   - {fileID: -7333684258583696738}
   - {fileID: 2850989802514318397}
+  - {fileID: -3355168220592269005}
+  eventType: 0
 --- !u!114 &72687520319792883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +454,7 @@ MonoBehaviour:
   m_Name: Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2088, y: 56}
+  position: {x: 2008, y: 264}
   ports:
     keys:
     - input
@@ -633,7 +690,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1736, y: 40}
+  position: {x: 1672, y: 216}
   ports:
     keys:
     - input
@@ -749,13 +806,13 @@ MonoBehaviour:
   m_Name: Late Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1432, y: 56}
+  position: {x: 1400, y: 88}
   ports:
     keys:
     - input
     - lateInfos
     - lateInfos 0
-    - lateInfos 1
+    - output
     values:
     - _fieldName: input
       _node: {fileID: 7062062865718345880}
@@ -790,18 +847,20 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
-    - _fieldName: lateInfos 1
+    - _fieldName: output
       _node: {fileID: 7062062865718345880}
-      _typeQualifiedName: LateResultNode+LateInfo, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -3355168220592269005}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
-      _dynamic: 1
+      _dynamic: 0
   input: {fileID: 0}
+  output: {fileID: 0}
   lateInfos:
-  - duration: 0
-    amount: 18
   - duration: 0
     amount: 18
