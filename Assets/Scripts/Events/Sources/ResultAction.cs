@@ -5,15 +5,15 @@ public class ResultAction
 {
     public enum StatusType
     {
-        Happiness,
-        Money
+        Money,
+        Happiness
     }
 
     public enum ActionType
     {
         Add,
         Remove,
-        Random
+        Set
     }
 
     public StatusType status;

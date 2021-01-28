@@ -1,16 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using XNode;
 
-[NodeWidth(304)]
-public class ImageNode : Node
+public class EndNode : DialogNode
 {
-    [Output] public Sprite image = null;
+    [Input(backingValue = ShowBackingValue.Never)] public DialogNode end;
 
 	protected override void Init() {
 		base.Init();
+        DialogType = Dialog.End;
 	}
 
 	public override object GetValue(NodePort port) {

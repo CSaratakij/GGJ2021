@@ -6,6 +6,8 @@ using XNode;
 
 public class ResultNode : DialogNode 
 {
+    [Input(backingValue = ShowBackingValue.Never)] public DialogNode input;
+    [Output(backingValue = ShowBackingValue.Never)] public DialogNode output;
     public ResultAction[] actions;
 
 	protected override void Init()
@@ -16,7 +18,7 @@ public class ResultNode : DialogNode
 
 	public override object GetValue(NodePort port)
     {
-		return null; // Replace this
+        return null;
 	}
 }
 

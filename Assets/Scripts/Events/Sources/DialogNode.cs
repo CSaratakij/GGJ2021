@@ -5,15 +5,16 @@ using XNode;
 
 public abstract class DialogNode : Node
 {
-    [Input(backingValue = ShowBackingValue.Never)] public DialogNode input;
-    [Output(backingValue = ShowBackingValue.Never)] public DialogNode output;
-
     public Dialog DialogType { get; protected set; }
 
     public enum Dialog
     {
+        Start,
         Event,
-        Result
+        Result,
+        Random,
+        Math,
+        End
     }
 }
 

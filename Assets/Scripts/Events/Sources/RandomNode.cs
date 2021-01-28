@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using XNode;
 
-[NodeWidth(304)]
-public class EventNode : DialogNode
+public class RandomNode : DialogNode
 {
     [Input(backingValue = ShowBackingValue.Never)] public DialogNode input;
     [Output(backingValue = ShowBackingValue.Never)] public DialogNode output;
-    public Sprite npcImage;
-    [TextArea(4, 4)]public string message;
-    [Output(dynamicPortList=true)] public string[] choices; 
+    public int chances = 50;
 
 	protected override void Init()
     {
 		base.Init();
-        DialogType = Dialog.Event;
+        DialogType = Dialog.Random;
 	}
 
 	public override object GetValue(NodePort port)
