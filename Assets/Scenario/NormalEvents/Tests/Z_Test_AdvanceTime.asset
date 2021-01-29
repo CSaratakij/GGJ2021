@@ -31,6 +31,52 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   start: {fileID: 0}
+--- !u!114 &-7391618523733172169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a2c22cc5e3f3c9da43380d4c483066, type: 3}
+  m_Name: Result
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 568, y: 360}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -7391618523733172169}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 244815949685499554}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -7391618523733172169}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  actions:
+  - status: 1
+    action: 1
+    amount: 12
 --- !u!114 &-1534466933906765880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +149,67 @@ MonoBehaviour:
   - {fileID: 2850989802514318397}
   - {fileID: 425655164248685419}
   - {fileID: -1534466933906765880}
+  - {fileID: 244815949685499554}
+  - {fileID: -7391618523733172169}
   eventType: 0
+--- !u!114 &244815949685499554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ba01de6fa39ad32917f1a477f80394, type: 3}
+  m_Name: Message
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 232, y: 264}
+  ports:
+    keys:
+    - input
+    - output
+    - choices
+    values:
+    - _fieldName: input
+      _node: {fileID: 244815949685499554}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: choices 1
+        node: {fileID: 2850989802514318397}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 244815949685499554}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -7391618523733172169}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: 244815949685499554}
+      _typeQualifiedName: System.String[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  npc: {fileID: 0}
+  message: You get tired...
+  choices: []
 --- !u!114 &425655164248685419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +234,7 @@ MonoBehaviour:
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: output
+      - fieldName: choices 0
         node: {fileID: 2850989802514318397}
         reroutePoints: []
       _direction: 0
@@ -149,7 +255,7 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  duration: 0
+  duration: 2
   amount: 1
 --- !u!114 &2850989802514318397
 MonoBehaviour:
@@ -170,6 +276,8 @@ MonoBehaviour:
     - input
     - output
     - choices
+    - choices 0
+    - choices 1
     values:
     - _fieldName: input
       _node: {fileID: 2850989802514318397}
@@ -187,10 +295,7 @@ MonoBehaviour:
       _node: {fileID: 2850989802514318397}
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections:
-      - fieldName: input
-        node: {fileID: 425655164248685419}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -204,8 +309,34 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: 2850989802514318397}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: input
+        node: {fileID: 425655164248685419}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: 2850989802514318397}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: input
+        node: {fileID: 244815949685499554}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
-  message: Test the time skip node
-  choices: []
+  message: Test the time skip node?
+  choices:
+  - Yes
+  - No

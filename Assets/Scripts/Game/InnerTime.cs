@@ -29,10 +29,13 @@ public class InnerTime : MonoBehaviour
     public float InnerClock => innerClock;
     public float MaxInnerClock => maxClockPerDay;
     public bool IsPause => isPause;
+    public bool IsPlayerBusy => isPlayerBusy;
     public DateTime Calendar => currentDate;
 
     bool isAdvancingTime = false;
     bool isPause = true;
+    bool isForcePauseTime;
+    bool isPlayerBusy = false;
 
     float innerClock = 0.0f;
 
@@ -47,6 +50,10 @@ public class InnerTime : MonoBehaviour
 
     void Update()
     {
+        if (isPlayerBusy) {
+            return;
+        }
+
         Tick();
     }
     
@@ -78,8 +85,18 @@ public class InnerTime : MonoBehaviour
         /* Debug.Log("End time : " + currentDate); */
     }
 
+    public void ForcePauseTime(bool value)
+    {
+        isForcePauseTime = value;
+    }
+
     public void Pause(bool value = true)
     {
+        if (isForcePauseTime) {
+            isPause = true;
+            return;
+        }
+
         isPause = value;
     }
 
@@ -96,7 +113,9 @@ public class InnerTime : MonoBehaviour
     public void RestartClock()
     {
         innerClock = 0.0f;
-        currentDate = new DateTime(1, 1, startOfYear);
+        isPause = true;
+        isPlayerBusy = false;
+        currentDate = new DateTime(startOfYear, 1, 1);
     }
 }
 

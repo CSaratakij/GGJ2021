@@ -69,6 +69,7 @@ public class EventDirector : MonoBehaviour
     void Start()
     {
         SubscribeEvent();
+        //Test : move this to the profile button
         BeginPlay();
     }
 
@@ -102,19 +103,23 @@ public class EventDirector : MonoBehaviour
     {
         /* GameController.Instance?.ShowProfile(); */
         //Test : This should start by press play on the profile
+
+        innerTime.RestartClock();
         GameController.Instance?.BeginPlay();
+
+        currentEventType = EventType.Normal;
+        StartScenario(normalScenarios[0]);
     }
 
     void OnGameStateChange(GameState state)
     {
+        // Test
         // Start event as the begin
         if (GameState.Normal == state)
         {
             // Begin Start Scenario
             // TODO : start game event emiiter here
             // Test, start first scenario
-            currentEventType = EventType.Normal;
-            StartScenario(normalScenarios[0]);
         }
     }
 
