@@ -232,8 +232,13 @@ public class EventDirector : MonoBehaviour
 
                 case DialogNode.Dialog.Random:
                 {
-                    Debug.Log("At the random node.");
                     currentNode = currentScenario.GetNextNodeByRandom(currentNode);
+                }
+                break;
+
+                case DialogNode.Dialog.MultiRandom:
+                {
+                     currentNode = currentScenario.GetNextNodeByMultiRandom(currentNode);
                 }
                 break;
 
@@ -248,12 +253,6 @@ public class EventDirector : MonoBehaviour
                 }
                 break;
 
-
-                case DialogNode.Dialog.MultiRandom:
-                {
-                     currentNode = currentScenario.GetNextNodeByMultiRandom(currentNode);
-                }
-                break;
 
                 case DialogNode.Dialog.LateResult:
                 {

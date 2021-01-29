@@ -13,11 +13,22 @@ public class GameController : MonoBehaviour
     [SerializeField]
     PlayerProfilePreset[] playerProfiles;
 
+    [Header("Game time")]
+    [SerializeField]
+    float secondsUntilDay = 3.0f;
+
     public Action<GameState> OnGameStateChange;
     public GameState State => currentState;
     public bool IsGamePause => (GameState.Pause == currentState);
     public PlayerProfile Player => player;
 
+    // don't forget to reset time when player start the new game..
+    // move this to "IngameTime"
+    int currentDay = 1;
+    int currentMonth = 0;
+    int currentYear = 0;
+
+    float innerTime = 0.0f;
     PlayerProfile player;
 
     GameState currentState;

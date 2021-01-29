@@ -7,7 +7,14 @@ using XNode;
 public class PromptNode : DialogNode
 {
     [Input(backingValue = ShowBackingValue.Never)] public DialogNode input;
+    public PromptType promptType;
     [Output(dynamicPortList=true)] public ItemScriptableObject[] choices; 
+
+    public enum PromptType
+    {
+        BuyItem,
+        SellItem
+    }
 
 	protected override void Init()
     {

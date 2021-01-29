@@ -52,29 +52,68 @@ public class EventGraph : NodeGraph
         }
 
         var i = Random.Range(0, otherPorts.Count);
-        Debug.Log("All posssible resut:" + otherPorts.Count);
         return (otherPorts[i].node as DialogNode);
     }
 
-    // TODO : don't forget to sort the distribution
     public DialogNode GetNextNodeByMultiRandom(DialogNode currentNode)
     {
         if (currentNode == null) {
             return null;
         }
 
-        if (DialogNode.Dialog.MultiRandom != currentNode.DialogType) {
-            return null;
-        }
-
-        // get all choices
-        var node = currentNode as MultiRandomNode;
+        var node = (currentNode as MultiRandomNode);
 
         if (node.chances.Length <= 0) {
             return null;
         }
 
-        // TODO : get all chances sort, random with distribution and return node
+        var chanceTable = new Dictionary<int, NodePort>();
+
+        int weightSum = 0;
+        int offset = 10;
+
+        // make chance unique
+        for (int i = 0; i < node.chances.Length; ++i)
+        {
+            int amount = node.chances[i];
+            NodePort port = node.GetPort("chances " + i);
+
+            if (chanceTable.ContainsKey(amount)) {
+                amount += offset;
+                offset += 10;
+            }
+
+            weightSum += amount;
+            chanceTable.Add(amount, port);
+        }
+
+        // rand result
+        Random.InitState(Random.Range(0, 1000));
+        int randResult = Random.Range(0, weightSum);
+
+        // check which port to return
+        int cumulativeWeight = 0;
+        NodePort selectPort = null;
+
+        foreach (var pair in chanceTable)
+        {
+            cumulativeWeight += pair.Key;
+
+            if (randResult < cumulativeWeight) {
+                selectPort = pair.Value;
+                break;
+            }
+        }
+
+        // get node from select port here
+        if (selectPort != null) {
+            NodePort otherPort = selectPort.Connection;
+
+            if (otherPort != null) {
+                return (otherPort.node as DialogNode);
+            }
+        }
+
         return null;
     }
 }

@@ -2340,7 +2340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalScenarios:
-  - {fileID: 11400000, guid: f0ecc8c2fd4e3681fb843ea792eb7bf7, type: 2}
+  - {fileID: 11400000, guid: 73821e36375cc3e4f94f4c30a2b66732, type: 2}
   alertbox: {fileID: 412981733}
 --- !u!1 &1157251817
 GameObject:
