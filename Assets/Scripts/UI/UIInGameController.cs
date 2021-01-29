@@ -8,12 +8,16 @@ public class UIInGameController : MonoBehaviour
     [SerializeField]
     CanvasGroup[] panels;
 
+    [SerializeField]
+    InnerTime innerTime;
+
     enum Panel
     {
         InGame,
         GoalNote,
         Alert,
         PlayerProfile,
+        AdvanceTimeTransition,
         Pause
     }
 
@@ -51,11 +55,15 @@ public class UIInGameController : MonoBehaviour
     void SubscribeEvent()
     {
         GameController.Instance.OnGameStateChange += OnGameStateChange;
+        innerTime.OnStartAdvanceTime += OnStartAdvanceTime;
+        innerTime.OnFinishAdvanceTime += OnFinishAdvanceTime;
     }
 
     void UnsubscribeEvent()
     {
         GameController.Instance.OnGameStateChange -= OnGameStateChange;
+        innerTime.OnStartAdvanceTime -= OnStartAdvanceTime;
+        innerTime.OnFinishAdvanceTime -= OnFinishAdvanceTime;
     }
 
     void OnGameStateChange(GameState state)
@@ -67,6 +75,16 @@ public class UIInGameController : MonoBehaviour
         else if (GameState.Normal == state) {
             Show(Panel.InGame);
         }
+    }
+
+    void OnStartAdvanceTime()
+    {
+        FadeIn();
+    }
+
+    void OnFinishAdvanceTime()
+    {
+        FadeOut();
     }
 
     void InputHandler()
@@ -114,6 +132,18 @@ public class UIInGameController : MonoBehaviour
         panel.blocksRaycasts = isShow;
 
         currentPanel = panel;
+    }
+
+    void FadeIn()
+    {
+        //TODO : fade anim
+        Show(Panel.AdvanceTimeTransition);
+    }
+
+    void FadeOut()
+    {
+        //TODO : fade anim
+        Show(Panel.AdvanceTimeTransition, false);
     }
 
     public void ShowAlertBox(bool isShow = true)

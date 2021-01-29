@@ -10,9 +10,13 @@ public class EventDirector : MonoBehaviour
     static readonly WaitForSeconds PauseProcessingWait = new WaitForSeconds(0.3f);
     static readonly WaitForSeconds DelayStartProcessing = new WaitForSeconds(0.12f);
 
-    [Header("Game Event Setting")]
+    [Header("Event Setting")]
     [SerializeField]
     EventGraph[] normalScenarios;
+
+    [Header("InnerTime")]
+    [SerializeField]
+    InnerTime innerTime; //<--- need to pause when time is advance -> call back to resume -> fade in/out when time advance
 
     [Header("UI Setting")]
     [SerializeField]
@@ -48,7 +52,9 @@ public class EventDirector : MonoBehaviour
     Dictionary<int, Queue<DialogNode>> lateEventQueue; // <- key = day of year
 
     DialogNode currentNode;
+
     EventGraph currentScenario;
+    EventGraph currentLateScenario;
 
     Coroutine processNodeCoroutine;
     WaitUntil shouldWaitForUnpauseProcessing;
@@ -136,6 +142,12 @@ public class EventDirector : MonoBehaviour
         SetPauseProcessingState(false);
     }
 
+    void OnFinishAdvanceTime()
+    {
+        currentNode = currentScenario.GetNextNode(currentNode);
+        SetPauseProcessingState(false);
+    }
+
     void StartScenario(EventGraph scenario)
     {
         if (isStartScenario) {
@@ -152,9 +164,16 @@ public class EventDirector : MonoBehaviour
         }
 
         isStartScenario = true;
-        StartProcessNode();
+        OnStartScenario?.Invoke(currentEventType);
 
+        StartProcessNode();
         Debug.Log("Scenario has started..");
+    }
+
+    //TODO : work with a late result event
+    void ResumeProcessNode(EventGraph scenario)
+    {
+
     }
 
     void EndScenario()
@@ -237,10 +256,9 @@ public class EventDirector : MonoBehaviour
 
                 case DialogNode.Dialog.TimeSkip:
                 {
-                    //TODO : skip for now
-                    /* if (!shouldPauseProcessing) { */
-                    /*     SetPauseProcessingState(true); */
-                    /* } */
+                    if (!shouldPauseProcessing) {
+                        SetPauseProcessingState(true);
+                    }
 
                     cache.timeSkipNode = (currentNode as TimeSkipNode);
                     ProcessTimeSkipNode(cache.timeSkipNode);
@@ -324,14 +342,45 @@ public class EventDirector : MonoBehaviour
         currentNode = currentScenario.GetNextNode(currentNode);
     }
 
-    // TODO
     void ProcessTimeSkipNode(TimeSkipNode node)
     {
-        // advanced time to certain amount
-        // need to pause process until ending time skip
+        var duration = node.duration;
+        var amount = node.amount;
 
-        // then
-        currentNode = currentScenario.GetNextNode(currentNode);
+        TimeSpan timeSpan;
+
+        switch (duration)
+        {
+            case TimeSkipNode.SkipDuration.Day:
+            {
+                var date = innerTime.Calendar;
+                var nextDate = date.AddDays(amount);
+                timeSpan = (nextDate - innerTime.Calendar);
+            }
+            break;
+
+            case TimeSkipNode.SkipDuration.Week:
+            {
+                var date = innerTime.Calendar;
+                var nextDate = date.AddDays(amount * 7);
+                timeSpan = (nextDate - innerTime.Calendar);
+            }
+            break;
+
+            case TimeSkipNode.SkipDuration.Month:
+            {
+                var date = innerTime.Calendar;
+                var nextDate = date.AddMonths(amount);
+                timeSpan = (nextDate - innerTime.Calendar);
+            }
+            break;
+
+            default:
+                timeSpan = new TimeSpan(0, 0, 0, 0);
+            break;
+        }
+
+        innerTime.AdvanceTime(timeSpan);
     }
 
     // TODO

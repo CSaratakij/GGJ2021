@@ -22,13 +22,6 @@ public class GameController : MonoBehaviour
     public bool IsGamePause => (GameState.Pause == currentState);
     public PlayerProfile Player => player;
 
-    // don't forget to reset time when player start the new game..
-    // move this to "IngameTime"
-    int currentDay = 1;
-    int currentMonth = 0;
-    int currentYear = 0;
-
-    float innerTime = 0.0f;
     PlayerProfile player;
 
     GameState currentState;
@@ -66,6 +59,8 @@ public class GameController : MonoBehaviour
 
         player.happiness = profile.happiness;
         player.money = profile.money;
+        player.salary = profile.salary;
+        player.havePet = profile.havePet;
 
         return player;
     }

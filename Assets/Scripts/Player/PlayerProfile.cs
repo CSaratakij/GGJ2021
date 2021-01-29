@@ -5,6 +5,11 @@ public class PlayerProfile
 {
     public int happiness;
     public int money;
+    public int salary;
+    public bool havePet;
+
+    // Todo : track inventory
+    /* public ItemScriptableObject[] */
 
     public void EditResource(ResultAction[] actions)
     {
