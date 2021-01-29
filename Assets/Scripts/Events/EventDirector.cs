@@ -47,9 +47,11 @@ public class EventDirector : MonoBehaviour
     Cache cache;
     EventType currentEventType;
 
-    /* Queue<EventGraph> eventQueue; */
-    Dictionary<int, EventGraph> keyEvents; // <- key = day of year
-    Dictionary<int, Queue<DialogNode>> lateEventQueue; // <- key = day of year
+    Queue<EventGraph> optionalScenario;
+    EventGraph[] normalEvents;
+
+    Dictionary<DateTime, EventGraph> keyEvents; // <- key = day of year
+    Dictionary<DateTime, Queue<DialogNode>> lateEventQueue; // <- key = day of year
 
     DialogNode currentNode;
 
@@ -78,7 +80,7 @@ public class EventDirector : MonoBehaviour
     void Initialize()
     {
         cache = new Cache();
-        lateEventQueue = new Dictionary<int, Queue<DialogNode>>();
+        lateEventQueue = new Dictionary<DateTime, Queue<DialogNode>>();
         shouldWaitForUnpauseProcessing = new WaitUntil(() => { return (!shouldPauseProcessing); });
     }
 
@@ -86,18 +88,20 @@ public class EventDirector : MonoBehaviour
     {
         GameController.Instance.OnGameStateChange += OnGameStateChange;
         alertbox.OnSelectButton += AlertBox_MessageSelectChoiceCallback;
+        innerTime.OnFinishAdvanceTime += OnFinishAdvanceTime;
     }
 
     void UnsubscribeEvent()
     {
         GameController.Instance.OnGameStateChange -= OnGameStateChange;
         alertbox.OnSelectButton -= AlertBox_MessageSelectChoiceCallback;
+        innerTime.OnFinishAdvanceTime -= OnFinishAdvanceTime;
     }
 
     void BeginPlay()
     {
         /* GameController.Instance?.ShowProfile(); */
-        //Test
+        //Test : This should start by press play on the profile
         GameController.Instance?.BeginPlay();
     }
 
@@ -166,14 +170,34 @@ public class EventDirector : MonoBehaviour
         isStartScenario = true;
         OnStartScenario?.Invoke(currentEventType);
 
+        innerTime.Pause();
         StartProcessNode();
+
         Debug.Log("Scenario has started..");
     }
 
-    //TODO : work with a late result event
-    void ResumeProcessNode(EventGraph scenario)
+    void StartLateScenario(DialogNode node)
     {
+        if (isStartScenario) {
+            return;
+        }
 
+        currentScenario = (EventGraph)node.graph;
+        currentNode = node;
+
+        if (currentNode == null) {
+            Debug.LogError("Cannot find the scenario of late event...");
+            Debug.LogError("Late event will not resume ...");
+            return;
+        }
+
+        isStartScenario = true;
+        OnStartScenario?.Invoke(currentEventType);
+
+        innerTime.Pause();
+        StartProcessNode();
+
+        Debug.Log("Late Scenario has started..");
     }
 
     void EndScenario()
@@ -186,6 +210,8 @@ public class EventDirector : MonoBehaviour
         OnFinishScenario?.Invoke(currentEventType);
 
         alertbox.Show(false);
+        innerTime.Pause(false);
+
         Debug.Log("Scenario has finished..");
     }
 
@@ -325,12 +351,8 @@ public class EventDirector : MonoBehaviour
         currentNode = currentScenario.GetNextNode(node, "start");
     }
 
-    // TODO
     void ProcessMessageNode(MessageNode node)
     {
-        // raise flag to pause the in-game time (not the engine time)
-        // here
-
         alertbox.SetMessageInfo(node.message, node.choices, node.npc);
         alertbox.Show();
     }

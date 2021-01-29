@@ -25,9 +25,10 @@ public class InnerTime : MonoBehaviour
     public Action OnStartAdvanceTime;
     public Action OnFinishAdvanceTime;
 
-    public bool IsPause => isPause;
+    public int DayPeriod => (int)(maxClockPerDay % maxDayPeriod);
     public float InnerClock => innerClock;
     public float MaxInnerClock => maxClockPerDay;
+    public bool IsPause => isPause;
     public DateTime Calendar => currentDate;
 
     bool isAdvancingTime = false;
@@ -66,7 +67,7 @@ public class InnerTime : MonoBehaviour
         Pause(true);
         OnStartAdvanceTime?.Invoke();
 
-        Debug.Log("Start time : " + currentDate);
+        /* Debug.Log("Start time : " + currentDate); */
 
         yield return new WaitForSeconds(finishDelay);
         currentDate += timeSpan;
@@ -74,7 +75,7 @@ public class InnerTime : MonoBehaviour
         Pause(false);
         OnFinishAdvanceTime?.Invoke();
 
-        Debug.Log("End time : " + currentDate);
+        /* Debug.Log("End time : " + currentDate); */
     }
 
     public void Pause(bool value = true)
@@ -82,7 +83,7 @@ public class InnerTime : MonoBehaviour
         isPause = value;
     }
 
-    public void AdvanceTime(TimeSpan timeSpan, float finishDelay = 3.0f)
+    public void AdvanceTime(TimeSpan timeSpan, float finishDelay = 1.2f)
     {
         if (isAdvancingTime) {
             Debug.LogWarning("Time is currently advancing, not advance for this call...");
