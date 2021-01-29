@@ -8,6 +8,7 @@ using XNode;
 public class EventDirector : MonoBehaviour
 {
     static readonly WaitForSeconds PauseProcessingWait = new WaitForSeconds(0.3f);
+    static readonly WaitForSeconds DelayStartProcessing = new WaitForSeconds(1.0f);
 
     [Header("Game Event Setting")]
     [SerializeField]
@@ -35,6 +36,7 @@ public class EventDirector : MonoBehaviour
     public Action<EventType> OnFinishScenario;
 
     bool isStartScenario;
+    bool previousPauseProcessing;
     bool shouldPauseProcessing;
 
     Cache cache;
@@ -122,7 +124,7 @@ public class EventDirector : MonoBehaviour
         }
 
         currentNode = currentScenario.GetNextNode(currentNode, portName);
-        shouldPauseProcessing = false;
+        SetPauseProcessingState(false);
     }
 
     void StartScenario(EventGraph scenario)
@@ -162,6 +164,7 @@ public class EventDirector : MonoBehaviour
     {
         isStartScenario = false;
         currentNode = null;
+        previousPauseProcessing = false;
         shouldPauseProcessing = false;
     }
 
@@ -202,7 +205,7 @@ public class EventDirector : MonoBehaviour
                 case DialogNode.Dialog.Message:
                 {
                     if (!shouldPauseProcessing) {
-                        shouldPauseProcessing = true;
+                        SetPauseProcessingState(true);
                     }
 
                     cache.messageNode = (currentNode as MessageNode);
@@ -263,11 +266,18 @@ public class EventDirector : MonoBehaviour
 
             if (shouldPauseProcessing) {
                 yield return shouldWaitForUnpauseProcessing;
+                yield return DelayStartProcessing;
             }
             else {
                 yield return null;
             }
         }
+    }
+
+    void SetPauseProcessingState(bool value)
+    {
+        previousPauseProcessing = shouldPauseProcessing;
+        shouldPauseProcessing = value;
     }
 
     void ProcessStartNode(StartNode node)
