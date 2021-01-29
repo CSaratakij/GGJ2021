@@ -78,7 +78,6 @@ public class EventDirector : MonoBehaviour
 
     void SubscribeEvent()
     {
-        // TODO : subscribe press callback from alert box
         GameController.Instance.OnGameStateChange += OnGameStateChange;
         alertbox.OnSelectButton += AlertBox_MessageSelectChoiceCallback;
     }
@@ -102,6 +101,8 @@ public class EventDirector : MonoBehaviour
         if (GameState.Normal == state)
         {
             // Begin Start Scenario
+            // TODO : start game event emiiter here
+            // Test, start first scenario
             currentEventType = EventType.Normal;
             StartScenario(normalScenarios[0]);
         }
@@ -123,9 +124,6 @@ public class EventDirector : MonoBehaviour
             return;
         }
 
-        Debug.Log($"You select : {id}");
-
-        //advance to next node here..
         string portName = "output";
 
         if (haveCustomChoice) {
@@ -232,6 +230,13 @@ public class EventDirector : MonoBehaviour
                 }
                 break;
 
+                case DialogNode.Dialog.Random:
+                {
+                    Debug.Log("At the random node.");
+                    currentNode = currentScenario.GetNextNodeByRandom(currentNode);
+                }
+                break;
+
                 case DialogNode.Dialog.TimeSkip:
                 {
                     cache.timeSkipNode = (currentNode as TimeSkipNode);
@@ -243,12 +248,6 @@ public class EventDirector : MonoBehaviour
                 }
                 break;
 
-
-                case DialogNode.Dialog.Random:
-                {
-                     currentNode = currentScenario.GetNextNodeByRandom(currentNode);
-                }
-                break;
 
                 case DialogNode.Dialog.MultiRandom:
                 {

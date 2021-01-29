@@ -37,14 +37,14 @@ public class EventGraph : NodeGraph
         return null;
     }
 
-    // TODO
     public DialogNode GetNextNodeByRandom(DialogNode currentNode, string outputPortName = "output")
     {
         if (currentNode == null) {
             return null;
         }
 
-        Random.InitState(Random.Range(0, 100));
+        Random.InitState(Random.Range(0, 1000));
+
         var otherPorts = currentNode.GetOutputPort(outputPortName).GetConnections();
 
         if (otherPorts.Count <= 0) {
@@ -52,6 +52,7 @@ public class EventGraph : NodeGraph
         }
 
         var i = Random.Range(0, otherPorts.Count);
+        Debug.Log("All posssible resut:" + otherPorts.Count);
         return (otherPorts[i].node as DialogNode);
     }
 
