@@ -20,8 +20,6 @@ public class EventGraph : NodeGraph
 
     public DialogNode GetNextNode(DialogNode currentNode, string outputPortName = "output")
     {
-        /* var otherPort = currentNode.GetOutputPort(outputPortName).Connection; */
-        /* var otherPort = currentNode.GetPort(outputPortName).Connection; */
         if (currentNode == null) {
             return null;
         }
@@ -42,6 +40,10 @@ public class EventGraph : NodeGraph
     // TODO
     public DialogNode GetNextNodeByRandom(DialogNode currentNode, string outputPortName = "output")
     {
+        if (currentNode == null) {
+            return null;
+        }
+
         Random.InitState(Random.Range(0, 100));
         var otherPorts = currentNode.GetOutputPort(outputPortName).GetConnections();
 
@@ -56,6 +58,10 @@ public class EventGraph : NodeGraph
     // TODO : don't forget to sort the distribution
     public DialogNode GetNextNodeByMultiRandom(DialogNode currentNode)
     {
+        if (currentNode == null) {
+            return null;
+        }
+
         if (DialogNode.Dialog.MultiRandom != currentNode.DialogType) {
             return null;
         }

@@ -94,5 +94,10 @@ public class UIInGameController : MonoBehaviour
     {
         Show((int)panel, isShow);
     }
+
+    public void ShowAlertBox(bool isShow = true)
+    {
+        Show((int)Panel.Alert, isShow);
+    }
 }
 

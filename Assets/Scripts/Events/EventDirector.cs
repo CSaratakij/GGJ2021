@@ -15,9 +15,9 @@ public class EventDirector : MonoBehaviour
     EventGraph[] normalScenarios;
 
     // TODO (Hook alertbox click button id callback)
-    /* [Header("UI Setting")] */
-    /* [SerializeField] */
-    /* Transform alertbox */
+    [Header("UI Setting")]
+    [SerializeField]
+    AlertBoxController alertbox;
 
     public struct Cache
     {
@@ -304,6 +304,8 @@ public class EventDirector : MonoBehaviour
         // TODO
         // raise flag to pause the in-game time (not the engine time)
         // raise alertbox
+        alertbox.SetMessageInfo(node.message, node.choices, node.npc);
+        alertbox.Show();
     }
 
     void ProcessResultNode(ResultNode node)

@@ -7,20 +7,25 @@ using TMPro;
 
 public class AlertBoxController : MonoBehaviour
 {
+    [Header("General Setting")]
     [SerializeField]
-    CanvasGroup[] messages;
+    CanvasGroup[] dialogs;
 
     [SerializeField]
-    TextMeshProUGUI lblMessage;
+    TextMeshProUGUI[] lblMessages;
 
     [SerializeField]
     TextMeshProUGUI lblNpcName;
 
     [SerializeField]
-    Image npcImage;
+    Image imgNpc;
 
     [SerializeField]
     Button[] buttons;
+
+    [Header("Dependencies")]
+    [SerializeField]
+    UIInGameController uiInGame;
 
     public enum MessageType
     {
@@ -49,14 +54,49 @@ public class AlertBoxController : MonoBehaviour
         }
     }
 
-    public void SetMessageInfo(string message, NpcScriptableObject npcInfo = null, MessageType messageType = MessageType.Simple)
+    void SetDialogActive(MessageType messageType, bool isActive = true)
     {
-        // set canvas base on the message type
+        foreach (CanvasGroup dialog in dialogs) {
+            dialog.alpha = 0;
+            dialog.interactable = false;
+        }
+
+        dialogs[(int)messageType].alpha = (isActive) ? 1.0f : 0.0f;
+        dialogs[(int)messageType].interactable = isActive;
+    }
+
+    public void SetMessageInfo(string message, string[] choices, NpcScriptableObject npcInfo = null)
+    {
+        messageType = (npcInfo == null) ? MessageType.Simple : MessageType.Npc;
+        lblMessages[(int)messageType].SetText(message);
+
+        if (MessageType.Npc == messageType) {
+            lblNpcName.SetText(npcInfo.npcName);
+            imgNpc.sprite = npcInfo.sprite;
+        }
+
+        bool useDefaultChoice = (choices == null) || (choices.Length <= 0);
+
+        if (useDefaultChoice) {
+            for (int i = 0; i < buttons.Length; ++i) {
+                bool shouldShow = (i == 0);
+                buttons[i].gameObject.SetActive(shouldShow);
+            }
+        }
+        else {
+            for (int i = 0; i < buttons.Length; ++i) {
+                bool shouldShow = (i < (choices.Length));
+                buttons[i].gameObject.SetActive(shouldShow);
+            }
+        }
+
+        SetDialogActive(messageType);
     }
 
     public void Show(bool value = true)
     {
         isShow = value;
+        uiInGame.ShowAlertBox(value);
     }
 }
 
