@@ -90,6 +90,7 @@ public class EventDirector : MonoBehaviour
         GameController.Instance.OnGameStateChange += OnGameStateChange;
         alertbox.OnSelectButton += AlertBox_MessageSelectChoiceCallback;
         innerTime.OnFinishAdvanceTime += OnFinishAdvanceTime;
+        innerTime.OnYearPass += OnYearPass;
     }
 
     void UnsubscribeEvent()
@@ -97,29 +98,38 @@ public class EventDirector : MonoBehaviour
         GameController.Instance.OnGameStateChange -= OnGameStateChange;
         alertbox.OnSelectButton -= AlertBox_MessageSelectChoiceCallback;
         innerTime.OnFinishAdvanceTime -= OnFinishAdvanceTime;
+        innerTime.OnYearPass -= OnYearPass;
     }
 
     void BeginPlay()
     {
         /* GameController.Instance?.ShowProfile(); */
+        //
         //Test : This should start by press play on the profile
+        //And it should start the event emiiter instead
+        //You start random all the event that happen in 12 month
+        //normal event has a slot of day period
+        //if key event in the certain day period -> avoid entire period?
 
-        innerTime.RestartClock();
+        innerTime.StartClock();
         GameController.Instance?.BeginPlay();
 
-        currentEventType = EventType.Normal;
-        StartScenario(normalScenarios[0]);
+        /* currentEventType = EventType.Normal; */
+        /* StartScenario(normalScenarios[0]); */
     }
 
     void OnGameStateChange(GameState state)
     {
-        // Test
-        // Start event as the begin
-        if (GameState.Normal == state)
+        switch (state)
         {
-            // Begin Start Scenario
-            // TODO : start game event emiiter here
-            // Test, start first scenario
+            case GameState.End:
+            {
+                Debug.Log("Game Over...");
+            }
+            break;
+
+            default:
+                break;
         }
     }
 
@@ -155,6 +165,11 @@ public class EventDirector : MonoBehaviour
     {
         currentNode = currentScenario.GetNextNode(currentNode);
         SetPauseProcessingState(false);
+    }
+
+    void OnYearPass(DateTime date)
+    {
+        GameController.Instance?.GameOver();
     }
 
     void StartScenario(EventGraph scenario)

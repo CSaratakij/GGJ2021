@@ -68,12 +68,24 @@ public class UIInGameController : MonoBehaviour
 
     void OnGameStateChange(GameState state)
     {
-        if (GameState.ShowProfile == state) {
-            HideAll();
-            Show(Panel.PlayerProfile);
-        }
-        else if (GameState.Normal == state) {
-            Show(Panel.InGame);
+        switch (state)
+        {
+            case GameState.ShowProfile:
+                HideAll();
+                Show(Panel.PlayerProfile);
+            break;
+
+            case GameState.Normal:
+                Show(Panel.InGame);
+            break;
+
+            case GameState.End:
+                // Show game over ui here
+                Debug.Log("Game Over UI..");
+            break;
+
+            default:
+                break;
         }
     }
 
