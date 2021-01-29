@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1432, y: -392}
+  position: {x: 1448, y: -264}
   ports:
     keys:
     - input
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -488, y: -136}
+  position: {x: -840, y: -136}
   ports:
     keys:
     - start
@@ -183,7 +183,7 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  image: {fileID: 0}
+  npc: {fileID: 0}
   message: Random A
   choices: []
 --- !u!114 &-6799708073634551955
@@ -254,6 +254,7 @@ MonoBehaviour:
     - input
     - lateInfos
     - lateInfos 0
+    - output
     values:
     - _fieldName: input
       _node: {fileID: -6093110184236116552}
@@ -288,7 +289,17 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 1
+    - _fieldName: output
+      _node: {fileID: -6093110184236116552}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
   input: {fileID: 0}
+  output: {fileID: 0}
   lateInfos:
   - duration: 0
     amount: 2
@@ -338,7 +349,10 @@ MonoBehaviour:
       _node: {fileID: -3032940876122289836}
       _typeQualifiedName: ItemScriptableObject, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: 7007396387333973386}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -347,7 +361,10 @@ MonoBehaviour:
       _node: {fileID: -3032940876122289836}
       _typeQualifiedName: ItemScriptableObject, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: 2749806376747608273}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -408,7 +425,7 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  image: {fileID: 0}
+  npc: {fileID: 0}
   message: Get the great possible outcome
   choices: []
 --- !u!114 &-2493767423577366693
@@ -507,6 +524,10 @@ MonoBehaviour:
   - {fileID: -9024437147758341054}
   - {fileID: 6543578124070965709}
   - {fileID: -3032940876122289836}
+  - {fileID: 7007396387333973386}
+  - {fileID: 2749806376747608273}
+  - {fileID: 6363292582053193734}
+  eventType: 0
 --- !u!114 &590713529138415678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,8 +556,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: output
-        node: {fileID: 2850989802514318397}
+      - fieldName: choices 0
+        node: {fileID: 6363292582053193734}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -598,14 +619,60 @@ MonoBehaviour:
       _dynamic: 1
   input: {fileID: 0}
   output: {fileID: 0}
-  image: {fileID: 0}
-  message: 'This is the 2nd message with choices
+  npc: {fileID: 0}
+  message: 'This is the 3rd message with choices
 
-    And sprite'
+    And npc'
   choices:
   - A
   - B
   - C
+--- !u!114 &2749806376747608273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a2c22cc5e3f3c9da43380d4c483066, type: 3}
+  m_Name: Result
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1752, y: 200}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 2749806376747608273}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: choices 1
+        node: {fileID: -3032940876122289836}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 2749806376747608273}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  actions:
+  - status: 0
+    action: 1
+    amount: 30
 --- !u!114 &2850989802514318397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,7 +686,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -248, y: -152}
+  position: {x: -600, y: -152}
   ports:
     keys:
     - input
@@ -644,7 +711,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: 590713529138415678}
+        node: {fileID: 6363292582053193734}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -661,7 +728,7 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  image: {fileID: 0}
+  npc: {fileID: 0}
   message: This is the 1st message
   choices: []
 --- !u!114 &4899733305272042090
@@ -716,9 +783,78 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  image: {fileID: 0}
+  npc: {fileID: 0}
   message: Get the least possible outcome
   choices: []
+--- !u!114 &6363292582053193734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ba01de6fa39ad32917f1a477f80394, type: 3}
+  m_Name: Message
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -280, y: -152}
+  ports:
+    keys:
+    - input
+    - output
+    - choices
+    - choices 0
+    values:
+    - _fieldName: input
+      _node: {fileID: 6363292582053193734}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 2850989802514318397}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 6363292582053193734}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: 6363292582053193734}
+      _typeQualifiedName: System.String[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: 6363292582053193734}
+      _typeQualifiedName: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: input
+        node: {fileID: 590713529138415678}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+  input: {fileID: 0}
+  output: {fileID: 0}
+  npc: {fileID: 0}
+  message: This is 2nd message with a choice
+  choices:
+  - Accept
 --- !u!114 &6543578124070965709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,9 +913,55 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  image: {fileID: 0}
+  npc: {fileID: 0}
   message: After random, this would happen
   choices: []
+--- !u!114 &7007396387333973386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a2c22cc5e3f3c9da43380d4c483066, type: 3}
+  m_Name: Result
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1752, y: -24}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 7007396387333973386}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: choices 0
+        node: {fileID: -3032940876122289836}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 7007396387333973386}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  actions:
+  - status: 0
+    action: 1
+    amount: 20
 --- !u!114 &7340355887210831519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,7 +1017,7 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  image: {fileID: 0}
+  npc: {fileID: 0}
   message: Random B
   choices: []
 --- !u!114 &7913670089330518622
@@ -851,7 +1033,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1096, y: -392}
+  position: {x: 1080, y: -248}
   ports:
     keys:
     - input
@@ -893,6 +1075,6 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  image: {fileID: 0}
+  npc: {fileID: 0}
   message: This stuck in queue for 2 days
   choices: []
