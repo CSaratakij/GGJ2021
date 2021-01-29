@@ -223,6 +223,30 @@ public class EventDirector : MonoBehaviour
                 }
                 break;
 
+                case DialogNode.Dialog.Prompt:
+                {
+                    //TODO : skip for now
+                    /* if (!shouldPauseProcessing) { */
+                    /*     SetPauseProcessingState(true); */
+                    /* } */
+
+                    cache.promptNode = (currentNode as PromptNode);
+                    ProcessPromptNode(cache.promptNode);
+                }
+                break;
+
+                case DialogNode.Dialog.TimeSkip:
+                {
+                    //TODO : skip for now
+                    /* if (!shouldPauseProcessing) { */
+                    /*     SetPauseProcessingState(true); */
+                    /* } */
+
+                    cache.timeSkipNode = (currentNode as TimeSkipNode);
+                    ProcessTimeSkipNode(cache.timeSkipNode);
+                }
+                break;
+
                 case DialogNode.Dialog.Result:
                 {
                     cache.resultNode = (currentNode as ResultNode);
@@ -241,18 +265,6 @@ public class EventDirector : MonoBehaviour
                      currentNode = currentScenario.GetNextNodeByMultiRandom(currentNode);
                 }
                 break;
-
-                case DialogNode.Dialog.TimeSkip:
-                {
-                    cache.timeSkipNode = (currentNode as TimeSkipNode);
-
-                    // Skip the game time,
-
-                    // then
-                     currentNode = currentScenario.GetNextNode(currentNode);
-                }
-                break;
-
 
                 case DialogNode.Dialog.LateResult:
                 {
@@ -295,6 +307,7 @@ public class EventDirector : MonoBehaviour
         currentNode = currentScenario.GetNextNode(node, "start");
     }
 
+    // TODO
     void ProcessMessageNode(MessageNode node)
     {
         // raise flag to pause the in-game time (not the engine time)
@@ -308,6 +321,48 @@ public class EventDirector : MonoBehaviour
     {
         var player = GameController.Instance.Player;
         player.EditResource(node.actions);
+        currentNode = currentScenario.GetNextNode(currentNode);
+    }
+
+    // TODO
+    void ProcessTimeSkipNode(TimeSkipNode node)
+    {
+        // advanced time to certain amount
+        // need to pause process until ending time skip
+
+        // then
+        currentNode = currentScenario.GetNextNode(currentNode);
+    }
+
+    // TODO
+    void ProcessLateResultNode(LateResultNode node)
+    {
+        // add pointer of the next node in the lateInfos to the queue of late event add specific day
+
+        // then get next node by output port
+        currentNode = currentScenario.GetNextNode(currentNode);
+    }
+
+    // TODO
+    void ProcessPromptNode(PromptNode node)
+    {
+        /* Skip */
+        /* ------------------------------ */
+        /* promptbox.SetPromptInfo() */
+        /* promptbox.Show(); */
+
+        /* var id = 0; */
+        /* var portName = ("choices " + id); */
+
+        /* if (node.choices.Length <= 0) { */
+        /*     currentNode = null; */
+        /*     return; */
+        /* } */
+
+        /* currentNode = currentScenario.GetNextNode(currentNode, portName); */
+        /* ------------------------------ */
+
+        Debug.LogError("You cannot use prompt node...");
         currentNode = currentScenario.GetNextNode(currentNode);
     }
 }
