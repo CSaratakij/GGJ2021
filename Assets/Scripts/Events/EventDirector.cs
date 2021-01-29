@@ -8,7 +8,7 @@ using XNode;
 public class EventDirector : MonoBehaviour
 {
     static readonly WaitForSeconds PauseProcessingWait = new WaitForSeconds(0.3f);
-    static readonly WaitForSeconds DelayStartProcessing = new WaitForSeconds(1.0f);
+    static readonly WaitForSeconds DelayStartProcessing = new WaitForSeconds(0.3f);
 
     [Header("Game Event Setting")]
     [SerializeField]
@@ -33,7 +33,10 @@ public class EventDirector : MonoBehaviour
     }
 
     public Action<EventType> OnStartScenario;
+    public Action<EventType> OnMessageNodeProcess;
     public Action<EventType> OnFinishScenario;
+
+    public bool IsStartScenario => isStartScenario;
 
     bool isStartScenario;
     bool previousPauseProcessing;
@@ -55,25 +58,12 @@ public class EventDirector : MonoBehaviour
     void Awake()
     {
         Initialize();
-        SubscribeEvent();
     }
 
     void Start()
     {
-        // Test : start event here
-        currentEventType = EventType.Normal;
-        StartScenario(normalScenarios[0]);
-    }
-
-    void Update()
-    {
-        // Test
-        if (Input.GetKeyDown(KeyCode.F)) {
-            AlertBox_MessageSelectChoiceCallback(0);
-        }
-        else if (Input.GetKeyDown(KeyCode.G)) {
-            AlertBox_MessageSelectChoiceCallback(1);
-        }
+        SubscribeEvent();
+        BeginPlay();
     }
 
     void OnDestroy()
@@ -91,11 +81,32 @@ public class EventDirector : MonoBehaviour
     void SubscribeEvent()
     {
         // TODO : subscribe press callback from alert box
+        GameController.Instance.OnGameStateChange += OnGameStateChange;
+        alertbox.OnSelectButton += AlertBox_MessageSelectChoiceCallback;
     }
 
     void UnsubscribeEvent()
     {
+        GameController.Instance.OnGameStateChange -= OnGameStateChange;
+        alertbox.OnSelectButton -= AlertBox_MessageSelectChoiceCallback;
+    }
 
+    void BeginPlay()
+    {
+        /* GameController.Instance?.ShowProfile(); */
+        //Test
+        GameController.Instance?.BeginPlay();
+    }
+
+    void OnGameStateChange(GameState state)
+    {
+        // Start event as the begin
+        if (GameState.Normal == state)
+        {
+            // Begin Start Scenario
+            currentEventType = EventType.Normal;
+            StartScenario(normalScenarios[0]);
+        }
     }
 
     void AlertBox_MessageSelectChoiceCallback(int id)
@@ -122,6 +133,8 @@ public class EventDirector : MonoBehaviour
         if (haveCustomChoice) {
             portName = ("choices " + id);
         }
+
+        alertbox.Show(false);
 
         currentNode = currentScenario.GetNextNode(currentNode, portName);
         SetPauseProcessingState(false);
@@ -157,6 +170,7 @@ public class EventDirector : MonoBehaviour
         ResetScenario();
         OnFinishScenario?.Invoke(currentEventType);
 
+        alertbox.Show(false);
         Debug.Log("Scenario has finished..");
     }
 

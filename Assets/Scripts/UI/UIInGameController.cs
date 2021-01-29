@@ -24,9 +24,19 @@ public class UIInGameController : MonoBehaviour
         Initialize();
     }
 
+    void Start()
+    {
+        SubscribeEvent();
+    }
+
     void Update()
     {
         InputHandler();
+    }
+
+    void OnDestroy()
+    {
+        UnsubscribeEvent();
     }
 
     void Initialize()
@@ -35,20 +45,28 @@ public class UIInGameController : MonoBehaviour
             Debug.LogError("Game hasn't start properly...");
         }
 
-        GameController.Instance?.ShowProfile();
-
         HideAll();
-        Show(Panel.PlayerProfile);
     }
 
     void SubscribeEvent()
     {
-
+        GameController.Instance.OnGameStateChange += OnGameStateChange;
     }
 
     void UnsubscribeEvent()
     {
+        GameController.Instance.OnGameStateChange -= OnGameStateChange;
+    }
 
+    void OnGameStateChange(GameState state)
+    {
+        if (GameState.ShowProfile == state) {
+            HideAll();
+            Show(Panel.PlayerProfile);
+        }
+        else if (GameState.Normal == state) {
+            Show(Panel.InGame);
+        }
     }
 
     void InputHandler()
@@ -78,6 +96,7 @@ public class UIInGameController : MonoBehaviour
         foreach (CanvasGroup panel in panels) {
             panel.alpha = 0;
             panel.interactable = false;
+            panel.blocksRaycasts = false;
         }
     }
 
@@ -88,6 +107,7 @@ public class UIInGameController : MonoBehaviour
 
         panel.alpha = (isShow) ? 1 : 0;
         panel.interactable = isShow;
+        panel.blocksRaycasts = isShow;
     }
 
     void Show(Panel panel, bool isShow = true)

@@ -96,6 +96,11 @@ public class GameController : MonoBehaviour
         ChangeGameState(GameState.ShowProfile);
     }
 
+    public void BeginPlay()
+    {
+        ChangeGameState(GameState.Normal);
+    }
+
     public void GameOver()
     {
         ChangeGameState(GameState.End);

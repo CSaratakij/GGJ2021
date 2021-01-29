@@ -25,6 +25,9 @@ public class AlertBoxController : MonoBehaviour
 
     [Header("Dependencies")]
     [SerializeField]
+    EventDirector eventDirector;
+
+    [SerializeField]
     UIInGameController uiInGame;
 
     public enum MessageType
@@ -47,7 +50,7 @@ public class AlertBoxController : MonoBehaviour
     {
         for (int i = 0; i <  buttons.Length; ++i)
         {
-            var id = i;
+            int id = i;
             buttons[i].onClick.AddListener(() => {
                 OnSelectButton?.Invoke(id);
             });
@@ -59,10 +62,12 @@ public class AlertBoxController : MonoBehaviour
         foreach (CanvasGroup dialog in dialogs) {
             dialog.alpha = 0;
             dialog.interactable = false;
+            dialog.blocksRaycasts = false;
         }
 
-        dialogs[(int)messageType].alpha = (isActive) ? 1.0f : 0.0f;
+        dialogs[(int)messageType].alpha = (isActive) ? 1.0f : 0.0f; // <--- this better be the animation
         dialogs[(int)messageType].interactable = isActive;
+        dialogs[(int)messageType].blocksRaycasts = isActive;
     }
 
     public void SetMessageInfo(string message, string[] choices, NpcScriptableObject npcInfo = null)
@@ -81,12 +86,23 @@ public class AlertBoxController : MonoBehaviour
             for (int i = 0; i < buttons.Length; ++i) {
                 bool shouldShow = (i == 0);
                 buttons[i].gameObject.SetActive(shouldShow);
+
+                if (shouldShow) {
+                    var label = buttons[i].gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                    label.SetText("OK");
+                }
             }
         }
         else {
             for (int i = 0; i < buttons.Length; ++i) {
                 bool shouldShow = (i < (choices.Length));
                 buttons[i].gameObject.SetActive(shouldShow);
+
+                if (shouldShow) {
+                    string text = choices[i];
+                    var label = buttons[i].gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                    label.SetText(text);
+                }
             }
         }
 
