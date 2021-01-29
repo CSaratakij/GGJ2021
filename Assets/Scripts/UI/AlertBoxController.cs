@@ -21,7 +21,10 @@ public class AlertBoxController : MonoBehaviour
     Image imgNpc;
 
     [SerializeField]
-    Button[] buttons;
+    Button[] simpleButtons;
+
+    [SerializeField]
+    Button[] npcDialogButtons;
 
     [Header("Dependencies")]
     [SerializeField]
@@ -41,6 +44,8 @@ public class AlertBoxController : MonoBehaviour
     bool isShow = false;
     MessageType messageType;
 
+    CanvasGroup currentDialog;
+
     void Awake()
     {
         Initialize();
@@ -48,10 +53,18 @@ public class AlertBoxController : MonoBehaviour
 
     void Initialize()
     {
-        for (int i = 0; i <  buttons.Length; ++i)
+        for (int i = 0; i < simpleButtons.Length; ++i)
         {
             int id = i;
-            buttons[i].onClick.AddListener(() => {
+            simpleButtons[i].onClick.AddListener(() => {
+                OnSelectButton?.Invoke(id);
+            });
+        }
+
+        for (int i = 0; i < npcDialogButtons.Length; ++i)
+        {
+            int id = i;
+            npcDialogButtons[i].onClick.AddListener(() => {
                 OnSelectButton?.Invoke(id);
             });
         }
@@ -65,9 +78,11 @@ public class AlertBoxController : MonoBehaviour
             dialog.blocksRaycasts = false;
         }
 
-        dialogs[(int)messageType].alpha = (isActive) ? 1.0f : 0.0f; // <--- this better be the animation
-        dialogs[(int)messageType].interactable = isActive;
-        dialogs[(int)messageType].blocksRaycasts = isActive;
+        currentDialog = dialogs[(int)messageType];
+
+        currentDialog.alpha = (isActive) ? 1.0f : 0.0f; // <--- this better be the animation
+        currentDialog.interactable = isActive;
+        currentDialog.blocksRaycasts = isActive;
     }
 
     public void SetMessageInfo(string message, string[] choices, NpcScriptableObject npcInfo = null)
@@ -81,6 +96,7 @@ public class AlertBoxController : MonoBehaviour
         }
 
         bool useDefaultChoice = (choices == null) || (choices.Length <= 0);
+        Button[] buttons = (MessageType.Simple == messageType) ? simpleButtons : npcDialogButtons;
 
         if (useDefaultChoice) {
             for (int i = 0; i < buttons.Length; ++i) {

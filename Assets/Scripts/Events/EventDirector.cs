@@ -8,13 +8,12 @@ using XNode;
 public class EventDirector : MonoBehaviour
 {
     static readonly WaitForSeconds PauseProcessingWait = new WaitForSeconds(0.3f);
-    static readonly WaitForSeconds DelayStartProcessing = new WaitForSeconds(0.3f);
+    static readonly WaitForSeconds DelayStartProcessing = new WaitForSeconds(0.12f);
 
     [Header("Game Event Setting")]
     [SerializeField]
     EventGraph[] normalScenarios;
 
-    // TODO (Hook alertbox click button id callback)
     [Header("UI Setting")]
     [SerializeField]
     AlertBoxController alertbox;
@@ -33,7 +32,6 @@ public class EventDirector : MonoBehaviour
     }
 
     public Action<EventType> OnStartScenario;
-    public Action<EventType> OnMessageNodeProcess;
     public Action<EventType> OnFinishScenario;
 
     public bool IsStartScenario => isStartScenario;
@@ -301,33 +299,17 @@ public class EventDirector : MonoBehaviour
 
     void ProcessMessageNode(MessageNode node)
     {
-        // TODO : if npc is not null, show npc name and set its image to alertbox
-        Debug.Log("Message Node:");
-        Debug.Log($"message : {node.message}");
-        Debug.Log($"npc : {node.npc}");
-
-        if (node.choices.Length <= 0) {
-            Debug.Log("NO choise, will select next node on output port");
-        }
-        else {
-            foreach (var name in node.choices) {
-                Debug.Log($"Choice : {name}");
-            }
-        }
-
-        // TODO
         // raise flag to pause the in-game time (not the engine time)
-        // raise alertbox
+        // here
+
         alertbox.SetMessageInfo(node.message, node.choices, node.npc);
         alertbox.Show();
     }
 
     void ProcessResultNode(ResultNode node)
     {
-        //Adjst share resource here
-        //------------------------------
-
-        //then
+        var player = GameController.Instance.Player;
+        player.EditResource(node.actions);
         currentNode = currentScenario.GetNextNode(currentNode);
     }
 }

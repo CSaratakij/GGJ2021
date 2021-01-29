@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     public Action<GameState> OnGameStateChange;
     public GameState State => currentState;
     public bool IsGamePause => (GameState.Pause == currentState);
+    public PlayerProfile Player => player;
 
     PlayerProfile player;
 

@@ -17,7 +17,7 @@ public class UIInGameController : MonoBehaviour
         Pause
     }
 
-    Panel currentPanel;
+    CanvasGroup currentPanel;
 
     void Awake()
     {
@@ -100,19 +100,20 @@ public class UIInGameController : MonoBehaviour
         }
     }
 
-    void Show(int id, bool isShow = true)
-    {
-        currentPanel = (Panel)id;
-        var panel = panels[id];
-
-        panel.alpha = (isShow) ? 1 : 0;
-        panel.interactable = isShow;
-        panel.blocksRaycasts = isShow;
-    }
-
     void Show(Panel panel, bool isShow = true)
     {
         Show((int)panel, isShow);
+    }
+
+    void Show(int id, bool isShow = true)
+    {
+        var panel = panels[id];
+
+        panel.alpha = (isShow) ? 1.0f : 0.0f;
+        panel.interactable = isShow;
+        panel.blocksRaycasts = isShow;
+
+        currentPanel = panel;
     }
 
     public void ShowAlertBox(bool isShow = true)

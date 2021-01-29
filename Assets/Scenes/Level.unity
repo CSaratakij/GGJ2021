@@ -567,13 +567,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276610599}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.3372549}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.043137256}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1181,10 +1181,15 @@ MonoBehaviour:
   - {fileID: 19305666}
   lblNpcName: {fileID: 1142980111}
   imgNpc: {fileID: 1468939759}
-  buttons:
+  simpleButtons:
   - {fileID: 1505944695}
   - {fileID: 1083852263}
   - {fileID: 1392108697}
+  npcDialogButtons:
+  - {fileID: 1032072904}
+  - {fileID: 1157251819}
+  - {fileID: 1999889229}
+  eventDirector: {fileID: 1156995384}
   uiInGame: {fileID: 412981732}
 --- !u!1 &441261516
 GameObject:
