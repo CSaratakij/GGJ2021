@@ -105,6 +105,7 @@ public class EventDirector : MonoBehaviour
         GameController.Instance.OnGameStateChange += OnGameStateChange;
         alertbox.OnSelectButton += AlertBox_MessageSelectChoiceCallback;
 
+        innerTime.OnDayPass += OnDayPass;
         innerTime.OnMonthPass += OnMonthPass;
         innerTime.OnYearPass += OnYearPass;
 
@@ -117,6 +118,7 @@ public class EventDirector : MonoBehaviour
         GameController.Instance.OnGameStateChange -= OnGameStateChange;
         alertbox.OnSelectButton -= AlertBox_MessageSelectChoiceCallback;
 
+        innerTime.OnDayPass -= OnDayPass;
         innerTime.OnMonthPass -= OnMonthPass;
         innerTime.OnYearPass -= OnYearPass;
 
@@ -132,10 +134,11 @@ public class EventDirector : MonoBehaviour
         }
         else
         {
+            GameController.Instance?.BeginPlay();
+
             innerTime.StartClock();
             ingameUI.ShowIngameUI();
 
-            GameController.Instance?.BeginPlay();
             soundManager.Play();
 
             // logic to start the event emiiter here
@@ -194,6 +197,7 @@ public class EventDirector : MonoBehaviour
     void OnDayPass(DateTime date)
     {
         GameController.Instance?.RemoveSalaryPerDay();
+        GameController.Instance?.GainHappiness();
     }
 
     void OnMonthPass(DateTime date)
