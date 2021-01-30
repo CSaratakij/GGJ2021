@@ -15,7 +15,8 @@ MonoBehaviour:
   itemName: PC
   remark: Your precious and only PC.
   sprite: {fileID: 0}
-  effectActive: 0
+  isRequired: 0
+  effectActive: 1
   hiddenEffectFromPlayer: 0
   degenerate: 0
   cost: 0

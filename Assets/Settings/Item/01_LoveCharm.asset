@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Love Charm
   remark: This will make you look fascinating. Increase chance of love encounter.
-  effectActive: 0
   sprite: {fileID: 0}
+  isRequired: 0
+  effectActive: 0
+  hiddenEffectFromPlayer: 0
+  degenerate: 0
   cost: 0

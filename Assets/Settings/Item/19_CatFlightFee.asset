@@ -19,4 +19,4 @@ MonoBehaviour:
   effectActive: 0
   hiddenEffectFromPlayer: 0
   degenerate: 0
-  cost: 0
+  cost: 3000
