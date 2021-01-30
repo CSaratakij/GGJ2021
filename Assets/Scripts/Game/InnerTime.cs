@@ -13,7 +13,11 @@ public class InnerTime : MonoBehaviour
     float clockRate = 3.0f;
 
     [SerializeField]
-    int maxDayPeriod = 6;
+    int maxDayPeriod = 5;
+
+    [Header("Month")]
+    [SerializeField]
+    int endOfMonth = 1;
 
     [Header("Year")]
     [SerializeField]
@@ -26,7 +30,6 @@ public class InnerTime : MonoBehaviour
     {
         Dawn,
         Morning,
-        Launch,
         Afternoon,
         Sunset,
         Evenning
@@ -82,7 +85,7 @@ public class InnerTime : MonoBehaviour
     void Initialize()
     {
         startDate = new DateTime(startOfYear, 1, 1);
-        endDate = new DateTime(endOfYear, 1, 1);
+        endDate = new DateTime(endOfYear, endOfMonth, 1);
 
         currentDate = startDate;
         nextMonthDate = currentDate.AddMonths(1);

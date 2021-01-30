@@ -4607,10 +4607,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4500163ef23bba463b4fdbf580e3be1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxClockPerDay: 36
-  clockRate: 2
-  maxDayPeriod: 6
-  startOfYear: 2020
+  maxClockPerDay: 20
+  clockRate: 1
+  maxDayPeriod: 5
+  endOfMonth: 4
+  startOfYear: 2021
   endOfYear: 2021
 --- !u!4 &2063978294
 Transform:

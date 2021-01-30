@@ -44,6 +44,8 @@ public class EventDirector : MonoBehaviour
     public bool IsStartScenario => isStartScenario;
 
     bool isStartScenario;
+    bool shouldEndGame;
+
     bool previousPauseProcessing;
     bool shouldPauseProcessing;
 
@@ -190,7 +192,7 @@ public class EventDirector : MonoBehaviour
 
     void OnYearPass(DateTime date)
     {
-        GameController.Instance?.GameOver();
+        shouldEndGame = true;
     }
 
     void StartScenario(EventGraph scenario)
@@ -254,6 +256,12 @@ public class EventDirector : MonoBehaviour
         innerTime.Pause(false);
 
         Debug.Log("Scenario has finished..");
+
+        // Hacks, game over here
+        if (shouldEndGame) {
+            GameController.Instance?.GameOver();
+            innerTime.ResetClock();
+        }
     }
 
     void ResetScenario()
