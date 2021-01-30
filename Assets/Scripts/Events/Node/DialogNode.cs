@@ -18,7 +18,8 @@ public abstract class DialogNode : Node
         Math,
         End,
         Prompt,
-        TimeSkip
+        TimeSkip,
+        Shop
     }
 }
 

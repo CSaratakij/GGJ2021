@@ -43,6 +43,7 @@ public class EventDirector : MonoBehaviour
         public MultiRandomNode multiRandomNode;
         public PromptNode promptNode;
         public TimeSkipNode timeSkipNode;
+        public ShopNode shopNode;
     }
 
     public Action<EventType> OnStartScenario;
@@ -393,6 +394,13 @@ public class EventDirector : MonoBehaviour
                 }
                 break;
 
+                case DialogNode.Dialog.Shop:
+                {
+                    cache.shopNode = (currentNode as ShopNode);
+                    ProcessShopNode(cache.shopNode);
+                }
+                break;
+
                 case DialogNode.Dialog.End:
                 {
                     EndScenario();
@@ -499,6 +507,29 @@ public class EventDirector : MonoBehaviour
             }
             else {
                 Debug.Log("Node to add : " + nodeToAdd.ToString());
+            }
+        }
+
+        //then
+        currentNode = currentScenario.GetNextNode(currentNode);
+    }
+
+    void ProcessShopNode(ShopNode node)
+    {
+        for (int i = 0; i < node.shopCarts.Length; ++i)
+        {
+            // add this info to the queue of late event here
+            // add the pointer of event
+
+            var item = node.shopCarts[i];
+
+            if (ShopNode.ShopActionType.Buy == item.actionType)
+            {
+                Debug.Log($"Buy {item.item.itemName}");
+            }
+            else if (ShopNode.ShopActionType.Sell == item.actionType)
+            {
+                Debug.Log($"Sell : {item.item.itemName}");
             }
         }
 
