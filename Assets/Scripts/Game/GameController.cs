@@ -28,6 +28,9 @@ public class GameController : MonoBehaviour
     GameState currentState;
     GameState previousState;
 
+    // Hacks;
+    float happiness;
+
     void Awake()
     {
         Initialize();
@@ -68,6 +71,7 @@ public class GameController : MonoBehaviour
         player.haveBeggar = true;
         player.haveSaleman = true;
 
+        happiness = profile.happiness;
         return player;
     }
 
@@ -105,13 +109,44 @@ public class GameController : MonoBehaviour
 
     public void RemoveSalaryPerDay()
     {
-        if (playerPreset == null) { 
-            Debug.LogWarning("Should remove salary, but no player preset found.");
+        if (player == null) { 
             return;
         }
 
-        double removeMaxAmountPerMonth = (playerPreset.salary * 35) / 100;
-        player.money -= (int)(removeMaxAmountPerMonth / 30);
+        var money = player.money;
+        var amount = 0;
+
+        if (money < 5000) {
+            amount = 127;
+        }
+        else if (money < 15000) {
+            amount = 183;
+        }
+        else if (money < 30000) {
+            amount = 340;
+        }
+        else if (money < 50000) {
+            amount = 466;
+        }
+        else {
+            amount = 800;
+        }
+
+        money -= amount;
+        player.money = money;
+    }
+
+    public void GainHappiness()
+    {
+        if (player == null)
+            return;
+
+        if (player.happiness > 0) {
+            player.happiness -= 1;
+        }
+        else {
+            player.happiness += 3;
+        }
     }
 
     public void ResetGameState()
@@ -153,6 +188,7 @@ public class GameController : MonoBehaviour
 
     public void BeginPlay()
     {
+        RandomPlayerProfile();
         ChangeGameState(GameState.Normal);
     }
 
