@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3922f94683b6d514a986225a9cba6127, type: 3}
   m_Name: PlayerProfile1
   m_EditorClassIdentifier: 
-  happiness: 100
+  happiness: 50
   money: 15000
   salary: 15000
   haveCat: 0
