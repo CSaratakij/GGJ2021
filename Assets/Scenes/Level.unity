@@ -4147,6 +4147,7 @@ MonoBehaviour:
   innerTime: {fileID: 2063978293}
   alertbox: {fileID: 412981733}
   ingameUI: {fileID: 412981732}
+  soundManager: {fileID: 2125848150}
   isInPlayground: 0
 --- !u!1 &1157251817
 GameObject:
@@ -7427,7 +7428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4500163ef23bba463b4fdbf580e3be1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxClockPerDay: 20
+  maxClockPerDay: 6
   clockRate: 1
   maxDayPeriod: 5
   endOfMonth: 1
@@ -7665,6 +7666,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125848149}
+  - component: {fileID: 2125848150}
   - component: {fileID: 2125848148}
   m_Layer: 0
   m_Name: SoundManager
@@ -7683,11 +7685,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8722a861efb03766aaa2afdd8505e053, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -7783,6 +7785,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2125848150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125848147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b372f68d1d51f17248e4fa9544be9db5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playTrackDelay: 8
+  clips:
+  - {fileID: 8300000, guid: 8722a861efb03766aaa2afdd8505e053, type: 3}
+  - {fileID: 8300000, guid: 36fc8c5fa2fa2adaa8ff27a75e7f6c39, type: 3}
 --- !u!1001 &8370354362933706829
 PrefabInstance:
   m_ObjectHideFlags: 0

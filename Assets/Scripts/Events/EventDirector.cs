@@ -28,6 +28,10 @@ public class EventDirector : MonoBehaviour
     [SerializeField]
     UIInGameController ingameUI;
 
+    [Header("Sound Setting")]
+    [SerializeField]
+    SoundManager soundManager;
+
     [Header("Debug")]
     [SerializeField]
     bool isInPlayground = false;
@@ -132,6 +136,7 @@ public class EventDirector : MonoBehaviour
             ingameUI.ShowIngameUI();
 
             GameController.Instance?.BeginPlay();
+            soundManager.Play();
 
             // logic to start the event emiiter here
         }

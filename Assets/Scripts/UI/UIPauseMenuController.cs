@@ -28,21 +28,21 @@ public class UIPauseMenuController : MonoBehaviour
         buttons[(int)ButtonType.Resume].
             onClick.
             AddListener(() => {
-                    ingameUI.UnPause();
+                ingameUI.UnPause();
         });
 
         buttons[(int)ButtonType.Restart].
             onClick.
             AddListener(() => {
-                    ingameUI.UnPause();
-                    GameController.Instance?.RestartGame();
+                ingameUI.UnPause();
+                GameController.Instance?.RestartGame();
         });
 
         buttons[(int)ButtonType.MainMenu].
             onClick.
             AddListener(() => {
-                    ingameUI.UnPause();
-                    GameController.Instance?.BackToMainMenu();
+                ingameUI.UnPause();
+                GameController.Instance?.BackToMainMenu();
         });
     }
 }
