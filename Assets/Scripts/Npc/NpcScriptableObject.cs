@@ -4,6 +4,7 @@
 public class NpcScriptableObject : ScriptableObject
 {
     public string npcName;
+    [TextArea(5, 5)] public string remark;
     public Sprite sprite;
 }
 

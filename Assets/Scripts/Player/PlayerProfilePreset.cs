@@ -8,5 +8,6 @@ public class PlayerProfilePreset : ScriptableObject
     public int salary;
     public bool haveCat;
     public bool haveGirlFriend;
+    [TextArea(5, 5)] public string remark;
 }
 

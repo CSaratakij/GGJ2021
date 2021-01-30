@@ -42,7 +42,10 @@ public class InnerTime : MonoBehaviour
     public Action<DateTime> OnMonthPass;
     public Action<DateTime> OnYearPass;
 
+    public Action<TimePeriod> OnTimePeriodChange;
+
     public int MaxDayPeriod => maxDayPeriod;
+    //TODO : time cycle will calculate by month in the ui
     public int DayPeriodID { get {
         int value = (int)((innerClock / ((actualMaxClock))) * maxDayPeriod);
         if (value == maxDayPeriod)

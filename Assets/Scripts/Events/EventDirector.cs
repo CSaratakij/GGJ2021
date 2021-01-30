@@ -531,6 +531,9 @@ public class EventDirector : MonoBehaviour
             {
                 Debug.Log($"Sell : {item.item.itemName}");
             }
+            else {
+                Debug.Log($"Give : {item.item.itemName}");
+            }
         }
 
         //then

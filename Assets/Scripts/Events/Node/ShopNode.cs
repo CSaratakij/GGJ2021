@@ -12,7 +12,8 @@ public class ShopNode : DialogNode
     public enum ShopActionType
     {
         Buy,
-        Sell
+        Sell,
+        Give
     }
 
     [System.Serializable]

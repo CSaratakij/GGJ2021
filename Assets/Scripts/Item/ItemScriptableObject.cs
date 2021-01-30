@@ -6,7 +6,12 @@ using UnityEngine;
 public class ItemScriptableObject : ScriptableObject
 {
     public string itemName;
-    public int cost;
+    [TextArea(5, 5)] public string remark;
     public Sprite sprite;
+    public bool isRequired;
+    public bool effectActive;
+    public bool hiddenEffectFromPlayer;
+    public int degenerate;
+    public int cost;
 }
 
