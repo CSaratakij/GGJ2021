@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d9cece4924085ed8bee300a23f2758a, type: 3}
-  m_Name: Girlfriend
+  m_Name: Salesman
   m_EditorClassIdentifier: 
-  npcName: Girlfriend
-  remark: Is she your soulmate, or not?
+  npcName: Salesman
+  remark: Water filter man.
   sprite: {fileID: 0}
