@@ -82,8 +82,6 @@ public class EventDirector : MonoBehaviour
     void Start()
     {
         SubscribeEvent();
-        //Test : move this to the profile button
-        BeginPlay();
     }
 
     void OnDestroy()
@@ -121,26 +119,21 @@ public class EventDirector : MonoBehaviour
         innerTime.OnFinishAdvanceTime -= OnFinishAdvanceTime;
     }
 
-    void BeginPlay()
+    public void BeginPlay()
     {
-        /* GameController.Instance?.ShowProfile(); */
-        //
-        //Test : This should start by press play on the profile
-        //And it should start the event emiiter instead
-        //You start random all the event that happen in 12 month
-        //normal event has a slot of day period
-        //if key event in the certain day period -> avoid entire period?
-
         if (isInPlayground)
         {
             ingameUI.ShowIngameUI();
-            /* currentEventType = EventType.Normal; */
             StartScenario(normalScenarios[0]);
         }
         else
         {
             innerTime.StartClock();
+            ingameUI.ShowIngameUI();
+
             GameController.Instance?.BeginPlay();
+
+            // logic to start the event emiiter here
         }
     }
 
@@ -148,12 +141,6 @@ public class EventDirector : MonoBehaviour
     {
         switch (state)
         {
-            case GameState.Normal:
-            {
-                BeginPlay();
-            }
-            break;
-
             case GameState.End:
             {
                 Debug.Log("Game Over...");
