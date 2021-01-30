@@ -6,6 +6,7 @@ using XNode;
 public class StartNode : DialogNode
 {
     [Output(backingValue = ShowBackingValue.Never)] public DialogNode start;
+    public EventType eventType;
 
 	protected override void Init() {
 		base.Init();

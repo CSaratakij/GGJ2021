@@ -1,7 +1,11 @@
 ﻿public enum EventType
 {
     Normal,
-    Major,
-    Minor
+    Investment,
+    Social,
+    Relationship,
+    Entertainment,
+    Insurance,
+    Charm
 }
 

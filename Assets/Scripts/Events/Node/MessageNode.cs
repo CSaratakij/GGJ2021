@@ -9,6 +9,7 @@ public class MessageNode : DialogNode
     [Input(backingValue = ShowBackingValue.Never)] public DialogNode input;
     [Output(backingValue = ShowBackingValue.Never)] public DialogNode output;
     public NpcScriptableObject npc;
+    public Sprite eventImage;
     [TextArea(4, 4)]public string message;
     [Output(dynamicPortList=true)] public string[] choices; 
 

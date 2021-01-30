@@ -133,7 +133,7 @@ public class EventDirector : MonoBehaviour
         if (isInPlayground)
         {
             ingameUI.ShowIngameUI();
-            currentEventType = EventType.Normal;
+            /* currentEventType = EventType.Normal; */
             StartScenario(normalScenarios[0]);
         }
         else
@@ -422,12 +422,13 @@ public class EventDirector : MonoBehaviour
 
     void ProcessStartNode(StartNode node)
     {
+        currentEventType = node.eventType;
         currentNode = currentScenario.GetNextNode(node, "start");
     }
 
     void ProcessMessageNode(MessageNode node)
     {
-        alertbox.SetMessageInfo(node.message, node.choices, node.npc);
+        alertbox.SetMessageInfo(currentEventType, node.eventImage, node.message, node.choices, node.npc);
         alertbox.Show();
     }
 

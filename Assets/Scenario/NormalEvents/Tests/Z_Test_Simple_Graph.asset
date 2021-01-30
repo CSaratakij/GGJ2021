@@ -31,6 +31,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   start: {fileID: 0}
+  eventType: 0
 --- !u!114 &-4537012908180680496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +87,8 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  npc: {fileID: 0}
+  npc: {fileID: 11400000, guid: 49e416dc7f661be3086a1a0f8ee6ea33, type: 2}
+  eventImage: {fileID: 0}
   message: You get 30 coin.
   choices: []
 --- !u!114 &-1538244630331848429
@@ -168,6 +170,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 11400000, guid: 0090b36ee25d05f8ea2d9e6b2a335eb3, type: 2}
+  eventImage: {fileID: 0}
   message: 'Hi, I can give you the money
 
     Accept my offer?'
@@ -229,7 +232,8 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
-  npc: {fileID: 0}
+  npc: {fileID: 11400000, guid: 23943eed676ef771d8abf5750242edab, type: 2}
+  eventImage: {fileID: 0}
   message: Your happiness will suffer.
   choices: []
 --- !u!114 &11400000
@@ -309,6 +313,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 21300000, guid: beebc9b22d4d556dc8e1a25bc530374f, type: 3}
   message: You received an email
   choices: []
 --- !u!114 &6309709057270260959

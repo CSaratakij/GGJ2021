@@ -12,19 +12,29 @@ public class AlertBoxController : MonoBehaviour
     CanvasGroup[] dialogs;
 
     [SerializeField]
+    TextMeshProUGUI[] lblHeaders;
+
+    [SerializeField]
     TextMeshProUGUI[] lblMessages;
 
     [SerializeField]
     TextMeshProUGUI lblNpcName;
 
     [SerializeField]
+    Image imgEvent;
+
+    [SerializeField]
     Image imgNpc;
 
+    [Header("Button")]
     [SerializeField]
     Button[] simpleButtons;
 
     [SerializeField]
     Button[] npcDialogButtons;
+
+    [SerializeField]
+    Button[] withEventImageButtons;
 
     [Header("Dependencies")]
     [SerializeField]
@@ -36,7 +46,8 @@ public class AlertBoxController : MonoBehaviour
     public enum MessageType
     {
         Simple,
-        Npc
+        Npc,
+        WithEventImage
     }
 
     public Action<int> OnSelectButton;
@@ -68,6 +79,14 @@ public class AlertBoxController : MonoBehaviour
                 OnSelectButton?.Invoke(id);
             });
         }
+
+        for (int i = 0; i < withEventImageButtons.Length; ++i)
+        {
+            int id = i;
+            withEventImageButtons[i].onClick.AddListener(() => {
+                OnSelectButton?.Invoke(id);
+            });
+        }
     }
 
     void SetDialogActive(MessageType messageType, bool isActive = true)
@@ -85,18 +104,43 @@ public class AlertBoxController : MonoBehaviour
         currentDialog.blocksRaycasts = isActive;
     }
 
-    public void SetMessageInfo(string message, string[] choices, NpcScriptableObject npcInfo = null)
+    public void SetMessageInfo(EventType eventType, Sprite eventImage, string message, string[] choices, NpcScriptableObject npcInfo = null)
     {
-        messageType = (npcInfo == null) ? MessageType.Simple : MessageType.Npc;
+        if (npcInfo != null) {
+            messageType = MessageType.Npc;
+        }
+        else if (eventImage != null) {
+            messageType = MessageType.WithEventImage;
+        }
+        else {
+            messageType = MessageType.Simple;
+        }
+
+        string headerText = (EventType.Normal == eventType) ? "Event" : eventType.ToString();
+
+        lblHeaders[(int)messageType].SetText(headerText);
         lblMessages[(int)messageType].SetText(message);
 
         if (MessageType.Npc == messageType) {
             lblNpcName.SetText(npcInfo.npcName);
             imgNpc.sprite = npcInfo.sprite;
         }
+        else if (MessageType.WithEventImage == messageType) {
+            imgEvent.sprite = eventImage;
+        }
 
         bool useDefaultChoice = (choices == null) || (choices.Length <= 0);
-        Button[] buttons = (MessageType.Simple == messageType) ? simpleButtons : npcDialogButtons;
+        Button[] buttons;
+
+        if (MessageType.Simple == messageType) {
+            buttons = simpleButtons;
+        }
+        else if (MessageType.Npc == messageType) {
+            buttons = npcDialogButtons;
+        }
+        else {
+            buttons = withEventImageButtons;
+        }
 
         if (useDefaultChoice) {
             for (int i = 0; i < buttons.Length; ++i) {
