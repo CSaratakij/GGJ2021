@@ -128,6 +128,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   start: {fileID: 0}
+  eventType: 1
 --- !u!114 &-7333684258583696738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +185,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: Your customer really happy with how quick you work. Got 5000$
   choices: []
 --- !u!114 &-6112033836737193449
@@ -242,6 +244,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: 'Your work sucks..
 
     You get upset..'
@@ -294,7 +297,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: input
-        node: {fileID: 7062062865718345880}
+        node: {fileID: 6393290859271015866}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -304,7 +307,10 @@ MonoBehaviour:
       _node: {fileID: -4789292580034940168}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: end
+        node: {fileID: 2789657896780604901}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -383,7 +389,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: 7062062865718345880}
+        node: {fileID: 6393290859271015866}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -410,6 +416,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: I might receive this in the future
   choices: []
 --- !u!114 &11400000
@@ -429,7 +436,6 @@ MonoBehaviour:
   - {fileID: -8558179328305529105}
   - {fileID: -4258388870417576895}
   - {fileID: 1492694397952442934}
-  - {fileID: 7062062865718345880}
   - {fileID: -8342969519302818615}
   - {fileID: 72687520319792883}
   - {fileID: -4789292580034940168}
@@ -440,6 +446,8 @@ MonoBehaviour:
   - {fileID: -7333684258583696738}
   - {fileID: 2850989802514318397}
   - {fileID: -3355168220592269005}
+  - {fileID: 2789657896780604901}
+  - {fileID: 6393290859271015866}
   eventType: 0
 --- !u!114 &72687520319792883
 MonoBehaviour:
@@ -454,7 +462,7 @@ MonoBehaviour:
   m_Name: Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2008, y: 264}
+  position: {x: 2072, y: 248}
   ports:
     keys:
     - input
@@ -592,8 +600,40 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: I don't have a problem with the money right now.
   choices: []
+--- !u!114 &2789657896780604901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0876b1d96ee9a8cb385a0d41ad01075d, type: 3}
+  m_Name: End
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1416, y: 360}
+  ports:
+    keys:
+    - end
+    values:
+    - _fieldName: end
+      _node: {fileID: 2789657896780604901}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: chances 1
+        node: {fileID: -4789292580034940168}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  end: {fileID: 0}
 --- !u!114 &2850989802514318397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,6 +713,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: Accept freelance job offer?
   choices:
   - Accept
@@ -690,7 +731,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1672, y: 216}
+  position: {x: 1736, y: 216}
   ports:
     keys:
     - input
@@ -702,8 +743,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: lateInfos 0
-        node: {fileID: 7062062865718345880}
+      - fieldName: infos 0
+        node: {fileID: 6393290859271015866}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -733,6 +774,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: You got money from your hardwork.
   choices: []
 --- !u!114 &3748290696603581055
@@ -791,9 +833,10 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: Your customer left you.
   choices: []
---- !u!114 &7062062865718345880
+--- !u!114 &6393290859271015866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -806,16 +849,16 @@ MonoBehaviour:
   m_Name: Late Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1400, y: 88}
+  position: {x: 1416, y: 104}
   ports:
     keys:
     - input
-    - lateInfos
-    - lateInfos 0
     - output
+    - infos
+    - infos 0
     values:
     - _fieldName: input
-      _node: {fileID: 7062062865718345880}
+      _node: {fileID: 6393290859271015866}
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
@@ -826,29 +869,8 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: lateInfos
-      _node: {fileID: 7062062865718345880}
-      _typeQualifiedName: LateResultNode+LateInfo[], Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: lateInfos 0
-      _node: {fileID: 7062062865718345880}
-      _typeQualifiedName: LateResultNode+LateInfo, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: input
-        node: {fileID: 3296509216261413160}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 1
     - _fieldName: output
-      _node: {fileID: 7062062865718345880}
+      _node: {fileID: 6393290859271015866}
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
@@ -859,8 +881,29 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
+    - _fieldName: infos
+      _node: {fileID: 6393290859271015866}
+      _typeQualifiedName: LateResultNode+LateInfo[], Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: infos 0
+      _node: {fileID: 6393290859271015866}
+      _typeQualifiedName: LateResultNode+LateInfo, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 3296509216261413160}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
   input: {fileID: 0}
   output: {fileID: 0}
-  lateInfos:
+  infos:
   - duration: 0
-    amount: 18
+    amount: 1

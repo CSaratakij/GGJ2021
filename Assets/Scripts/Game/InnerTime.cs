@@ -111,6 +111,7 @@ public class InnerTime : MonoBehaviour
         }
 
         Debug.Log("Curent period : " + DayPeriod);
+        Debug.Log("scale period : " + Time.timeScale);
     }
 
     void UpdateDay()

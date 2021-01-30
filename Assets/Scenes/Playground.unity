@@ -3526,7 +3526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getSalaryScenario: {fileID: 11400000, guid: 7ebd02e9c47bd1bea849c74cfdfaa24a, type: 2}
   normalScenarios:
-  - {fileID: 11400000, guid: 7809e784ee441e36f84094c8a9f705cf, type: 2}
+  - {fileID: 0}
   innerTime: {fileID: 2063978293}
   alertbox: {fileID: 412981733}
   ingameUI: {fileID: 412981732}
