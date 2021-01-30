@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ac5adc87fabc77938fd035b47cd7d6e, type: 3}
-  m_Name: 28_DateChatMessage
+  m_Name: 29_MobilePhone
   m_EditorClassIdentifier: 
-  itemName: Date chat message
-  remark: You decided to go to date the next 7 days with some travelling cost.
+  itemName: Mobile phone
+  remark: Your precious mobile phone. Please beware of getting robbed by someone.
   sprite: {fileID: 0}
   isRequired: 0
   effectActive: 0
