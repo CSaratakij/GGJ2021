@@ -6,7 +6,10 @@ public class PlayerProfile
     public int happiness;
     public int money;
     public int salary;
-    public bool havePet;
+    public bool haveCat;
+    public bool haveGirlFriend;
+    public bool haveBeggar = true;
+    public bool haveSaleman = true;
 
     // Todo : track inventory
     /* public ItemScriptableObject[] */

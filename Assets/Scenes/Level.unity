@@ -4612,7 +4612,7 @@ MonoBehaviour:
   maxClockPerDay: 20
   clockRate: 1
   maxDayPeriod: 5
-  endOfMonth: 4
+  endOfMonth: 5
   startOfYear: 2021
   endOfYear: 2021
 --- !u!4 &2063978294
