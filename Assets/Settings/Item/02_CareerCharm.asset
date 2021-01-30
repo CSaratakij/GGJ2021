@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Career Charm
   remark: Increase your salary 1.5x this month.
-  effectActive: 0
   sprite: {fileID: 0}
+  isRequired: 0
+  effectActive: 0
+  hiddenEffectFromPlayer: 0
+  degenerate: 0
   cost: 0

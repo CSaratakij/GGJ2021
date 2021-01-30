@@ -16,7 +16,7 @@ MonoBehaviour:
   remark: Your precious mobile phone. Please beware of getting robbed by someone.
   sprite: {fileID: 0}
   isRequired: 0
-  effectActive: 0
+  effectActive: 1
   hiddenEffectFromPlayer: 0
   degenerate: 0
   cost: 0
