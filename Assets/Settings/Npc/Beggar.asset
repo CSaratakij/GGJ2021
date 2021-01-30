@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d9cece4924085ed8bee300a23f2758a, type: 3}
-  m_Name: NpcB
+  m_Name: Beggar
   m_EditorClassIdentifier: 
-  npcName: Npc B
+  npcName: Beggar
+  remark: Poor man that day begging you for money.
   sprite: {fileID: 0}
