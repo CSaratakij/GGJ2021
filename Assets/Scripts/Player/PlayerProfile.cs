@@ -101,14 +101,14 @@ public class PlayerProfile
 
     public void RemoveHappiness(int amount)
     {
-        var result = (happiness - amount) < 0 ? 0 : (happiness - amount);
-        happiness = result;
+        /* var result = (happiness - amount) < 0 ? 0 : (happiness - amount); */
+        happiness -= result;
     }
 
     public void RemoveMoney(int amount)
     {
-        var result = (money - amount) < 0 ? 0 : (money - amount);
-        money = result;
+        /* var result = (money - amount) < 0 ? 0 : (money - amount); */
+        money -= result;
     }
 }
 
