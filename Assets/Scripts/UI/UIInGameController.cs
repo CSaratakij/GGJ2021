@@ -31,6 +31,7 @@ public class UIInGameController : MonoBehaviour
     void Start()
     {
         SubscribeEvent();
+        GameController.Instance?.ShowProfile();
     }
 
     void Update()
@@ -166,6 +167,17 @@ public class UIInGameController : MonoBehaviour
     public void ShowIngameUI(bool isShow = true)
     {
         Show((int)Panel.InGame, isShow);
+    }
+
+    public void UnPause()
+    {
+        if (GameController.Instance == null) {
+            Debug.LogError("Cannot find the game controller instance...");
+            return;
+        }
+
+        Show(Panel.Pause, false);
+        GameController.Instance?.Resume();
     }
 }
 

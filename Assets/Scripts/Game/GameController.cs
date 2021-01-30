@@ -119,9 +119,30 @@ public class GameController : MonoBehaviour
         ChangeGameState(GameState.MainMenu);
     }
 
+    public void RestartGame()
+    {
+        OnGameStateChange = null;
+        ResetGameState();
+
+        GameStart();
+        ChangeScene(SceneIndex.Level);
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1.0f;
+
+        if (currentState == GameState.Pause)
+        {
+            currentState = previousState;
+        }
+        
+        Debug.Log($"Current State {currentState}");
+    }
+
     public void GameStart()
     {
-        RandomPlayerProfile();
+        ResetGameState();
         ChangeGameState(GameState.Start);
     }
 
@@ -143,6 +164,12 @@ public class GameController : MonoBehaviour
     public void ChangeScene(SceneIndex sceneIndex)
     {
         SceneManager.LoadScene((int)sceneIndex);
+    }
+
+    public void BackToMainMenu()
+    {
+        ResetGameState();
+        ChangeScene(SceneIndex.MainMenu);
     }
 }
 
