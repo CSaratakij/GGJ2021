@@ -23,7 +23,7 @@ public class LateResultNode : DialogNode
 
     [Input(backingValue = ShowBackingValue.Never)] public DialogNode input;
     [Output(backingValue = ShowBackingValue.Never)] public DialogNode output;
-    [Output(dynamicPortList=true)] public LateInfo[] lateInfos;
+    [Output(dynamicPortList=true)] public LateInfo[] infos;
 
 	protected override void Init()
     {

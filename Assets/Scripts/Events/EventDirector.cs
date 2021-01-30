@@ -19,11 +19,18 @@ public class EventDirector : MonoBehaviour
 
     [Header("InnerTime")]
     [SerializeField]
-    InnerTime innerTime; //<--- need to pause when time is advance -> call back to resume -> fade in/out when time advance
+    InnerTime innerTime;
 
     [Header("UI Setting")]
     [SerializeField]
     AlertBoxController alertbox;
+
+    [SerializeField]
+    UIInGameController ingameUI;
+
+    [Header("Debug")]
+    [SerializeField]
+    bool isInPlayground = false;
 
     public struct Cache
     {
@@ -123,17 +130,29 @@ public class EventDirector : MonoBehaviour
         //normal event has a slot of day period
         //if key event in the certain day period -> avoid entire period?
 
-        innerTime.StartClock();
-        GameController.Instance?.BeginPlay();
-
-        /* currentEventType = EventType.Normal; */
-        /* StartScenario(normalScenarios[0]); */
+        if (isInPlayground)
+        {
+            ingameUI.ShowIngameUI();
+            currentEventType = EventType.Normal;
+            StartScenario(normalScenarios[0]);
+        }
+        else
+        {
+            innerTime.StartClock();
+            GameController.Instance?.BeginPlay();
+        }
     }
 
     void OnGameStateChange(GameState state)
     {
         switch (state)
         {
+            case GameState.Normal:
+            {
+                BeginPlay();
+            }
+            break;
+
             case GameState.End:
             {
                 Debug.Log("Game Over...");
@@ -253,7 +272,11 @@ public class EventDirector : MonoBehaviour
         OnFinishScenario?.Invoke(currentEventType);
 
         alertbox.Show(false);
-        innerTime.Pause(false);
+
+        if (!isInPlayground)
+        {
+            innerTime.Pause(false);
+        }
 
         Debug.Log("Scenario has finished..");
 
@@ -364,7 +387,9 @@ public class EventDirector : MonoBehaviour
                     // it need to add all the events that it point to, to the late event queue
                     // then : check the output port
                     // if there is no connection, end?
-                    currentNode = currentScenario.GetNextNode(currentNode);
+
+                    cache.lateResultNode = (currentNode as LateResultNode);
+                    ProcessLateResultNode(cache.lateResultNode);
                 }
                 break;
 
@@ -457,9 +482,26 @@ public class EventDirector : MonoBehaviour
     // TODO
     void ProcessLateResultNode(LateResultNode node)
     {
-        // add pointer of the next node in the lateInfos to the queue of late event add specific day
+        for (int i = 0; i < node.infos.Length; ++i)
+        {
+            // add this info to the queue of late event here
+            // add the pointer of event
 
-        // then get next node by output port
+            var info = node.infos[i];
+            var nodeToAdd = currentScenario.GetNextNode(currentNode, "infos " + i);
+
+            Debug.Log("Duration : " + info.duration);
+            Debug.Log("Amount : " + info.amount);
+
+            if (nodeToAdd == null) {
+                Debug.Log("no node to add to queue");
+            }
+            else {
+                Debug.Log("Node to add : " + nodeToAdd.ToString());
+            }
+        }
+
+        //then
         currentNode = currentScenario.GetNextNode(currentNode);
     }
 

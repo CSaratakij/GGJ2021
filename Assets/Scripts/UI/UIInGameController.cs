@@ -162,5 +162,10 @@ public class UIInGameController : MonoBehaviour
     {
         Show((int)Panel.Alert, isShow);
     }
+
+    public void ShowIngameUI(bool isShow = true)
+    {
+        Show((int)Panel.InGame, isShow);
+    }
 }
 
