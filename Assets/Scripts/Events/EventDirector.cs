@@ -12,6 +12,9 @@ public class EventDirector : MonoBehaviour
 
     [Header("Event Setting")]
     [SerializeField]
+    EventGraph getSalaryScenario;
+
+    [SerializeField]
     EventGraph[] normalScenarios;
 
     [Header("InnerTime")]
@@ -89,16 +92,23 @@ public class EventDirector : MonoBehaviour
     {
         GameController.Instance.OnGameStateChange += OnGameStateChange;
         alertbox.OnSelectButton += AlertBox_MessageSelectChoiceCallback;
-        innerTime.OnFinishAdvanceTime += OnFinishAdvanceTime;
+
+        innerTime.OnMonthPass += OnMonthPass;
         innerTime.OnYearPass += OnYearPass;
+
+        innerTime.OnFinishAdvanceTime += OnFinishAdvanceTime;
+
     }
 
     void UnsubscribeEvent()
     {
         GameController.Instance.OnGameStateChange -= OnGameStateChange;
         alertbox.OnSelectButton -= AlertBox_MessageSelectChoiceCallback;
-        innerTime.OnFinishAdvanceTime -= OnFinishAdvanceTime;
+
+        innerTime.OnMonthPass -= OnMonthPass;
         innerTime.OnYearPass -= OnYearPass;
+
+        innerTime.OnFinishAdvanceTime -= OnFinishAdvanceTime;
     }
 
     void BeginPlay()
@@ -165,6 +175,17 @@ public class EventDirector : MonoBehaviour
     {
         currentNode = currentScenario.GetNextNode(currentNode);
         SetPauseProcessingState(false);
+    }
+
+    void OnDayPass(DateTime date)
+    {
+        GameController.Instance?.RemoveSalaryPerDay();
+    }
+
+    void OnMonthPass(DateTime date)
+    {
+        GameController.Instance?.GetSalary();
+        StartScenario(getSalaryScenario);
     }
 
     void OnYearPass(DateTime date)

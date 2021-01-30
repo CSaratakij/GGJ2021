@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
     public bool IsGamePause => (GameState.Pause == currentState);
     public PlayerProfile Player => player;
 
+    PlayerProfilePreset playerPreset;
     PlayerProfile player;
 
     GameState currentState;
@@ -55,6 +56,8 @@ public class GameController : MonoBehaviour
         Random.InitState(Random.Range(0, 100));
 
         int id = Random.Range(0, playerProfiles.Length);
+
+        playerPreset = playerProfiles[id];
         PlayerProfilePreset profile = playerProfiles[id];
 
         player.happiness = profile.happiness;
@@ -85,6 +88,27 @@ public class GameController : MonoBehaviour
         ChangeGameState(state);
 
         Debug.Log($"Current State {state}");
+    }
+
+    public void GetSalary()
+    {
+        if (playerPreset == null) {
+            Debug.LogWarning("Should add salary, but no player preset found.");
+            return;
+        }
+
+        player.money += playerPreset.salary;
+    }
+
+    public void RemoveSalaryPerDay()
+    {
+        if (playerPreset == null) { 
+            Debug.LogWarning("Should remove salary, but no player preset found.");
+            return;
+        }
+
+        double removeMaxAmountPerMonth = (playerPreset.salary * 35) / 100;
+        player.money -= (int)(removeMaxAmountPerMonth / 30);
     }
 
     public void ResetGameState()
