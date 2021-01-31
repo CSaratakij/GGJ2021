@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845f352f292ffc249930908b94bf63b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endingCanvas: {fileID: 3754795067626864191}
+  dialogPopup: {fileID: 3754795066416506868}
   endingImage: {fileID: 3754795067626864161}
   lblEnding: {fileID: 3754795067515575385}
   txtDescription: {fileID: 3754795065989350194}

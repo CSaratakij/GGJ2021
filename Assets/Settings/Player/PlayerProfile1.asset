@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3922f94683b6d514a986225a9cba6127, type: 3}
   m_Name: PlayerProfile1
   m_EditorClassIdentifier: 
-  happiness: 50
+  happiness: 20
   money: 15000
-  salary: 15000
+  salary: 50000
   haveCat: 0
   haveGirlFriend: 0
-  remark: Fresh graduated student, who has no salary yet. He still got some money
-    left from his parents.
+  remark: Fresh graduated student, who have a good job. But my life isn't that good.
