@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2035111234}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 131.16855, g: 162.52502, b: 215.10977, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1727,7 +1727,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168218571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.967659, y: 1.7939116, z: 3.1063423}
+  m_LocalPosition: {x: 16.967667, y: 1.7939116, z: 3.1063442}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 405591765}
@@ -9098,7 +9098,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Profile
+  m_text: ':: How To Play ::'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12321,7 +12321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4500163ef23bba463b4fdbf580e3be1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxClockPerDay: 3
+  maxClockPerDay: 1
   clockRate: 1
   maxDayPeriod: 5
   endOfMonth: 1
@@ -20720,7 +20720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037846703}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.019999983, y: 1.196, z: 4.4800925}
+  m_LocalPosition: {x: 0.019999983, y: 1.196, z: 4.4800944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 405591765}
@@ -22494,8 +22494,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 337004990}
   m_HandleRect: {fileID: 337004989}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.9999999
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -24934,8 +24934,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1660722679}
   m_HandleRect: {fileID: 1660722678}
   m_Direction: 2
-  m_Value: -0.000000038580673
-  m_Size: 0.27103505
+  m_Value: 0
+  m_Size: 0.27063632
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -34434,7 +34434,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1582.0138}
+  m_AnchoredPosition: {x: 0, y: 1582.9937}
   m_SizeDelta: {x: 0, y: 2170.3762}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1985451763
@@ -35909,7 +35909,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059789766}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5460234, y: 1.1960001, z: 2.5420656}
+  m_LocalPosition: {x: 1.5460234, y: 1.1960001, z: 2.5420666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 405591765}
@@ -37208,7 +37208,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Profile
+  m_text: ':: How To Play ::'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

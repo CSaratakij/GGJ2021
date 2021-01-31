@@ -594,6 +594,7 @@ public class EventDirector : MonoBehaviour
 
     public void RandomStartScenario()
     {
+        Random.InitState(Random.Range(0, 100));
         int index = UnityEngine.Random.Range(0, normalScenarios.Length);
         StartScenario(normalScenarios[index]);
     }

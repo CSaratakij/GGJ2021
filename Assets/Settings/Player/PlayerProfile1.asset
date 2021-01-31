@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3922f94683b6d514a986225a9cba6127, type: 3}
   m_Name: PlayerProfile1
   m_EditorClassIdentifier: 
-  happiness: 100
+  happiness: 80
   money: 80000
   salary: 50000
   haveCat: 0
   haveGirlFriend: 0
-  remark: Fresh graduated student, who have a good job. But my life isn't that good.
+  remark: '- The show is in one year. Save your money every month to buy everything
+    needed to go with your cat and GF. In the meantime, Life will throw difficulty
+    at you. Don''t forget to remain happy or you''ll lose!'
