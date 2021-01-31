@@ -1685,6 +1685,7 @@ GameObject:
   - component: {fileID: 231592604}
   - component: {fileID: 231592606}
   - component: {fileID: 231592605}
+  - component: {fileID: 231592607}
   m_Layer: 5
   m_Name: DialogItem
   m_TagString: Untagged
@@ -1748,6 +1749,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231592603}
   m_CullTransparentMesh: 0
+--- !u!225 &231592607
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231592603}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &247777773
 GameObject:
   m_ObjectHideFlags: 0
@@ -3227,15 +3240,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0109daf075fd611c1925366dd3487e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopListPrefabs: {fileID: 0}
-  itemDialog: {fileID: 0}
-  btnItem: {fileID: 0}
+  shopListPrefabs: {fileID: 512411215}
+  itemDialog: {fileID: 512411218}
+  btnItem: {fileID: 211826769}
   btnBuy: []
   shopDetails: []
-  lblStat: {fileID: 0}
-  daySlider: {fileID: 0}
-  monthLableBG: []
-  innerTime: {fileID: 0}
+  lblStat: {fileID: 1082128749}
+  daySlider: {fileID: 2142244057}
+  monthLableBGActiveColor: {r: 1, g: 0.9438402, b: 0.3773585, a: 1}
+  monthLableBG:
+  - {fileID: 2064646871}
+  - {fileID: 1218233663}
+  - {fileID: 973038740}
+  - {fileID: 420092209}
+  - {fileID: 371317370}
+  - {fileID: 557552710}
+  - {fileID: 1916380561}
+  - {fileID: 1184211441}
+  - {fileID: 1662899165}
+  - {fileID: 823228487}
+  - {fileID: 941498351}
+  - {fileID: 981690073}
+  innerTime: {fileID: 2063978293}
 --- !u!1 &420092207
 GameObject:
   m_ObjectHideFlags: 0
@@ -3604,6 +3630,7 @@ GameObject:
   - component: {fileID: 512411215}
   - component: {fileID: 512411217}
   - component: {fileID: 512411216}
+  - component: {fileID: 512411218}
   m_Layer: 5
   m_Name: panelItem
   m_TagString: Untagged
@@ -3668,6 +3695,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512411214}
   m_CullTransparentMesh: 0
+--- !u!225 &512411218
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512411214}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &519039853
 GameObject:
   m_ObjectHideFlags: 0

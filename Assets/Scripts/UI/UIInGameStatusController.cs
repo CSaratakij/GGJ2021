@@ -51,6 +51,16 @@ public class UIInGameStatusController : MonoBehaviour
         SubscribeEvent();
     }
 
+    void Update()
+    {
+        if (Time.frameCount % 3 == 0) {
+            lblStat.SetText(
+                $@"Happiness : {GameController.Instance.Player.happiness}
+                Money : {GameController.Instance.Player.money}"
+            );
+        }
+    }
+
     void OnDestroy()
     {
         UnsubscribeEvent();
@@ -58,7 +68,7 @@ public class UIInGameStatusController : MonoBehaviour
 
     void Initialize()
     {
-
+        daySlider.value = 1;
     }
 
     void SubscribeEvent()
@@ -80,8 +90,7 @@ public class UIInGameStatusController : MonoBehaviour
 
     void OnMonthPass(DateTime date)
     {
-        // update month label bg.
-        /* date.Month */
+        monthLableBG[date.Month - 1].color = monthLableBGActiveColor;
     }
 }
 
