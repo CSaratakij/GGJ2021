@@ -109,6 +109,8 @@ public class UIInGameStatusController : MonoBehaviour
             id += 1;
         }
 
+        monthLableBG[0].color = monthLableBGActiveColor;
+
         foreach (var item in eventSummaryImages)
         {
             item.alpha = 0;
