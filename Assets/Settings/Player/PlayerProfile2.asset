@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   happiness: 100
   money: 60000
-  salary: 15000
+  salary: 25000
   haveCat: 0
   haveGirlFriend: 0
-  remark: 'Fresh graduated student, who used to do freelance jobs. Still, he has
-    not had loyalty customer yet. '
+  remark: Fresh graduated student, from rich family. but my salary is not much.

@@ -10,9 +10,8 @@ using UnityEngine.UI;
 
 public class UIGameOverController : MonoBehaviour
 {
-    [Header("Ending UI")]
     [SerializeField]
-    GameObject endingCanvas;
+    GameObject dialogPopup;
 
     [SerializeField]
     Image endingImage;
@@ -28,17 +27,20 @@ public class UIGameOverController : MonoBehaviour
 
     private void Awake()
     {
-        endingCanvas.SetActive(false);
+        dialogPopup.SetActive(false);
     }
 
     private void Start()
     {
         EndingPreset endingPreset = GameController.Instance?.endingPreset;
-        if(endingPreset != null)
+        if(endingPreset == null)
         {
             endingPreset = defaultEndingPreset;
         }
-        endingImage.sprite = endingPreset.sprite;
+        if (endingPreset.sprite != null)
+        {
+            endingImage.sprite = endingPreset.sprite;
+        }
         lblEnding.text = endingPreset.endingName;
         txtDescription.text = endingPreset.description;
     }
