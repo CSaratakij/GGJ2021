@@ -58,6 +58,10 @@ public class UIInGameStatusController : MonoBehaviour
     [SerializeField]
     InnerTime innerTime;
 
+    [Header("Dependencies")]
+    [SerializeField]
+    EventDirector eventDirector;
+
     Button[] btnBuys;
 
     void Awake()
@@ -185,10 +189,9 @@ public class UIInGameStatusController : MonoBehaviour
         btnNotification.interactable = !shouldShow;
     }
 
-    // TODO : need last optional event on event director
     void ActivateLastOptionalEvent()
     {
-        
+        eventDirector.StartCurrentOptionalScenario();
     }
 
     public void NotifyNotification(bool isNotify = true)

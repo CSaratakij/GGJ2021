@@ -87,6 +87,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   start: {fileID: 0}
+  eventType: 1
 --- !u!114 &-5749453247593786474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +137,121 @@ MonoBehaviour:
   - status: 0
     action: 0
     amount: 100
+--- !u!114 &-3278837402842059804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ba01de6fa39ad32917f1a477f80394, type: 3}
+  m_Name: Message
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1352, y: 120}
+  ports:
+    keys:
+    - input
+    - output
+    - choices
+    values:
+    - _fieldName: input
+      _node: {fileID: -3278837402842059804}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: infos 0
+        node: {fileID: -1519554588694420189}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -3278837402842059804}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: -3278837402842059804}
+      _typeQualifiedName: System.String[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  npc: {fileID: 0}
+  eventImage: {fileID: 0}
+  message: This should play after 1 day
+  choices: []
+--- !u!114 &-2143697175834806873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ba01de6fa39ad32917f1a477f80394, type: 3}
+  m_Name: Message
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 888, y: 200}
+  ports:
+    keys:
+    - input
+    - output
+    - choices
+    values:
+    - _fieldName: input
+      _node: {fileID: -2143697175834806873}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -1534466933906765880}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -2143697175834806873}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -1519554588694420189}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices
+      _node: {fileID: -2143697175834806873}
+      _typeQualifiedName: System.String[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  npc: {fileID: 0}
+  eventImage: {fileID: 0}
+  message: 2nd dialog
+  choices: []
 --- !u!114 &-1534466933906765880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +265,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 600, y: 120}
+  position: {x: 536, y: 120}
   ports:
     keys:
     - input
@@ -172,7 +288,10 @@ MonoBehaviour:
       _node: {fileID: -1534466933906765880}
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: -2143697175834806873}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -189,8 +308,79 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
-  message: This will be queue to late result
+  eventImage: {fileID: 0}
+  message: 'This will be queue to late result After 2 days
+
+'
   choices: []
+--- !u!114 &-1519554588694420189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb593eb65f4e471ae72f0eb376f6dc, type: 3}
+  m_Name: Late Result
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1032, y: 216}
+  ports:
+    keys:
+    - input
+    - output
+    - infos
+    - infos 0
+    values:
+    - _fieldName: input
+      _node: {fileID: -1519554588694420189}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -2143697175834806873}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -1519554588694420189}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: infos
+      _node: {fileID: -1519554588694420189}
+      _typeQualifiedName: LateResultNode+LateInfo[], Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: infos 0
+      _node: {fileID: -1519554588694420189}
+      _typeQualifiedName: LateResultNode+LateInfo, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -3278837402842059804}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+  input: {fileID: 0}
+  output: {fileID: 0}
+  infos:
+  - duration: 0
+    amount: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +403,9 @@ MonoBehaviour:
   - {fileID: 6441809242611598712}
   - {fileID: 445617786433207058}
   - {fileID: -7731228277890409418}
+  - {fileID: -1519554588694420189}
+  - {fileID: -3278837402842059804}
+  - {fileID: -2143697175834806873}
   eventType: 0
 --- !u!114 &244815949685499554
 MonoBehaviour:
@@ -270,6 +463,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: Okay
   choices: []
 --- !u!114 &445617786433207058
@@ -352,9 +546,9 @@ MonoBehaviour:
   output: {fileID: 0}
   infos:
   - duration: 0
-    amount: 0
+    amount: 3
   - duration: 0
-    amount: 0
+    amount: 2
 --- !u!114 &2850989802514318397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +628,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: Test late result
   choices:
   - Yes
@@ -491,6 +686,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: Late result has been tested
   choices: []
 --- !u!114 &6441809242611598712
@@ -546,5 +742,6 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: Okay....
   choices: []
