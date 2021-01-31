@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,9 +26,17 @@ public class UIGameOverController : MonoBehaviour
     [SerializeField]
     EndingPreset defaultEndingPreset;
 
+    public float autopopupdelay = 1f;
+
     private void Awake()
     {
         dialogPopup.SetActive(false);
+    }
+
+    IEnumerable DelayPopup()
+    {
+        yield return new WaitForSeconds(autopopupdelay);
+        dialogPopup.SetActive(true);
     }
 
     private void Start()
@@ -43,6 +52,7 @@ public class UIGameOverController : MonoBehaviour
         }
         lblEnding.text = endingPreset.endingName;
         txtDescription.text = endingPreset.description;
+        StartCoroutine("DelayPopup");
     }
 
     public void BackToMainmenu()
