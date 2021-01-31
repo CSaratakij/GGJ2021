@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
 
     [Header("Start scene")]
     [SerializeField]
-    public SceneIndex startScene = SceneIndex.Level;
+    public SceneIndex startScene = SceneIndex.LevelActual;
 
     PlayerProfilePreset playerPreset;
     PlayerProfile player;
