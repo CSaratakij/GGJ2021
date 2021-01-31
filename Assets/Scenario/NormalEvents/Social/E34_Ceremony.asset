@@ -52,6 +52,9 @@ MonoBehaviour:
   - status: 1
     action: 0
     amount: 30
+  - status: 2
+    action: 1
+    amount: 1000
 --- !u!114 &-7664878808797345818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +141,15 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Leaving on business, you met your old friend, and the lady you fell in
+  message: 'Leaving on business, you met your old friend, and the lady you fell in
     love with at the ceremony.
+
+    - Loss money (4000)
+
+    - Happiness increase
+    30%
+
+    - Salary decrease (1000)'
   choices: []
 --- !u!114 &-2877097658682804569
 MonoBehaviour:
@@ -195,7 +205,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Sitting in the office, you felt sorry about not going to the ceremony.
+  message: 'Sitting in the office, you felt sorry about not going to the ceremony.
+
+    -
+    Loss money (4000)
+
+    - Happiness decrease 40%'
   choices: []
 --- !u!114 &11400000
 MonoBehaviour:

@@ -49,6 +49,9 @@ MonoBehaviour:
   - status: 1
     action: 0
     amount: 20
+  - status: 2
+    action: 0
+    amount: 2000
 --- !u!114 &-7664878808797345818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +239,9 @@ MonoBehaviour:
   message: 'Friend of friends offers me a new job. What a coincidence!
 
     - Happiness
-    increase 20%'
+    increase 20%
+
+    - Salary increase (2000)'
   choices: []
 --- !u!114 &11400000
 MonoBehaviour:

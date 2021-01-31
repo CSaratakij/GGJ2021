@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1160, y: 8}
+  position: {x: 1160, y: 24}
   ports:
     keys:
     - input
@@ -188,6 +188,9 @@ MonoBehaviour:
   - status: 1
     action: 1
     amount: 30
+  - status: 2
+    action: 1
+    amount: 3000
 --- !u!114 &-6208055660595544727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +204,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1448, y: -296}
+  position: {x: 1464, y: -392}
   ports:
     keys:
     - input
@@ -245,7 +248,9 @@ MonoBehaviour:
   message: 'There! My dream office. Got more money in your pocket.
 
     - Happiness
-    increase 30%'
+    increase 30%
+
+    - Salary increase (5000)'
   choices: []
 --- !u!114 &-5662704486083465522
 MonoBehaviour:
@@ -328,7 +333,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1464, y: -8}
+  position: {x: 1480, y: -40}
   ports:
     keys:
     - input
@@ -372,7 +377,9 @@ MonoBehaviour:
   message: 'Good grief! Not only the working environment stay the same, my salary
     got decreased!
 
-    - Happiness decrease 30%'
+    - Happiness decrease 30%
+
+    - Salary decrease (3000)'
   choices: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -410,7 +417,7 @@ MonoBehaviour:
   m_Name: Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1160, y: -200}
+  position: {x: 1160, y: -312}
   ports:
     keys:
     - input
@@ -446,6 +453,9 @@ MonoBehaviour:
   - status: 1
     action: 0
     amount: 30
+  - status: 2
+    action: 0
+    amount: 5000
 --- !u!114 &2850989802514318397
 MonoBehaviour:
   m_ObjectHideFlags: 0

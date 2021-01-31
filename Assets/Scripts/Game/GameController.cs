@@ -28,6 +28,8 @@ public class GameController : MonoBehaviour
 
     PlayerProfilePreset playerPreset;
     PlayerProfile player;
+    [SerializeField]
+    public EndingPreset endingPreset;
 
     GameState currentState;
     GameState previousState;
@@ -108,7 +110,7 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        player.money += playerPreset.salary;
+        player.AddMoney(playerPreset.salary);
     }
 
     public void RemoveSalaryPerDay()
@@ -157,22 +159,30 @@ public class GameController : MonoBehaviour
                 int direction = (player.happiness > 50) ? -1 : (player.happiness == 50) ? 0 : 1;
                 if (increase)
                 {
-                    player.happiness += 1 * direction;
+                    if(direction >= 0)
+                    {
+                        player.AddHappiness(1 * direction);
+                    }
+                    else
+                    {
+                        player.RemoveHappiness(1 * direction);
+                    }
+                    
                 }
             }
             else
             {
-                player.happiness -= 1;
+                player.RemoveHappiness(1);
             }
         }
         else {
             if (player.money >= 0)
             {
-                player.happiness += 1;
+                player.AddHappiness(1);
             }
             else
             {
-                player.happiness = 0;
+                player.AddHappiness(0);
             }
         }
     }

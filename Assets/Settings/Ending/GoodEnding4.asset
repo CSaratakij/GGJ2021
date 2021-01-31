@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3922f94683b6d514a986225a9cba6127, type: 3}
-  m_Name: PlayerProfile1
+  m_Script: {fileID: 11500000, guid: 6dab9e73c85688640ad1cee2c9e8a09d, type: 3}
+  m_Name: GoodEnding4
   m_EditorClassIdentifier: 
-  happiness: 20
-  money: 15000
-  salary: 50000
-  haveCat: 0
-  haveGirlFriend: 0
-  remark: Fresh graduated student, who have a good job. But my life isn't that good.
+  priority: 14
+  endingName: Good Ending 4
+  condition: []
+  sprite: {fileID: 21300000, guid: 8e42c04e6edb0ab2bb3a8a9521f47173, type: 3}
+  description: I'm alone but i very happy now.
