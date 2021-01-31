@@ -275,7 +275,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: He got the money and blocked your facebook.
+  message: 'He got the money and blocked your facebook.
+
+    - Happiness decrease
+    10%'
   choices: []
 --- !u!114 &2850989802514318397
 MonoBehaviour:
@@ -464,7 +467,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: He scolds at you, humiliates you, and cuts off friendship.
+  message: 'He scolds at you, humiliates you, and cuts off friendship.
+
+    - Happiness
+    decrease 20%'
   choices: []
 --- !u!114 &7458516387102824915
 MonoBehaviour:

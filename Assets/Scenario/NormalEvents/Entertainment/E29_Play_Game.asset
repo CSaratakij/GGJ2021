@@ -134,7 +134,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Just for fun!
+  message: 'Just for fun!
+
+    - Happiness increase 20%'
   choices: []
 --- !u!114 &-1724209671398292711
 MonoBehaviour:
@@ -246,8 +248,13 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: The last game doesn't exist! You skip the night until you can't get up
-    to work. That's a salary cut penalty for ya!
+  message: 'The last game doesn''t exist! You skip the night until you can''t get
+    up to work. That''s a salary cut penalty for ya!
+
+    - Loss money (1000)
+
+    -
+    Happiness decrease 30%'
   choices: []
 --- !u!114 &-487134510474274999
 MonoBehaviour:

@@ -54,8 +54,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: What a coincidence! I have social security from employee benefits. Let's
+  message: 'What a coincidence! I have social security from employee benefits. Let''s
     use it once.
+
+    - Didn''t lose money'
   choices: []
 --- !u!114 &-7664878808797345818
 MonoBehaviour:
@@ -70,7 +72,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -360, y: -8}
+  position: {x: -1112, y: 24}
   ports:
     keys:
     - start
@@ -81,7 +83,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: 2850989802514318397}
+        node: {fileID: 5532376410159484585}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -268,6 +270,8 @@ MonoBehaviour:
   - {fileID: -8255361858700288027}
   - {fileID: 5873801183185277876}
   - {fileID: -2395604635520319195}
+  - {fileID: 5532376410159484585}
+  - {fileID: 8392711552425698316}
   eventType: 0
 --- !u!114 &1634682408077921819
 MonoBehaviour:
@@ -353,8 +357,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: start
-        node: {fileID: -7664878808797345818}
+      - fieldName: resulttrue
+        node: {fileID: 5532376410159484585}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -507,6 +511,69 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
+--- !u!114 &5532376410159484585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549dc32614cbf5b40a9fc1f03b3298b1, type: 3}
+  m_Name: Condition
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -824, y: 40}
+  ports:
+    keys:
+    - input
+    - resulttrue
+    - resultfalse
+    values:
+    - _fieldName: input
+      _node: {fileID: 5532376410159484585}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: start
+        node: {fileID: -7664878808797345818}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: resulttrue
+      _node: {fileID: 5532376410159484585}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 2850989802514318397}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: resultfalse
+      _node: {fileID: 5532376410159484585}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 8392711552425698316}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  resulttrue: {fileID: 0}
+  resultfalse: {fileID: 0}
+  actions:
+  - condition: 0
+    compare: 4
+    amount: 20
 --- !u!114 &5873801183185277876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,5 +628,41 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Your 'wisdom tooth' causes you pain so make you get some dental surgery.
+  message: 'Your ''wisdom tooth'' causes you pain so make you get some dental surgery.
+
+    -
+    Loss money (1500)
+
+    - Happiness decrease 20%'
   choices: []
+--- !u!114 &8392711552425698316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f620bb88e58ca57498d9eac864b19828, type: 3}
+  m_Name: Pick Event
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -475.54376, y: 285.25424}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: 8392711552425698316}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: resultfalse
+        node: {fileID: 5532376410159484585}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}

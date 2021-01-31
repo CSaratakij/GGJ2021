@@ -67,7 +67,7 @@ public class UIMainMenuController : MonoBehaviour
             onClick.
             AddListener(() => {
                     GameController.Instance?.GameStart();
-                    GameController.Instance?.ChangeScene(SceneIndex.Level);
+                    GameController.Instance?.ChangeScene(GameController.Instance.startScene);
         });
 
         buttons

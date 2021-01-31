@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 696, y: -440}
+  position: {x: 1176, y: -440}
   ports:
     keys:
     - input
@@ -26,7 +26,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: -7979442097712851293}
+        node: {fileID: -4518800080929792077}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -57,8 +57,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: fd096da33102d524aa88667a9f6136bc, type: 3}
-  message: I feel somewhat regret about my choice. Somehow I think they could find
+  message: 'I feel somewhat regret about my choice. Somehow I think they could find
     money themselves.
+
+    - Happiness decrease 10%'
   choices: []
 --- !u!114 &-7979442097712851293
 MonoBehaviour:
@@ -97,7 +99,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: -8265632701661315088}
+        node: {fileID: -4518800080929792077}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -125,7 +127,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -360, y: -8}
+  position: {x: -1272, y: -72}
   ports:
     keys:
     - start
@@ -136,7 +138,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: 2850989802514318397}
+        node: {fileID: -5826149760465340093}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -175,6 +177,118 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   end: {fileID: 0}
+--- !u!114 &-5826149760465340093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549dc32614cbf5b40a9fc1f03b3298b1, type: 3}
+  m_Name: Condition
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -936, y: -24}
+  ports:
+    keys:
+    - input
+    - resulttrue
+    - resultfalse
+    values:
+    - _fieldName: input
+      _node: {fileID: -5826149760465340093}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: start
+        node: {fileID: -7664878808797345818}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: resulttrue
+      _node: {fileID: -5826149760465340093}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 2850989802514318397}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: resultfalse
+      _node: {fileID: -5826149760465340093}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 5792500795249989885}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  resulttrue: {fileID: 0}
+  resultfalse: {fileID: 0}
+  actions:
+  - condition: 4
+    compare: 4
+    amount: 2
+--- !u!114 &-4518800080929792077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b70192c7e809f444a31b10702fa268b, type: 3}
+  m_Name: Relationship
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 776, y: -312}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -4518800080929792077}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -7979442097712851293}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -4518800080929792077}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -8265632701661315088}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  actions:
+  - character: 2
+    action: 0
+    amount: 5
 --- !u!114 &-4394783623054004533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +302,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1880, y: -440}
+  position: {x: 2360, y: -440}
   ports:
     keys:
     - input
@@ -229,7 +343,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 2273db54e3adb4ee58c3bfd7d193cfea, type: 3}
-  message: The beggar won a lottery. He shares some money with you for your kindness.
+  message: 'The beggar won a lottery. He shares some money with you for your kindness.
+
+    -
+    Got money (100000)
+
+    - Happiness increase 10%'
   choices: []
 --- !u!114 &-852246539984622668
 MonoBehaviour:
@@ -325,6 +444,9 @@ MonoBehaviour:
   - {fileID: 7621437675368488274}
   - {fileID: -6875059460174226045}
   - {fileID: 2571468024833325231}
+  - {fileID: -5826149760465340093}
+  - {fileID: -4518800080929792077}
+  - {fileID: 5792500795249989885}
   eventType: 0
 --- !u!114 &1220650413447835006
 MonoBehaviour:
@@ -339,7 +461,7 @@ MonoBehaviour:
   m_Name: Late Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1128, y: -456}
+  position: {x: 1608, y: -456}
   ports:
     keys:
     - input
@@ -407,7 +529,7 @@ MonoBehaviour:
   m_Name: Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1535.3174, y: -320.10767}
+  position: {x: 2008, y: -328}
   ports:
     keys:
     - input
@@ -500,7 +622,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: With the beggar enrage, he seeks a vengeance at you as a spiritual ghost.
+  message: 'With the beggar enrage, he seeks a vengeance at you as a spiritual ghost.
+
+    -
+    Happiness decrease 30%'
   choices: []
 --- !u!114 &2850989802514318397
 MonoBehaviour:
@@ -529,8 +654,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: start
-        node: {fileID: -7664878808797345818}
+      - fieldName: resulttrue
+        node: {fileID: -5826149760465340093}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -586,6 +711,37 @@ MonoBehaviour:
   choices:
   - Donate (200)
   - Decline
+--- !u!114 &5792500795249989885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f620bb88e58ca57498d9eac864b19828, type: 3}
+  m_Name: Pick Event
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -568, y: 184}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: 5792500795249989885}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: resultfalse
+        node: {fileID: -5826149760465340093}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
 --- !u!114 &7621437675368488274
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -233,7 +233,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 7cf0452099fbe72b782a5c613554eb95, type: 3}
-  message: Come back home drunk.
+  message: 'Come back home drunk.
+
+    - Happiness increase 30%'
   choices: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -394,5 +396,7 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Friends are teasing at me.
+  message: 'Friends are teasing at me.
+
+    - Happiness decrease 10%'
   choices: []

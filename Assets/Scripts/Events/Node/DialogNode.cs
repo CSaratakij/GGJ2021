@@ -21,7 +21,8 @@ public abstract class DialogNode : Node
         TimeSkip,
         Shop,
         Relationship,
-        Conditional
+        Conditional,
+        PickEvent
     }
 }
 

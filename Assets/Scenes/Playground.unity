@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 3
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -1491,6 +1491,7 @@ MonoBehaviour:
   - {fileID: 1043946719}
   - {fileID: 288346084}
   innerTime: {fileID: 2063978293}
+  soundManager: {fileID: 0}
 --- !u!114 &412981733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3525,11 +3526,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getSalaryScenario: {fileID: 11400000, guid: 7ebd02e9c47bd1bea849c74cfdfaa24a, type: 2}
+  normalEventPerMonth: 3
+  optionalEventPerMonth: 2
+  normalEventAfterDay: 10
+  optionalEventAfterDay: 5
+  optinalEventDecayAfter: 3
   normalScenarios:
+<<<<<<< HEAD
+  - {fileID: 11400000, guid: 4457ca9c46462c14faaf524f8d50216d, type: 2}
+  - {fileID: 11400000, guid: ecdc431eb81d1b645b99db7b8c1b9c9d, type: 2}
+  - {fileID: 11400000, guid: 02594dde8272c1b4c95886f5029b8f86, type: 2}
+  - {fileID: 11400000, guid: e4c3902aa273b6946b464c8e50f01fdc, type: 2}
+  - {fileID: 11400000, guid: af6c0bfa85f5da247ab11f6b5717b482, type: 2}
+  - {fileID: 11400000, guid: a868443361583364b9836c7c43e1c959, type: 2}
+  - {fileID: 11400000, guid: 8b517a9e550c36f468fdd360d2e15641, type: 2}
+  - {fileID: 11400000, guid: ea3c6907da9436448981d3bf0d7870b0, type: 2}
+  - {fileID: 11400000, guid: 9c3453ed6dd53a24a83146b9cb2ea5ad, type: 2}
+  - {fileID: 11400000, guid: 95bf187b5fef01847abb8ca7934fcf25, type: 2}
+=======
   - {fileID: 0}
+  optionalScenarios: []
+>>>>>>> test-merge-art
   innerTime: {fileID: 2063978293}
   alertbox: {fileID: 412981733}
   ingameUI: {fileID: 412981732}
+  soundManager: {fileID: 0}
+<<<<<<< HEAD
+=======
+  ingameStatusUI: {fileID: 0}
+>>>>>>> test-merge-art
   isInPlayground: 1
 --- !u!1 &1157251817
 GameObject:
