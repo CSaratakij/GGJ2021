@@ -38,6 +38,7 @@ public class PlayerProfile
     public NpcProfile girl = new NpcProfile();
     public NpcProfile beggar = new NpcProfile(true);
     public NpcProfile salesman = new NpcProfile(true);
+    public string remark;
 
     public List<ItemScriptableObject> items;
 

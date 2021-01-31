@@ -1979,7 +1979,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1687542632}
   m_Direction: 2
   m_Value: 0.00000011574202
-  m_Size: 0.27108777
+  m_Size: 0.27108544
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4245,6 +4245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae0c959e0e4676939a495ff029aff17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lblProfileInfo: {fileID: 1456537548}
   dialog: {fileID: 519039857}
   btnStart: {fileID: 1398824058}
   eventDirector: {fileID: 1156995384}
@@ -11344,9 +11345,56 @@ MonoBehaviour:
   optionalEventAfterDay: 5
   optinalEventDecayAfter: 3
   normalScenarios:
-  - {fileID: 11400000, guid: 37a57fefcfe72c8089396ef2cdae41dd, type: 2}
+  - {fileID: 11400000, guid: d29bf0a22ce22bb4680e6c854960849e, type: 2}
+  - {fileID: 11400000, guid: e4c3902aa273b6946b464c8e50f01fdc, type: 2}
+  - {fileID: 11400000, guid: 508692049b006274baffcce66dd102b7, type: 2}
+  - {fileID: 11400000, guid: 6af8b962d06eb694891efb28d5f9a406, type: 2}
+  - {fileID: 11400000, guid: b2ff95fc80797624885261db3733ee9d, type: 2}
+  - {fileID: 11400000, guid: 1f1a16bc1295bd0458bf1a085a887b74, type: 2}
+  - {fileID: 11400000, guid: 59728cc7145a3c240bc2558ace098814, type: 2}
+  - {fileID: 11400000, guid: 7364f24f383bd7445b78e598bcfbe350, type: 2}
+  - {fileID: 11400000, guid: 702965268503d9e49b4053ce9bf73492, type: 2}
+  - {fileID: 11400000, guid: 18adbc24c41f85144b6c8b54c29cb443, type: 2}
+  - {fileID: 11400000, guid: 4457ca9c46462c14faaf524f8d50216d, type: 2}
+  - {fileID: 11400000, guid: af6c0bfa85f5da247ab11f6b5717b482, type: 2}
+  - {fileID: 11400000, guid: a868443361583364b9836c7c43e1c959, type: 2}
+  - {fileID: 11400000, guid: 8b517a9e550c36f468fdd360d2e15641, type: 2}
+  - {fileID: 11400000, guid: 9c3453ed6dd53a24a83146b9cb2ea5ad, type: 2}
+  - {fileID: 11400000, guid: 95bf187b5fef01847abb8ca7934fcf25, type: 2}
+  - {fileID: 11400000, guid: 2bf8d813df092f6429eeec013e803a6c, type: 2}
+  - {fileID: 11400000, guid: 6abe6766c6d630e4ea9043a212f775e8, type: 2}
+  - {fileID: 11400000, guid: 17b3916927aac674c84a75be0c7d2a39, type: 2}
+  - {fileID: 11400000, guid: 02594dde8272c1b4c95886f5029b8f86, type: 2}
+  - {fileID: 11400000, guid: ea3c6907da9436448981d3bf0d7870b0, type: 2}
+  - {fileID: 11400000, guid: c6196f7de0b7dce4295de47a9ad9b8ff, type: 2}
+  - {fileID: 11400000, guid: bfe56bedd612e7a4880cf3bcdb24ebcf, type: 2}
+  - {fileID: 11400000, guid: 3c6c69afc46a5ea49b382aaa2b6dea15, type: 2}
+  - {fileID: 11400000, guid: 00c030c4e32533c46847fc457d0866b4, type: 2}
+  - {fileID: 11400000, guid: a9f1c35fb17a814489aae218781e3691, type: 2}
+  - {fileID: 11400000, guid: bab183328b9d12f43893a7cc16201c22, type: 2}
+  - {fileID: 11400000, guid: d4d4acdd9b8f77545b66c29cb5d4f36d, type: 2}
+  - {fileID: 11400000, guid: d3a585d9054d178438b59abfb9da999a, type: 2}
+  - {fileID: 11400000, guid: ecdc431eb81d1b645b99db7b8c1b9c9d, type: 2}
+  - {fileID: 11400000, guid: 172112fa6e5adf743882567919642353, type: 2}
+  - {fileID: 11400000, guid: 88accb46d89c99c4bbb146d32f9acc96, type: 2}
+  - {fileID: 11400000, guid: e439c50275192f244bd5bec0250f42d3, type: 2}
+  - {fileID: 11400000, guid: 58261dbf9e1d0f149be0641ca6407a69, type: 2}
+  - {fileID: 11400000, guid: 5992013fc954d9749a45c43ab2596820, type: 2}
+  - {fileID: 11400000, guid: 364816734d53faf4895654aebf76a8db, type: 2}
+  - {fileID: 11400000, guid: 2cfbe734cba5183408489626440bf2ac, type: 2}
+  - {fileID: 11400000, guid: 7a87decc64b863d46bc864d8ae9e8f2c, type: 2}
+  - {fileID: 11400000, guid: 10502cdb870d23844b8f9ac29aba523c, type: 2}
   optionalScenarios:
-  - {fileID: 11400000, guid: 37a57fefcfe72c8089396ef2cdae41dd, type: 2}
+  - {fileID: 11400000, guid: 4457ca9c46462c14faaf524f8d50216d, type: 2}
+  - {fileID: 11400000, guid: af6c0bfa85f5da247ab11f6b5717b482, type: 2}
+  - {fileID: 11400000, guid: 17b3916927aac674c84a75be0c7d2a39, type: 2}
+  - {fileID: 11400000, guid: 6abe6766c6d630e4ea9043a212f775e8, type: 2}
+  - {fileID: 11400000, guid: ecdc431eb81d1b645b99db7b8c1b9c9d, type: 2}
+  - {fileID: 11400000, guid: 58261dbf9e1d0f149be0641ca6407a69, type: 2}
+  - {fileID: 11400000, guid: 5992013fc954d9749a45c43ab2596820, type: 2}
+  - {fileID: 11400000, guid: 364816734d53faf4895654aebf76a8db, type: 2}
+  - {fileID: 11400000, guid: 2cfbe734cba5183408489626440bf2ac, type: 2}
+  - {fileID: 11400000, guid: 7a87decc64b863d46bc864d8ae9e8f2c, type: 2}
   innerTime: {fileID: 2063978293}
   alertbox: {fileID: 412981733}
   ingameUI: {fileID: 412981732}
@@ -19279,11 +19327,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4500163ef23bba463b4fdbf580e3be1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxClockPerDay: 1
+  maxClockPerDay: 3
   clockRate: 1
   maxDayPeriod: 5
-  endOfMonth: 2
-  startOfYear: 2022
+  endOfMonth: 1
+  startOfYear: 2021
   endOfYear: 2022
 --- !u!4 &2063978294
 Transform:

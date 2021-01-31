@@ -415,6 +415,7 @@ public class EventDirector : MonoBehaviour
         {
             GameController.Instance?.GameOver();
             innerTime.ResetClock();
+            StartCoroutine(GameOverCallback());
         }
     }
 
@@ -590,6 +591,11 @@ public class EventDirector : MonoBehaviour
     {
         EndScenario();
         RandomStartScenario();
+    }
+    IEnumerator GameOverCallback()
+    {
+        yield return new WaitForSeconds(3.0f);
+        GameController.Instance?.ChangeScene(SceneIndex.GameOver);
     }
 
     private void ProcessConditionNode(ConditionNode node)
