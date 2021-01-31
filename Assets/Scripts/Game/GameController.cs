@@ -28,6 +28,8 @@ public class GameController : MonoBehaviour
 
     PlayerProfilePreset playerPreset;
     PlayerProfile player;
+    [SerializeField]
+    public EndingPreset endingPreset;
 
     GameState currentState;
     GameState previousState;
@@ -180,7 +182,7 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                player.happiness = 0;
+                player.AddHappiness(0);
             }
         }
     }
