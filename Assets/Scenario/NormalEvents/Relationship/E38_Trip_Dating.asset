@@ -469,7 +469,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 9c6fa1685a536b692b2f778688b557d8, type: 3}
-  message: She's mad at you because you did not ask her to eat Moo-Gata (Thai barbecue).
+  message: 'She''s mad at you because you did not ask her to eat Moo-Gata (Thai barbecue).
+
+    -
+    Happiness decrease 10%'
   choices: []
 --- !u!114 &7720354283445849787
 MonoBehaviour:
@@ -525,5 +528,7 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 158588cd87544bbfe9cd78c2d1b690b0, type: 3}
-  message: So happy.
+  message: 'So happy.
+
+    - Happiness increase 20%'
   choices: []

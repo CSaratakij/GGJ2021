@@ -104,7 +104,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Damn you kiddo!
+  message: 'Damn you kiddo!
+
+    - Loss money (1000)'
   choices: []
 --- !u!114 &2850989802514318397
 MonoBehaviour:

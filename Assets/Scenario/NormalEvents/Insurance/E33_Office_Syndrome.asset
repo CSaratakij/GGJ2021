@@ -181,7 +181,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Office syndrome! For not appropriate sitting, you need to get some treatment.
+  message: 'Office syndrome! For not appropriate sitting, you need to get some treatment.
+
+    -
+    Happiness decrease 30%'
   choices:
   - Get Treated (2000)
 --- !u!114 &3998042920973891566

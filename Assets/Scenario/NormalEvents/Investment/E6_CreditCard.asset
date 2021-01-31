@@ -86,7 +86,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Your money will be cut next month after buying goods.
+  message: 'Your money will be cut next month after buying goods.
+
+    - Happiness
+    increase 10%'
   choices: []
 --- !u!114 &-255668379093491297
 MonoBehaviour:

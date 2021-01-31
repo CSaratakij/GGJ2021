@@ -516,7 +516,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 9c6fa1685a536b692b2f778688b557d8, type: 3}
-  message: Let her go if you think I am not good enough for you.
+  message: 'Let her go if you think I am not good enough for you.
+
+    - Happiness
+    decrease 30%'
   choices: []
 --- !u!114 &-1781789135757671196
 MonoBehaviour:
@@ -670,7 +673,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 158588cd87544bbfe9cd78c2d1b690b0, type: 3}
-  message: This is bouquet which is representative of my love.
+  message: 'This is bouquet which is representative of my love.
+
+    - Happiness
+    increase 15%'
   choices: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -765,7 +771,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 158588cd87544bbfe9cd78c2d1b690b0, type: 3}
-  message: Let's eat Shabu to fulfill our love.
+  message: 'Let''s eat Shabu to fulfill our love.
+
+    - Happiness increase 5%'
   choices: []
 --- !u!114 &259655172008231888
 MonoBehaviour:
@@ -884,7 +892,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Sorry we can't get along.
+  message: 'Sorry we can''t get along.
+
+    - Happiness decrease 80%
+
+    - Girlfriend
+    locked!'
   choices: []
 --- !u!114 &1372840729571187718
 MonoBehaviour:
@@ -940,7 +953,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 9c6fa1685a536b692b2f778688b557d8, type: 3}
-  message: Let her go. You deserve better.
+  message: 'Let her go. You deserve better.
+
+    - HAppiness decrease 60%'
   choices: []
 --- !u!114 &2922305728186522931
 MonoBehaviour:
@@ -1113,7 +1128,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 9c6fa1685a536b692b2f778688b557d8, type: 3}
-  message: I am just a bad guy who is not good for you.
+  message: 'I am just a bad guy who is not good for you.
+
+    - Happiness decrease
+    50%'
   choices: []
 --- !u!114 &6105471914775552637
 MonoBehaviour:
@@ -1431,5 +1449,6 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: 'If someone loves you, no matter what you are. '
+  message: "If someone loves you, no matter what you are. \n- Happiness increase
+    25%"
   choices: []

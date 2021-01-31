@@ -57,8 +57,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: fd096da33102d524aa88667a9f6136bc, type: 3}
-  message: I feel somewhat regret about my choice. Somehow I think they could find
+  message: 'I feel somewhat regret about my choice. Somehow I think they could find
     money themselves.
+
+    - Happiness decrease 10%'
   choices: []
 --- !u!114 &-7979442097712851293
 MonoBehaviour:
@@ -341,7 +343,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 2273db54e3adb4ee58c3bfd7d193cfea, type: 3}
-  message: The beggar won a lottery. He shares some money with you for your kindness.
+  message: 'The beggar won a lottery. He shares some money with you for your kindness.
+
+    -
+    Got money (100000)
+
+    - Happiness increase 10%'
   choices: []
 --- !u!114 &-852246539984622668
 MonoBehaviour:
@@ -615,7 +622,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: With the beggar enrage, he seeks a vengeance at you as a spiritual ghost.
+  message: 'With the beggar enrage, he seeks a vengeance at you as a spiritual ghost.
+
+    -
+    Happiness decrease 30%'
   choices: []
 --- !u!114 &2850989802514318397
 MonoBehaviour:

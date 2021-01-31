@@ -302,7 +302,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: You lose because the criminal has learned Kung Fu fighting!
+  message: 'You lose because the criminal has learned Kung Fu fighting!
+
+    - Happiness
+    decrease 40%'
   choices: []
 --- !u!114 &-2924117031968824752
 MonoBehaviour:
@@ -407,7 +410,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: I don't wanna get hurt! Here you go.
+  message: 'I don''t wanna get hurt! Here you go.
+
+    - Loss money (5000)'
   choices: []
 --- !u!114 &-1001076457160395954
 MonoBehaviour:
@@ -686,7 +691,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: So sad! No one around here could help you.
+  message: 'So sad! No one around here could help you.
+
+    - Happiness decrease
+    40%'
   choices: []
 --- !u!114 &3395249170976548557
 MonoBehaviour:

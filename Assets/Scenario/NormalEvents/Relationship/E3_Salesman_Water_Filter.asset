@@ -173,8 +173,13 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Salesman come back revenge, throwing stone into your window. Thinking
+  message: 'Salesman come back revenge, throwing stone into your window. Thinking
     about it, you loss money more than cost of the water filter.
+
+    - Happiness
+    decrease 40%
+
+    - Loss money (70000)'
   choices: []
 --- !u!114 &-5292886737359994410
 MonoBehaviour:

@@ -106,7 +106,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Dating invitation accepted. 7 Days before dating
+  message: 'Dating invitation accepted. 7 Days before dating
+
+    - Happiness increase
+    20%'
   choices: []
 --- !u!114 &-8673010423195341452
 MonoBehaviour:
@@ -523,7 +526,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 9c6fa1685a536b692b2f778688b557d8, type: 3}
-  message: You are not my type, I don't like Ota.
+  message: 'You are not my type, I don''t like Ota.
+
+    - Happiness decrease 80%'
   choices: []
 --- !u!114 &-1646147011682972201
 MonoBehaviour:
@@ -794,7 +799,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Dating invitation rejected.
+  message: 'Dating invitation rejected.
+
+    - Happiness decrease 30%'
   choices: []
 --- !u!114 &2850989802514318397
 MonoBehaviour:
@@ -976,7 +983,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 158588cd87544bbfe9cd78c2d1b690b0, type: 3}
-  message: You are my girlfriend.
+  message: 'You are my girlfriend.
+
+    - Happiness increase 60%'
   choices: []
 --- !u!114 &7067141465370656043
 MonoBehaviour:

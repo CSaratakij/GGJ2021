@@ -321,7 +321,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 158588cd87544bbfe9cd78c2d1b690b0, type: 3}
-  message: Finally meet! If we are gonna fall in love for each other, we will!
+  message: 'Finally meet! If we are gonna fall in love for each other, we will!
+
+    -
+    Happiness increase 20%
+
+    - Girlfriend Unlocked!'
   choices: []
 --- !u!114 &7128350100592967074
 MonoBehaviour:

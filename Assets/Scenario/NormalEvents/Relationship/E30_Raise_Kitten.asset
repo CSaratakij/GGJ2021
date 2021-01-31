@@ -378,7 +378,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: I wanna be a cat slave!
+  message: 'I wanna be a cat slave!
+
+    - Cat Unlocked'
   choices: []
 --- !u!114 &7163968265675394314
 MonoBehaviour:

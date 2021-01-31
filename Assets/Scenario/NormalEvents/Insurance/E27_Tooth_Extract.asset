@@ -54,8 +54,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: What a coincidence! I have social security from employee benefits. Let's
+  message: 'What a coincidence! I have social security from employee benefits. Let''s
     use it once.
+
+    - Didn''t lose money'
   choices: []
 --- !u!114 &-7664878808797345818
 MonoBehaviour:
@@ -626,7 +628,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Your 'wisdom tooth' causes you pain so make you get some dental surgery.
+  message: 'Your ''wisdom tooth'' causes you pain so make you get some dental surgery.
+
+    -
+    Loss money (1500)
+
+    - Happiness decrease 20%'
   choices: []
 --- !u!114 &8392711552425698316
 MonoBehaviour:

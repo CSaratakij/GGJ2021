@@ -86,7 +86,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Don't returning you debt result in admitting to the hospital.
+  message: 'Don''t returning you debt result in admitting to the hospital.
+
+    -
+    Happiness decrease 40%
+
+    - Loss money (15000)'
   choices: []
 --- !u!114 &-3604920827945048252
 MonoBehaviour:
@@ -168,7 +173,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: We come for your debt god damn it!
+  message: 'We come for your debt god damn it!
+
+    - Happiness decrease 10% when
+    pay.'
   choices:
   - Pay (22000)
   - Don't Pay
@@ -339,7 +347,11 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Informal loans
+  message: 'Informal loans?
+
+    - Gain money (20000)
+
+    - Happiness increase (10%)'
   choices:
   - Yes
   - No
@@ -441,7 +453,7 @@ MonoBehaviour:
   - status: 0
     action: 0
     amount: 20000
-  - status: 0
+  - status: 1
     action: 0
     amount: 10
 --- !u!114 &8905096045567462771

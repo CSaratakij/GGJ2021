@@ -286,7 +286,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: beebc9b22d4d556dc8e1a25bc530374f, type: 3}
-  message: You found a friendly customer, got money immediately.
+  message: 'You found a friendly customer, got money immediately.
+
+    - Gain money
+    (12000)'
   choices: []
 --- !u!114 &-937313091060649820
 MonoBehaviour:
@@ -606,7 +609,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Your filthy customer has fled away with your money!
+  message: 'Your filthy customer has fled away with your money!
+
+    - Loss money
+    (5000)
+
+    - Happiness decrease 20%'
   choices: []
 --- !u!114 &5042207847393719249
 MonoBehaviour:
@@ -662,8 +670,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Not only your effort has worked out badly, you got scolded by your beloved
+  message: 'Not only your effort has worked out badly, you got scolded by your beloved
     customer.
+
+    - Happiness decrease 20%'
   choices: []
 --- !u!114 &7857296126774800434
 MonoBehaviour:
@@ -771,8 +781,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: beebc9b22d4d556dc8e1a25bc530374f, type: 3}
-  message: Hey! Your previous freelance customer comes back and pay your work! That's
+  message: 'Hey! Your previous freelance customer comes back and pay your work! That''s
     a good new.
+
+    - Gain Money (17000)
+
+    - Happiness increase 10%'
   choices: []
 --- !u!114 &8370921267374506491
 MonoBehaviour:

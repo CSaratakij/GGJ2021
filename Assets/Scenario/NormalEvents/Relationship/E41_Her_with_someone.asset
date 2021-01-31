@@ -138,7 +138,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: You make me hurt. I'll remember it.
+  message: 'You make me hurt. I''ll remember it.
+
+    - Happiness decrease 60%'
   choices: []
 --- !u!114 &-4025029282650949672
 MonoBehaviour:
@@ -341,7 +343,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 158588cd87544bbfe9cd78c2d1b690b0, type: 3}
-  message: Long time ago, you promised me that we will eat Shabu together.
+  message: 'Long time ago, you promised me that we will eat Shabu together.
+
+    -
+    Happiness increase 40%'
   choices: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -961,7 +966,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: He is my brother who is gay. Are you jealous of me?
+  message: 'He is my brother who is gay. Are you jealous of me?
+
+    - Happiness
+    increase 20%'
   choices: []
 --- !u!114 &8284181128005871388
 MonoBehaviour:
@@ -1017,5 +1025,7 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Go away from me!
+  message: 'Go away from me!
+
+    - Girlfriend locked!'
   choices: []
