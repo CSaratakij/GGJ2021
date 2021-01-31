@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 [Serializable]
 public class NpcProfile
@@ -26,7 +28,7 @@ public class NpcProfile
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class PlayerProfile
 {
     public int happiness;
@@ -37,8 +39,48 @@ public class PlayerProfile
     public NpcProfile beggar = new NpcProfile(true);
     public NpcProfile salesman = new NpcProfile(true);
 
-    // Todo : track inventory
-    /* public ItemScriptableObject[] */
+    public List<ItemScriptableObject> items;
+
+    public PlayerProfile()
+    {
+        items = new List<ItemScriptableObject>();
+    }
+
+    public void BuyItem(ItemScriptableObject item)
+    {
+        GameController.Instance.Player.money -= item.cost;
+        items.Add(item);
+    }
+
+    public void SellItem(ItemScriptableObject item)
+    {
+        GameController.Instance.Player.money -= item.cost;
+        items.Remove(item);
+    }
+
+    public void TakeItem(ItemScriptableObject item)
+    {
+        items.Add(item);
+    }
+
+    public bool HasItem(ItemScriptableObject item)
+    {
+        foreach (var collection in items)
+        {
+            bool result = item.itemName.Equals(collection.itemName);
+
+            if (result) {
+                return result;
+            }
+        }
+
+        return false;
+    }
+
+    public void AddItem(ItemScriptableObject item)
+    {
+        items.Add(item);
+    }
 
     public void EditResource(ResultAction[] actions)
     {

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Girlfriend
   remark: Is she your soulmate, or not?
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 0d4ac5dee016e4f7eaac3e29883facce, type: 3}
