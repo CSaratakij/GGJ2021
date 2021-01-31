@@ -1978,7 +1978,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1687542633}
   m_HandleRect: {fileID: 1687542632}
   m_Direction: 2
-  m_Value: 0.9585861
+  m_Value: 0.00000011574202
   m_Size: 0.27108777
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4317,6 +4317,7 @@ MonoBehaviour:
   - {fileID: 1628685827}
   - {fileID: 501277650}
   innerTime: {fileID: 2063978293}
+  eventDirector: {fileID: 1156995384}
 --- !u!1 &420092207
 GameObject:
   m_ObjectHideFlags: 0
@@ -11337,13 +11338,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getSalaryScenario: {fileID: 11400000, guid: 7ebd02e9c47bd1bea849c74cfdfaa24a, type: 2}
+  normalEventPerMonth: 3
+  optionalEventPerMonth: 2
+  normalEventAfterDay: 7
+  optionalEventAfterDay: 5
+  optinalEventDecayAfter: 3
   normalScenarios:
-  - {fileID: 11400000, guid: 02594dde8272c1b4c95886f5029b8f86, type: 2}
+  - {fileID: 11400000, guid: 37a57fefcfe72c8089396ef2cdae41dd, type: 2}
+  optionalScenarios:
+  - {fileID: 11400000, guid: 37a57fefcfe72c8089396ef2cdae41dd, type: 2}
   innerTime: {fileID: 2063978293}
   alertbox: {fileID: 412981733}
   ingameUI: {fileID: 412981732}
   soundManager: {fileID: 2125848150}
-  isInPlayground: 1
+  ingameStatusUI: {fileID: 412981736}
+  isInPlayground: 0
 --- !u!1 &1157251817
 GameObject:
   m_ObjectHideFlags: 0
@@ -18233,7 +18242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 65.517334}
+  m_AnchoredPosition: {x: 0, y: 1582.0137}
   m_SizeDelta: {x: 0, y: 2170.3762}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1987194428
@@ -19270,11 +19279,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4500163ef23bba463b4fdbf580e3be1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxClockPerDay: 6
+  maxClockPerDay: 1
   clockRate: 1
   maxDayPeriod: 5
-  endOfMonth: 1
-  startOfYear: 2021
+  endOfMonth: 2
+  startOfYear: 2022
   endOfYear: 2022
 --- !u!4 &2063978294
 Transform:

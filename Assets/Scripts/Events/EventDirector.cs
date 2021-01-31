@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using XNode;
+using Random = UnityEngine.Random;
 
 public class EventDirector : MonoBehaviour
 {
@@ -14,8 +15,27 @@ public class EventDirector : MonoBehaviour
     [SerializeField]
     EventGraph getSalaryScenario;
 
+    [Header("Event Emiiter Setting")]
+    [SerializeField]
+    int normalEventPerMonth = 3;
+
+    [SerializeField]
+    int optionalEventPerMonth = 2;
+
+    [SerializeField]
+    int normalEventAfterDay = 10;
+
+    [SerializeField]
+    int optionalEventAfterDay = 5;
+
+    [SerializeField]
+    int optinalEventDecayAfter = 3;
+
     [SerializeField]
     EventGraph[] normalScenarios;
+
+    [SerializeField]
+    EventGraph[] optionalScenarios;
 
     [Header("InnerTime")]
     [SerializeField]
@@ -31,6 +51,10 @@ public class EventDirector : MonoBehaviour
     [Header("Sound Setting")]
     [SerializeField]
     SoundManager soundManager;
+
+    [Header("Dependencies")]
+    [SerializeField]
+    UIInGameStatusController ingameStatusUI;
 
     [Header("Debug")]
     [SerializeField]
@@ -58,6 +82,8 @@ public class EventDirector : MonoBehaviour
     public bool IsStartScenario => isStartScenario;
 
     bool isStartScenario;
+    bool isStartOptionalScenario;
+
     bool shouldEndGame;
 
     bool previousPauseProcessing;
@@ -66,11 +92,11 @@ public class EventDirector : MonoBehaviour
     Cache cache;
     EventType currentEventType;
 
-    Queue<EventGraph> optionalScenario;
+    EventGraph optionalScenario;
     EventGraph[] normalEvents;
 
-    Dictionary<DateTime, EventGraph> keyEvents; // <- key = day of year
     Dictionary<DateTime, Queue<DialogNode>> lateEventQueue; // <- key = day of year
+    Dictionary<DateTime, EventGraph> keyEvents; // <- key = day of year
 
     DialogNode currentNode;
 
@@ -79,6 +105,17 @@ public class EventDirector : MonoBehaviour
 
     Coroutine processNodeCoroutine;
     WaitUntil shouldWaitForUnpauseProcessing;
+
+    // Event emiiter flag
+    Queue<EventGraph> queueOfDay;
+    Queue<DialogNode> queueOfLateEvent;
+
+    int dayPass;
+    int monthPass;
+
+    int normalEventOffset = 1;
+    int optionalEventOffset = 1;
+    int optionalDecayExpectDay = 0;
 
     void Awake()
     {
@@ -100,6 +137,7 @@ public class EventDirector : MonoBehaviour
         cache = new Cache();
         lateEventQueue = new Dictionary<DateTime, Queue<DialogNode>>();
         shouldWaitForUnpauseProcessing = new WaitUntil(() => { return (!shouldPauseProcessing); });
+        queueOfDay = new Queue<EventGraph>();
     }
 
     void SubscribeEvent()
@@ -199,14 +237,85 @@ public class EventDirector : MonoBehaviour
         SetPauseProcessingState(false);
     }
 
+    // Hacks, Emmit event here
     void OnDayPass(DateTime date)
     {
+        // Status every day
         GameController.Instance?.RemoveSalaryPerDay();
         GameController.Instance?.GainHappiness();
+
+        // Emit event
+        dayPass += 1;
+
+        bool shouldStartLateEventHere = true;
+
+        var nodes = new List<DialogNode>();
+
+        // Late event
+        foreach (var key in lateEventQueue.Keys)
+        {
+            if (date >= key) {
+                queueOfLateEvent = lateEventQueue[key];
+            }
+            else {
+                break;
+            }
+        }
+
+        // Optional event
+        bool shouldDecayOptionalEvent = (dayPass >= optionalDecayExpectDay);
+
+        if (shouldDecayOptionalEvent) {
+            optionalScenario = null;
+            ingameStatusUI.NotifyNotification(false);
+        }
+
+        bool shouldEmitOptionalEvent = (optionalScenario == null) && (dayPass >= (optionalEventAfterDay * optionalEventOffset));
+
+        if (shouldEmitOptionalEvent) {
+            Random.InitState(Random.Range(0, 1000));
+
+            int index = Random.Range(0, optionalScenarios.Length);
+            optionalScenario = optionalScenarios[index];
+
+            ingameStatusUI.NotifyNotification();
+            optionalEventOffset += 1;
+
+            optionalDecayExpectDay = (dayPass + optinalEventDecayAfter);
+            shouldStartLateEventHere = false;
+        }
+
+        // Normal event
+        bool shouldEmitNormalEvent = dayPass >= (normalEventAfterDay * normalEventOffset);
+
+        if (shouldEmitNormalEvent) {
+            Random.InitState(Random.Range(0, 1000));
+
+            int index = Random.Range(0, normalScenarios.Length);
+            var result = normalScenarios[index];
+
+            shouldStartLateEventHere = false;
+
+            normalEventOffset += 1;
+            StartScenario(result);
+        }
+
+        if (shouldStartLateEventHere) {
+            if (queueOfLateEvent != null && queueOfLateEvent.Count > 0) {
+                var node = queueOfLateEvent.Dequeue();
+                StartLateScenario(node);
+            }
+        }
     }
 
     void OnMonthPass(DateTime date)
     {
+        monthPass += 1;
+        dayPass = 0;
+
+        normalEventOffset = 1;
+        optionalEventOffset = 1;
+
         GameController.Instance?.GetSalary();
         StartScenario(getSalaryScenario);
     }
@@ -286,6 +395,19 @@ public class EventDirector : MonoBehaviour
         }
 
         Debug.Log("Scenario has finished..");
+
+        // Hacks, optional scenario
+        if (isStartOptionalScenario)
+        {
+            optionalScenario = null;
+            isStartOptionalScenario = false;
+        }
+
+        // Hacks, recursive start late event until done
+        if (queueOfLateEvent != null && queueOfLateEvent.Count > 0) {
+            var node = queueOfLateEvent.Dequeue();
+            StartLateScenario(node);
+        }
 
         // Hacks, game over here
         if (shouldEndGame)
@@ -560,14 +682,13 @@ public class EventDirector : MonoBehaviour
         innerTime.AdvanceTime(timeSpan);
     }
 
-    // TODO
     void ProcessLateResultNode(LateResultNode node)
     {
+        var date = innerTime.Calendar;
+        var queue = new Queue<DialogNode>();
+
         for (int i = 0; i < node.infos.Length; ++i)
         {
-            // add this info to the queue of late event here
-            // add the pointer of event
-
             var info = node.infos[i];
             var nodeToAdd = currentScenario.GetNextNode(currentNode, "infos " + i);
 
@@ -580,7 +701,20 @@ public class EventDirector : MonoBehaviour
             }
             else
             {
+                queue.Enqueue(nodeToAdd);
                 Debug.Log("Node to add : " + nodeToAdd.ToString());
+            }
+        }
+
+        if (queue.Count > 0) {
+            if (lateEventQueue.ContainsKey(date)) {
+                foreach (var item in queue)
+                {
+                    lateEventQueue[date].Enqueue(item);
+                }
+            }
+            else {
+                lateEventQueue.Add(date, queue);
             }
         }
 
@@ -590,23 +724,25 @@ public class EventDirector : MonoBehaviour
 
     void ProcessShopNode(ShopNode node)
     {
+        var player = GameController.Instance.Player;
+
         for (int i = 0; i < node.shopCarts.Length; ++i)
         {
-            // add this info to the queue of late event here
-            // add the pointer of event
-
             var item = node.shopCarts[i];
 
             if (ShopNode.ShopActionType.Buy == item.actionType)
             {
+                player.BuyItem(item.item);
                 Debug.Log($"Buy {item.item.itemName}");
             }
             else if (ShopNode.ShopActionType.Sell == item.actionType)
             {
+                player.SellItem(item.item);
                 Debug.Log($"Sell : {item.item.itemName}");
             }
             else
             {
+                player.TakeItem(item.item);
                 Debug.Log($"Give : {item.item.itemName}");
             }
         }
@@ -636,6 +772,23 @@ public class EventDirector : MonoBehaviour
 
         Debug.LogError("You cannot use prompt node...");
         currentNode = currentScenario.GetNextNode(currentNode);
+    }
+
+    public void StartCurrentOptionalScenario()
+    {
+        if (optionalScenario == null)
+            return;
+
+        if (isStartScenario)
+            return;
+
+        if (isStartOptionalScenario)
+            return;
+
+        ingameStatusUI.NotifyNotification(false);
+
+        isStartOptionalScenario = true;
+        StartScenario(optionalScenario);
     }
 }
 
