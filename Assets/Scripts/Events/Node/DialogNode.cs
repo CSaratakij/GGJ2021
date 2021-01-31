@@ -19,7 +19,9 @@ public abstract class DialogNode : Node
         End,
         Prompt,
         TimeSkip,
-        Shop
+        Shop,
+        Relationship,
+        Conditional
     }
 }
 
