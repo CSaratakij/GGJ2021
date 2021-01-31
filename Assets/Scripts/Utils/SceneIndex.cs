@@ -3,6 +3,7 @@
     MainMenu,
     Level,
     Playground,
-    GameOver
+    GameOver,
+    LevelActual
 }
 
