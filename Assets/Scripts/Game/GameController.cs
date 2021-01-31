@@ -144,10 +144,34 @@ public class GameController : MonoBehaviour
             return;
 
         if (player.happiness > 0) {
-            player.happiness -= 1;
+            if (player.money >= 0)
+            {
+                float x = player.happiness / 10f;
+                float c = 1;
+                float increaseRate = (float)(Math.Sin(4f * x) * c);
+                float randomNum = Random.Range(0f, 1f);
+                bool increase = randomNum > increaseRate;
+                Debug.Log("if (" + randomNum.ToString() + " > " + increaseRate.ToString() + ") happiness increase by direction to 50");
+                int direction = (player.happiness > 50) ? -1 : (player.happiness == 50) ? 0 : 1;
+                if (increase)
+                {
+                    player.happiness += 1 * direction;
+                }
+            }
+            else
+            {
+                player.happiness -= 1;
+            }
         }
         else {
-            player.happiness += 3;
+            if (player.money >= 0)
+            {
+                player.happiness += 1;
+            }
+            else
+            {
+                player.happiness = 0;
+            }
         }
     }
 
