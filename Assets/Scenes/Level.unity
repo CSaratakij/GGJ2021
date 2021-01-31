@@ -1978,8 +1978,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1687542633}
   m_HandleRect: {fileID: 1687542632}
   m_Direction: 2
-  m_Value: -0.00000034722606
-  m_Size: 0.27108777
+  m_Value: 0.00000011574202
+  m_Size: 0.27108544
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4245,6 +4245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae0c959e0e4676939a495ff029aff17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lblProfileInfo: {fileID: 1456537548}
   dialog: {fileID: 519039857}
   btnStart: {fileID: 1398824058}
   eventDirector: {fileID: 1156995384}
@@ -18289,7 +18290,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1582.0144}
+  m_AnchoredPosition: {x: 0, y: 1582.0137}
   m_SizeDelta: {x: 0, y: 2170.3762}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1987194428

@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    PlayerProfile RandomPlayerProfile()
+    public PlayerProfile RandomPlayerProfile()
     {
         Random.InitState(Random.Range(0, 100));
 
@@ -69,7 +69,9 @@ public class GameController : MonoBehaviour
         player.cat = new NpcProfile(profile.haveCat);
         player.girl = new NpcProfile(profile.haveGirlFriend);
 
+        player.remark = profile.remark;
         happiness = profile.happiness;
+
         return player;
     }
 
@@ -186,7 +188,7 @@ public class GameController : MonoBehaviour
 
     public void BeginPlay()
     {
-        RandomPlayerProfile();
+        /* RandomPlayerProfile(); */
         ChangeGameState(GameState.Normal);
     }
 
