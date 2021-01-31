@@ -69,6 +69,16 @@ public class UIInGameStatusController : MonoBehaviour
     void Initialize()
     {
         daySlider.value = 1;
+        int id = 1;
+
+        foreach (var item in monthLableBG)
+        {
+            var child = item.transform.GetChild(1);
+            var label = child.GetComponent<TextMeshProUGUI>();
+
+            label?.SetText($"{id}");
+            id += 1;
+        }
     }
 
     void SubscribeEvent()
