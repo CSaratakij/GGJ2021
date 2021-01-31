@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac5adc87fabc77938fd035b47cd7d6e, type: 3}
   m_Name: 26_SekiPicture
   m_EditorClassIdentifier: 
-  itemName: Light Stick
+  itemName: Seki Picture
   remark: Required for true ending.
-  sprite: {fileID: 0}
+  sprite: {fileID: -3425236469726524370, guid: 7f86a454ef5b372d2a462366eb5f26e6, type: 3}
   isRequired: 1
   effectActive: 0
   hiddenEffectFromPlayer: 0
   degenerate: 0
-  cost: 0
+  cost: 400

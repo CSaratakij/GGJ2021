@@ -17,6 +17,9 @@ public class SoundManager : MonoBehaviour
     WaitForSeconds waitForEachTrack;
     Coroutine playSongCoroutine;
 
+    float startPlayTime = 0.0f;
+    bool shouldMoveToNextTrack = false;
+
     void Awake()
     {
         waitForEachTrack = new WaitForSeconds(playTrackDelay);
@@ -47,6 +50,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void UnPause()
+    {
+        source.UnPause();
+    }
+
     public void Play()
     {
         if (playSongCoroutine != null) {
@@ -70,12 +78,17 @@ public class SoundManager : MonoBehaviour
                 currentClipIndex = 0;
             }
 
+            startPlayTime = Time.time;
             source.PlayOneShot(clips[currentClipIndex]);
 
             yield return new WaitUntil(() => {
+                if (GameState.Pause == GameController.Instance.State) {
+                    return false;
+                }
                 return (!source.isPlaying);
             });
 
+            shouldMoveToNextTrack = false;
             yield return waitForEachTrack;
         }
     }
@@ -86,6 +99,9 @@ public class SoundManager : MonoBehaviour
             StopCoroutine(playSongCoroutine);
             playSongCoroutine = null;
         }
+
+        shouldMoveToNextTrack = false;
+        startPlayTime = 0.0f;
 
         source.Stop();
     }

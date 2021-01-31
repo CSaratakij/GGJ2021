@@ -48,6 +48,8 @@ public class EventDirector : MonoBehaviour
         public PromptNode promptNode;
         public TimeSkipNode timeSkipNode;
         public ShopNode shopNode;
+        public RelationshipNode relationshipNode;
+        public ConditionNode conditionNode;
     }
 
     public Action<EventType> OnStartScenario;
@@ -150,10 +152,10 @@ public class EventDirector : MonoBehaviour
         switch (state)
         {
             case GameState.End:
-            {
-                Debug.Log("Game Over...");
-            }
-            break;
+                {
+                    Debug.Log("Game Over...");
+                }
+                break;
 
             default:
                 break;
@@ -164,21 +166,24 @@ public class EventDirector : MonoBehaviour
     {
         var node = cache.messageNode;
 
-        if (node == null) {
+        if (node == null)
+        {
             Debug.LogError("Cannot find the last message node...");
             return;
         }
 
         bool haveCustomChoice = (node.choices.Length > 0);
 
-        if (haveCustomChoice && (id >= node.choices.Length)) {
+        if (haveCustomChoice && (id >= node.choices.Length))
+        {
             Debug.Log("Unknown choices...");
             return;
         }
 
         string portName = "output";
 
-        if (haveCustomChoice) {
+        if (haveCustomChoice)
+        {
             portName = ("choices " + id);
         }
 
@@ -213,14 +218,16 @@ public class EventDirector : MonoBehaviour
 
     void StartScenario(EventGraph scenario)
     {
-        if (isStartScenario) {
+        if (isStartScenario)
+        {
             return;
         }
 
         currentScenario = scenario;
         currentNode = scenario.GetStartNode();
 
-        if (currentNode == null) {
+        if (currentNode == null)
+        {
             Debug.LogError("Cannot find the scenario start node...");
             Debug.LogError("Scenario will not process...");
             return;
@@ -237,14 +244,16 @@ public class EventDirector : MonoBehaviour
 
     void StartLateScenario(DialogNode node)
     {
-        if (isStartScenario) {
+        if (isStartScenario)
+        {
             return;
         }
 
         currentScenario = (EventGraph)node.graph;
         currentNode = node;
 
-        if (currentNode == null) {
+        if (currentNode == null)
+        {
             Debug.LogError("Cannot find the scenario of late event...");
             Debug.LogError("Late event will not resume ...");
             return;
@@ -261,7 +270,8 @@ public class EventDirector : MonoBehaviour
 
     void EndScenario()
     {
-        if (!isStartScenario) {
+        if (!isStartScenario)
+        {
             return;
         }
 
@@ -278,7 +288,8 @@ public class EventDirector : MonoBehaviour
         Debug.Log("Scenario has finished..");
 
         // Hacks, game over here
-        if (shouldEndGame) {
+        if (shouldEndGame)
+        {
             GameController.Instance?.GameOver();
             innerTime.ResetClock();
         }
@@ -294,12 +305,14 @@ public class EventDirector : MonoBehaviour
 
     void StartProcessNode()
     {
-        if (!isStartScenario) {
+        if (!isStartScenario)
+        {
             Debug.LogError("Attempt to start processing node without starting scenario...");
             return;
         }
 
-        if (processNodeCoroutine != null) {
+        if (processNodeCoroutine != null)
+        {
             StopCoroutine(processNodeCoroutine);
         }
 
@@ -312,7 +325,8 @@ public class EventDirector : MonoBehaviour
         {
             bool noNodeLeft = (currentNode == null);
 
-            if (noNodeLeft) {
+            if (noNodeLeft)
+            {
                 EndScenario();
                 yield break;
             }
@@ -320,102 +334,164 @@ public class EventDirector : MonoBehaviour
             switch (currentNode.DialogType)
             {
                 case DialogNode.Dialog.Start:
-                {
-                    cache.startNode = (currentNode as StartNode);
-                    ProcessStartNode(cache.startNode);
-                }
-                break;
-                
-                case DialogNode.Dialog.Message:
-                {
-                    if (!shouldPauseProcessing) {
-                        SetPauseProcessingState(true);
+                    {
+                        cache.startNode = (currentNode as StartNode);
+                        ProcessStartNode(cache.startNode);
                     }
+                    break;
 
-                    cache.messageNode = (currentNode as MessageNode);
-                    ProcessMessageNode(cache.messageNode);
-                }
-                break;
+                case DialogNode.Dialog.Message:
+                    {
+                        if (!shouldPauseProcessing)
+                        {
+                            SetPauseProcessingState(true);
+                        }
+
+                        cache.messageNode = (currentNode as MessageNode);
+                        ProcessMessageNode(cache.messageNode);
+                    }
+                    break;
 
                 case DialogNode.Dialog.Prompt:
-                {
-                    //TODO : skip for now
-                    /* if (!shouldPauseProcessing) { */
-                    /*     SetPauseProcessingState(true); */
-                    /* } */
+                    {
+                        //TODO : skip for now
+                        /* if (!shouldPauseProcessing) { */
+                        /*     SetPauseProcessingState(true); */
+                        /* } */
 
-                    cache.promptNode = (currentNode as PromptNode);
-                    ProcessPromptNode(cache.promptNode);
-                }
-                break;
+                        cache.promptNode = (currentNode as PromptNode);
+                        ProcessPromptNode(cache.promptNode);
+                    }
+                    break;
 
                 case DialogNode.Dialog.TimeSkip:
-                {
-                    if (!shouldPauseProcessing) {
-                        SetPauseProcessingState(true);
-                    }
+                    {
+                        if (!shouldPauseProcessing)
+                        {
+                            SetPauseProcessingState(true);
+                        }
 
-                    cache.timeSkipNode = (currentNode as TimeSkipNode);
-                    ProcessTimeSkipNode(cache.timeSkipNode);
-                }
-                break;
+                        cache.timeSkipNode = (currentNode as TimeSkipNode);
+                        ProcessTimeSkipNode(cache.timeSkipNode);
+                    }
+                    break;
 
                 case DialogNode.Dialog.Result:
-                {
-                    cache.resultNode = (currentNode as ResultNode);
-                    ProcessResultNode(cache.resultNode);
-                }
-                break;
+                    {
+                        cache.resultNode = (currentNode as ResultNode);
+                        ProcessResultNode(cache.resultNode);
+                    }
+                    break;
 
                 case DialogNode.Dialog.Random:
-                {
-                    currentNode = currentScenario.GetNextNodeByRandom(currentNode);
-                }
-                break;
+                    {
+                        currentNode = currentScenario.GetNextNodeByRandom(currentNode);
+                    }
+                    break;
 
                 case DialogNode.Dialog.MultiRandom:
-                {
-                     currentNode = currentScenario.GetNextNodeByMultiRandom(currentNode);
-                }
-                break;
+                    {
+                        currentNode = currentScenario.GetNextNodeByMultiRandom(currentNode);
+                    }
+                    break;
 
                 case DialogNode.Dialog.LateResult:
-                {
-                    // it need to add all the events that it point to, to the late event queue
-                    // then : check the output port
-                    // if there is no connection, end?
+                    {
+                        // it need to add all the events that it point to, to the late event queue
+                        // then : check the output port
+                        // if there is no connection, end?
 
-                    cache.lateResultNode = (currentNode as LateResultNode);
-                    ProcessLateResultNode(cache.lateResultNode);
-                }
-                break;
+                        cache.lateResultNode = (currentNode as LateResultNode);
+                        ProcessLateResultNode(cache.lateResultNode);
+                    }
+                    break;
 
                 case DialogNode.Dialog.Shop:
-                {
-                    cache.shopNode = (currentNode as ShopNode);
-                    ProcessShopNode(cache.shopNode);
-                }
-                break;
+                    {
+                        cache.shopNode = (currentNode as ShopNode);
+                        ProcessShopNode(cache.shopNode);
+                    }
+                    break;
+
+                case DialogNode.Dialog.Relationship:
+                    {
+                        cache.relationshipNode = (currentNode as RelationshipNode);
+                        ProcessRelationshipNode(cache.relationshipNode);
+                    }
+                    break;
+
+                case DialogNode.Dialog.Conditional:
+                    {
+                        cache.conditionNode = (currentNode as ConditionNode);
+                        ProcessConditionNode(cache.conditionNode);
+                    }
+                    break;
 
                 case DialogNode.Dialog.End:
-                {
-                    EndScenario();
-                    yield break;
-                }
-                break;
-                
+                    {
+                        EndScenario();
+                        yield break;
+                    }
+                    break;
+
                 default:
-                break;
+                    break;
             }
 
-            if (shouldPauseProcessing) {
+            if (shouldPauseProcessing)
+            {
                 yield return shouldWaitForUnpauseProcessing;
                 yield return DelayStartProcessing;
             }
-            else {
+            else
+            {
                 yield return null;
             }
         }
+    }
+
+    private void ProcessConditionNode(ConditionNode node)
+    {
+        var player = GameController.Instance.Player;
+        bool conditiontrue = false;
+        for (int i = 0; i < node.actions.Length; i++)
+        {
+            ConditionAction action = node.actions[i];
+            bool currentCondition = false;
+            switch (action.condition)
+            {
+                case ConditionAction.ConditionType.Health:
+                    currentCondition = player.ProcessHealthCondition(action);
+                    break;
+                case ConditionAction.ConditionType.Money:
+                    currentCondition = player.ProcessMoneyCondition(action);
+                    break;
+                case ConditionAction.ConditionType.BeggarRelationship:
+                case ConditionAction.ConditionType.CatRelationship:
+                case ConditionAction.ConditionType.SalesmanRelationship:
+                case ConditionAction.ConditionType.GirlRelationship:
+                    currentCondition = player.ProcessRelationshipCondition(action);
+                    break;
+                default:
+                    break;
+            }
+            if (currentCondition == false)
+            {
+                break; // Not compatible with all condition
+            }
+            if (i == node.actions.Length - 1)
+            {
+                conditiontrue = currentCondition;
+            }
+        }
+        currentNode = currentScenario.GetNextNodeCondition(currentNode, conditiontrue);
+    }
+
+    private void ProcessRelationshipNode(RelationshipNode node)
+    {
+        var player = GameController.Instance.Player;
+        player.EditResource(node.actions);
+        currentNode = currentScenario.GetNextNode(currentNode);
     }
 
     void SetPauseProcessingState(bool value)
@@ -453,32 +529,32 @@ public class EventDirector : MonoBehaviour
         switch (duration)
         {
             case TimeSkipNode.SkipDuration.Day:
-            {
-                var date = innerTime.Calendar;
-                var nextDate = date.AddDays(amount);
-                timeSpan = (nextDate - innerTime.Calendar);
-            }
-            break;
+                {
+                    var date = innerTime.Calendar;
+                    var nextDate = date.AddDays(amount);
+                    timeSpan = (nextDate - innerTime.Calendar);
+                }
+                break;
 
             case TimeSkipNode.SkipDuration.Week:
-            {
-                var date = innerTime.Calendar;
-                var nextDate = date.AddDays(amount * 7);
-                timeSpan = (nextDate - innerTime.Calendar);
-            }
-            break;
+                {
+                    var date = innerTime.Calendar;
+                    var nextDate = date.AddDays(amount * 7);
+                    timeSpan = (nextDate - innerTime.Calendar);
+                }
+                break;
 
             case TimeSkipNode.SkipDuration.Month:
-            {
-                var date = innerTime.Calendar;
-                var nextDate = date.AddMonths(amount);
-                timeSpan = (nextDate - innerTime.Calendar);
-            }
-            break;
+                {
+                    var date = innerTime.Calendar;
+                    var nextDate = date.AddMonths(amount);
+                    timeSpan = (nextDate - innerTime.Calendar);
+                }
+                break;
 
             default:
                 timeSpan = new TimeSpan(0, 0, 0, 0);
-            break;
+                break;
         }
 
         innerTime.AdvanceTime(timeSpan);
@@ -498,10 +574,12 @@ public class EventDirector : MonoBehaviour
             Debug.Log("Duration : " + info.duration);
             Debug.Log("Amount : " + info.amount);
 
-            if (nodeToAdd == null) {
+            if (nodeToAdd == null)
+            {
                 Debug.Log("no node to add to queue");
             }
-            else {
+            else
+            {
                 Debug.Log("Node to add : " + nodeToAdd.ToString());
             }
         }
@@ -527,7 +605,8 @@ public class EventDirector : MonoBehaviour
             {
                 Debug.Log($"Sell : {item.item.itemName}");
             }
-            else {
+            else
+            {
                 Debug.Log($"Give : {item.item.itemName}");
             }
         }

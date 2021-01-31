@@ -11,6 +11,9 @@ public class UIInGameController : MonoBehaviour
     [SerializeField]
     InnerTime innerTime;
 
+    [SerializeField]
+    SoundManager soundManager;
+
     enum Panel
     {
         InGame,
@@ -119,6 +122,10 @@ public class UIInGameController : MonoBehaviour
         shouldPause = !shouldPause;
         Show(Panel.Pause, shouldPause);
 
+        if (!shouldPause) {
+            soundManager.UnPause();
+        }
+
         GameController.Instance?.Pause(shouldPause);
     }
 
@@ -177,6 +184,10 @@ public class UIInGameController : MonoBehaviour
         }
 
         Show(Panel.Pause, false);
+
+        //Hacks
+        soundManager?.UnPause();
+
         GameController.Instance?.Resume();
     }
 }

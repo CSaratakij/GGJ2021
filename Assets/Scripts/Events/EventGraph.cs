@@ -5,12 +5,13 @@ using XNode;
 
 [CreateAssetMenu(fileName = "E_NewEvent")]
 public class EventGraph : NodeGraph
-{ 
+{
     public EventType eventType;
 
     public DialogNode GetStartNode()
     {
-        foreach (DialogNode node in nodes) {
+        foreach (DialogNode node in nodes)
+        {
             if (DialogNode.Dialog.Start == node.DialogType)
                 return node;
         }
@@ -18,18 +19,44 @@ public class EventGraph : NodeGraph
         return null;
     }
 
-    public DialogNode GetNextNode(DialogNode currentNode, string outputPortName = "output")
+    public DialogNode GetNextNodeCondition(DialogNode currentNode, bool conditiontrue)
     {
-        if (currentNode == null) {
+        string outputPortName = conditiontrue ? "resulttrue" : "resultfalse";
+        if (currentNode == null)
+        {
             return null;
         }
 
         NodePort port = currentNode.GetPort(outputPortName);
 
-        if (port != null) {
+        if (port != null)
+        {
             NodePort otherPort = port.Connection;
 
-            if (otherPort != null) {
+            if (otherPort != null)
+            {
+                return (otherPort.node as DialogNode);
+            }
+        }
+
+        return null;
+    }
+
+    public DialogNode GetNextNode(DialogNode currentNode, string outputPortName = "output")
+    {
+        if (currentNode == null)
+        {
+            return null;
+        }
+
+        NodePort port = currentNode.GetPort(outputPortName);
+
+        if (port != null)
+        {
+            NodePort otherPort = port.Connection;
+
+            if (otherPort != null)
+            {
                 return (otherPort.node as DialogNode);
             }
         }
@@ -39,7 +66,8 @@ public class EventGraph : NodeGraph
 
     public DialogNode GetNextNodeByRandom(DialogNode currentNode, string outputPortName = "output")
     {
-        if (currentNode == null) {
+        if (currentNode == null)
+        {
             return null;
         }
 
@@ -47,7 +75,8 @@ public class EventGraph : NodeGraph
 
         var otherPorts = currentNode.GetOutputPort(outputPortName).GetConnections();
 
-        if (otherPorts.Count <= 0) {
+        if (otherPorts.Count <= 0)
+        {
             return null;
         }
 
@@ -57,13 +86,15 @@ public class EventGraph : NodeGraph
 
     public DialogNode GetNextNodeByMultiRandom(DialogNode currentNode)
     {
-        if (currentNode == null) {
+        if (currentNode == null)
+        {
             return null;
         }
 
         var node = (currentNode as MultiRandomNode);
 
-        if (node.chances.Length <= 0) {
+        if (node.chances.Length <= 0)
+        {
             return null;
         }
 
@@ -78,7 +109,8 @@ public class EventGraph : NodeGraph
             int amount = node.chances[i];
             NodePort port = node.GetPort("chances " + i);
 
-            if (chanceTable.ContainsKey(amount)) {
+            if (chanceTable.ContainsKey(amount))
+            {
                 amount += offset;
                 offset += 10;
             }
@@ -99,17 +131,20 @@ public class EventGraph : NodeGraph
         {
             cumulativeWeight += pair.Key;
 
-            if (randResult < cumulativeWeight) {
+            if (randResult < cumulativeWeight)
+            {
                 selectPort = pair.Value;
                 break;
             }
         }
 
         // get node from select port here
-        if (selectPort != null) {
+        if (selectPort != null)
+        {
             NodePort otherPort = selectPort.Connection;
 
-            if (otherPort != null) {
+            if (otherPort != null)
+            {
                 return (otherPort.node as DialogNode);
             }
         }
