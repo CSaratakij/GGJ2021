@@ -1,6 +1,7 @@
 ﻿public enum SceneIndex
 {
     MainMenu,
-    Level
+    Level,
+    Playground
 }
 

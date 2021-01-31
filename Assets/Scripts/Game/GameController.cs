@@ -22,6 +22,10 @@ public class GameController : MonoBehaviour
     public bool IsGamePause => (GameState.Pause == currentState);
     public PlayerProfile Player => player;
 
+    [Header("Start scene")]
+    [SerializeField]
+    public SceneIndex startScene = SceneIndex.Level;
+
     PlayerProfilePreset playerPreset;
     PlayerProfile player;
 
@@ -158,7 +162,7 @@ public class GameController : MonoBehaviour
         ResetGameState();
 
         GameStart();
-        ChangeScene(SceneIndex.Level);
+        ChangeScene(startScene);
     }
 
     public void Resume()
