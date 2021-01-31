@@ -254,7 +254,7 @@ public class EventDirector : MonoBehaviour
         // Late event
         foreach (var key in lateEventQueue.Keys)
         {
-            if (date >= key) {
+            if (date > key) {
                 queueOfLateEvent = lateEventQueue[key];
             }
             else {
