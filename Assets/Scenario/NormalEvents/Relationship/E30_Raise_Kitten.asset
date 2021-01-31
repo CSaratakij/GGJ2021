@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -744, y: 8}
+  position: {x: -1272, y: -8}
   ports:
     keys:
     - start
@@ -138,6 +138,37 @@ MonoBehaviour:
     item: {fileID: 11400000, guid: 9e01b0b852e169033b2705b31ab334bd, type: 2}
   - actionType: 0
     item: {fileID: 11400000, guid: 8ad075f09ef8429d7be63f27f0785c52, type: 2}
+--- !u!114 &-299341152419747699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f620bb88e58ca57498d9eac864b19828, type: 3}
+  m_Name: Pick Event
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -590.12964, y: 239.30064}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: -299341152419747699}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: resultfalse
+        node: {fileID: 7163968265675394314}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +189,7 @@ MonoBehaviour:
   - {fileID: -5603903505154136900}
   - {fileID: 7163968265675394314}
   - {fileID: 738416877809129781}
+  - {fileID: -299341152419747699}
   eventType: 0
 --- !u!114 &738416877809129781
 MonoBehaviour:
@@ -361,7 +393,7 @@ MonoBehaviour:
   m_Name: Condition
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -424, y: 8}
+  position: {x: -952, y: -8}
   ports:
     keys:
     - input
@@ -396,7 +428,10 @@ MonoBehaviour:
       _node: {fileID: 7163968265675394314}
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: -299341152419747699}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0

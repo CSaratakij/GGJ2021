@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -712, y: -72}
+  position: {x: -1256, y: -40}
   ports:
     keys:
     - start
@@ -32,6 +32,37 @@ MonoBehaviour:
       _dynamic: 0
   start: {fileID: 0}
   eventType: 3
+--- !u!114 &-7307109206580313529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f620bb88e58ca57498d9eac864b19828, type: 3}
+  m_Name: Pick Event
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -584, y: 232}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: -7307109206580313529}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: resultfalse
+        node: {fileID: -1750783178710147307}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
 --- !u!114 &-6163500841841764976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,7 +414,7 @@ MonoBehaviour:
   m_Name: Condition
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -424, y: -24}
+  position: {x: -968, y: 8}
   ports:
     keys:
     - input
@@ -418,7 +449,10 @@ MonoBehaviour:
       _node: {fileID: -1750783178710147307}
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: -7307109206580313529}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -455,6 +489,7 @@ MonoBehaviour:
   - {fileID: 217461657828671534}
   - {fileID: -5292886737359994410}
   - {fileID: 6607891102620101441}
+  - {fileID: -7307109206580313529}
   eventType: 0
 --- !u!114 &217461657828671534
 MonoBehaviour:

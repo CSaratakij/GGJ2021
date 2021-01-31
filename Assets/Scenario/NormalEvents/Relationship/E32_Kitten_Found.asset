@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -744, y: 24}
+  position: {x: -1016, y: 56}
   ports:
     keys:
     - start
@@ -96,6 +96,7 @@ MonoBehaviour:
   - {fileID: 2850989802514318397}
   - {fileID: -6114157175174289223}
   - {fileID: 2855337936885160538}
+  - {fileID: 8975544494531248826}
   eventType: 0
 --- !u!114 &2850989802514318397
 MonoBehaviour:
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_Name: Condition
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -456, y: 24}
+  position: {x: -728, y: 56}
   ports:
     keys:
     - input
@@ -215,7 +216,10 @@ MonoBehaviour:
       _node: {fileID: 2855337936885160538}
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: 8975544494531248826}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -227,3 +231,34 @@ MonoBehaviour:
   - condition: 2
     compare: 1
     amount: 2
+--- !u!114 &8975544494531248826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f620bb88e58ca57498d9eac864b19828, type: 3}
+  m_Name: Pick Event
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -396.6741, y: 291.4732}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: 8975544494531248826}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: resultfalse
+        node: {fileID: 2855337936885160538}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}

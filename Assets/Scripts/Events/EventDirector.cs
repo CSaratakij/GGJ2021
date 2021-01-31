@@ -50,6 +50,7 @@ public class EventDirector : MonoBehaviour
         public ShopNode shopNode;
         public RelationshipNode relationshipNode;
         public ConditionNode conditionNode;
+        public PickEventNode pickEventNode;
     }
 
     public Action<EventType> OnStartScenario;
@@ -132,7 +133,7 @@ public class EventDirector : MonoBehaviour
         if (isInPlayground)
         {
             ingameUI.ShowIngameUI();
-            StartScenario(normalScenarios[0]);
+            RandomStartScenario();
         }
         else
         {
@@ -427,6 +428,13 @@ public class EventDirector : MonoBehaviour
                     }
                     break;
 
+                case DialogNode.Dialog.PickEvent:
+                    {
+                        cache.pickEventNode = (currentNode as PickEventNode);
+                        ProcessPickEventNode(cache.pickEventNode);
+                    }
+                    break;
+
                 case DialogNode.Dialog.End:
                     {
                         EndScenario();
@@ -448,6 +456,18 @@ public class EventDirector : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    public void RandomStartScenario()
+    {
+        int index = UnityEngine.Random.Range(0, normalScenarios.Length);
+        StartScenario(normalScenarios[index]);
+    }
+
+    private void ProcessPickEventNode(PickEventNode pickEventNode)
+    {
+        EndScenario();
+        RandomStartScenario();
     }
 
     private void ProcessConditionNode(ConditionNode node)
