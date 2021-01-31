@@ -134,9 +134,9 @@ public class UIInGameStatusController : MonoBehaviour
             text.SetText(item.itemName);
 
             button.onClick.AddListener(() => {
-                //TODO : buy item
-                /* player.Buy(item); */
+                GameController.Instance.Player.BuyItem(item);
                 Debug.Log("Buy : " + item.itemName);
+
                 button.interactable = false;
 
                 var buttonText = button.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -201,14 +201,21 @@ public class UIInGameStatusController : MonoBehaviour
     public void UpdateItemSummary(ItemScriptableObject itemObject)
     {
         /* update item summary here */
-
     }
 
     // TODO : update if player have certain item
     // change certain button to sold-out and mark it to not interactable
     public void UpdateShoplist()
     {
+        foreach (var item in shopDetails)
+        {
+            var player = GameController.Instance.Player;
 
+            if (!player.HasItem(item))
+            {
+                // TODO : update ui state here
+            }
+        }
     }
 }
 

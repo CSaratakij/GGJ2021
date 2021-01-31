@@ -14,6 +14,16 @@ public class EventDirector : MonoBehaviour
     [SerializeField]
     EventGraph getSalaryScenario;
 
+    [Header("Event Emiiter Setting")]
+    [SerializeField]
+    int normalEventPerMonth = 3;
+
+    [SerializeField]
+    int normalEventAfterDay = 10;
+
+    [SerializeField]
+    float opionalEventInSeconds = 30.0f;
+
     [SerializeField]
     EventGraph[] normalScenarios;
 
@@ -66,11 +76,11 @@ public class EventDirector : MonoBehaviour
     Cache cache;
     EventType currentEventType;
 
-    Queue<EventGraph> optionalScenario;
+    EventGraph optionalScenario;
     EventGraph[] normalEvents;
 
-    Dictionary<DateTime, EventGraph> keyEvents; // <- key = day of year
     Dictionary<DateTime, Queue<DialogNode>> lateEventQueue; // <- key = day of year
+    Dictionary<DateTime, EventGraph> keyEvents; // <- key = day of year
 
     DialogNode currentNode;
 
@@ -590,6 +600,8 @@ public class EventDirector : MonoBehaviour
 
     void ProcessShopNode(ShopNode node)
     {
+        var player = GameController.Instance.Player;
+
         for (int i = 0; i < node.shopCarts.Length; ++i)
         {
             // add this info to the queue of late event here
@@ -599,14 +611,17 @@ public class EventDirector : MonoBehaviour
 
             if (ShopNode.ShopActionType.Buy == item.actionType)
             {
+                player.BuyItem(item.item);
                 Debug.Log($"Buy {item.item.itemName}");
             }
             else if (ShopNode.ShopActionType.Sell == item.actionType)
             {
+                player.SellItem(item.item);
                 Debug.Log($"Sell : {item.item.itemName}");
             }
             else
             {
+                player.TakeItem(item.item);
                 Debug.Log($"Give : {item.item.itemName}");
             }
         }

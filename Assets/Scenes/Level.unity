@@ -1978,7 +1978,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1687542633}
   m_HandleRect: {fileID: 1687542632}
   m_Direction: 2
-  m_Value: 0.9585861
+  m_Value: 0.94318396
   m_Size: 0.27108777
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -11337,13 +11337,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getSalaryScenario: {fileID: 11400000, guid: 7ebd02e9c47bd1bea849c74cfdfaa24a, type: 2}
+  normalEventPerMonth: 3
+  normalEventAfterDay: 10
+  opionalEventInSeconds: 30
   normalScenarios:
   - {fileID: 11400000, guid: 02594dde8272c1b4c95886f5029b8f86, type: 2}
   innerTime: {fileID: 2063978293}
   alertbox: {fileID: 412981733}
   ingameUI: {fileID: 412981732}
   soundManager: {fileID: 2125848150}
-  isInPlayground: 1
+  isInPlayground: 0
 --- !u!1 &1157251817
 GameObject:
   m_ObjectHideFlags: 0
@@ -18233,7 +18236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 65.517334}
+  m_AnchoredPosition: {x: 0, y: 89.88379}
   m_SizeDelta: {x: 0, y: 2170.3762}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1987194428
