@@ -206,7 +206,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Too lazy for study. You have just lost money for free, ya know?
+  message: 'Too lazy for study. You have just lost money for free, ya know?
+
+    -
+    Happiness decrease 20%'
   choices: []
 --- !u!114 &-2692306392210178259
 MonoBehaviour:
@@ -333,7 +336,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: beebc9b22d4d556dc8e1a25bc530374f, type: 3}
-  message: Skill improved. Your salary has increased!
+  message: 'Skill improved. Your salary has increased!
+
+    - Happiness increase
+    20%'
   choices: []
 --- !u!114 &2850989802514318397
 MonoBehaviour:
@@ -412,9 +418,11 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Take a special course.
+  message: 'Take a special course?
+
+    - Happiness decrease 10%'
   choices:
-  - Enroll
+  - Enroll (15000)
   - Ignore
 --- !u!114 &5458098381765769326
 MonoBehaviour:

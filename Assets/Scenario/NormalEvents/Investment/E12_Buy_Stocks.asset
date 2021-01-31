@@ -326,7 +326,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: beebc9b22d4d556dc8e1a25bc530374f, type: 3}
-  message: Sell it right now! You got the profit!
+  message: 'Sell it right now! You got the profit!
+
+    - Gain money (40000)
+
+    -
+    Happiness increase 20%'
   choices: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -584,5 +589,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: You stuck at the top of the mountain. Eh, can I cut loss right away?
+  message: 'You stuck at the top of the mountain. Eh, can I cut loss right away?
+
+    -
+    Gain money (10000)
+
+    - Happiness decrease 20%'
   choices: []

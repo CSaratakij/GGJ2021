@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -712, y: -72}
+  position: {x: -1256, y: -40}
   ports:
     keys:
     - start
@@ -32,6 +32,37 @@ MonoBehaviour:
       _dynamic: 0
   start: {fileID: 0}
   eventType: 3
+--- !u!114 &-7307109206580313529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f620bb88e58ca57498d9eac864b19828, type: 3}
+  m_Name: Pick Event
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -584, y: 232}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: -7307109206580313529}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: resultfalse
+        node: {fileID: -1750783178710147307}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
 --- !u!114 &-6163500841841764976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,7 +76,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1224, y: -232}
+  position: {x: 1352, y: -328}
   ports:
     keys:
     - input
@@ -142,8 +173,13 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Salesman come back revenge, throwing stone into your window. Thinking
+  message: 'Salesman come back revenge, throwing stone into your window. Thinking
     about it, you loss money more than cost of the water filter.
+
+    - Happiness
+    decrease 40%
+
+    - Loss money (70000)'
   choices: []
 --- !u!114 &-5292886737359994410
 MonoBehaviour:
@@ -383,7 +419,7 @@ MonoBehaviour:
   m_Name: Condition
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -424, y: -24}
+  position: {x: -968, y: 8}
   ports:
     keys:
     - input
@@ -418,7 +454,10 @@ MonoBehaviour:
       _node: {fileID: -1750783178710147307}
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: -7307109206580313529}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -454,6 +493,8 @@ MonoBehaviour:
   - {fileID: -1750783178710147307}
   - {fileID: 217461657828671534}
   - {fileID: -5292886737359994410}
+  - {fileID: 6607891102620101441}
+  - {fileID: -7307109206580313529}
   eventType: 0
 --- !u!114 &217461657828671534
 MonoBehaviour:
@@ -468,7 +509,7 @@ MonoBehaviour:
   m_Name: Relationship
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 840, y: -200}
+  position: {x: 968, y: -296}
   ports:
     keys:
     - input
@@ -563,7 +604,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: input
-        node: {fileID: 7753742673690610771}
+        node: {fileID: 6607891102620101441}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -602,6 +643,55 @@ MonoBehaviour:
   - Buy (50000)
   - Decline politely
   - Reject
+--- !u!114 &6607891102620101441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a2c22cc5e3f3c9da43380d4c483066, type: 3}
+  m_Name: Result
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 328, y: -200}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 6607891102620101441}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: choices 0
+        node: {fileID: 2850989802514318397}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 6607891102620101441}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 7753742673690610771}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  actions:
+  - status: 0
+    action: 1
+    amount: 50000
 --- !u!114 &7753742673690610771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,7 +705,7 @@ MonoBehaviour:
   m_Name: Shop
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 440, y: -184}
+  position: {x: 648, y: -280}
   ports:
     keys:
     - input
@@ -626,8 +716,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: choices 0
-        node: {fileID: 2850989802514318397}
+      - fieldName: output
+        node: {fileID: 6607891102620101441}
         reroutePoints: []
       _direction: 0
       _connectionType: 0

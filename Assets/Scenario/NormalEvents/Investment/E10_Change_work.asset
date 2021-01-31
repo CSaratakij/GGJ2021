@@ -242,7 +242,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: beebc9b22d4d556dc8e1a25bc530374f, type: 3}
-  message: There! My dream office. Got more money in your pocket.
+  message: 'There! My dream office. Got more money in your pocket.
+
+    - Happiness
+    increase 30%'
   choices: []
 --- !u!114 &-5662704486083465522
 MonoBehaviour:
@@ -366,8 +369,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Good grief! Not only the working environment stay the same, my salary
+  message: 'Good grief! Not only the working environment stay the same, my salary
     got decreased!
+
+    - Happiness decrease 30%'
   choices: []
 --- !u!114 &11400000
 MonoBehaviour:

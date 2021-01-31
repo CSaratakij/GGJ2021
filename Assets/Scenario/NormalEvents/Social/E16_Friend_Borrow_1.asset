@@ -225,7 +225,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: You have a good friend. Return money with the interest.
+  message: 'You have a good friend. Return money with the interest.
+
+    - Gain money
+    (2500)'
   choices: []
 --- !u!114 &2850989802514318397
 MonoBehaviour:

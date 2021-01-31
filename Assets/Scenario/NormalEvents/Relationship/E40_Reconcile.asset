@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -792, y: 152}
+  position: {x: -1720, y: 136}
   ports:
     keys:
     - start
@@ -24,7 +24,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: 6105471914775552637}
+        node: {fileID: 259655172008231888}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 56, y: 440}
+  position: {x: 40, y: 520}
   ports:
     keys:
     - input
@@ -118,7 +118,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: 774420141964810902}
+        node: {fileID: -5523317719578216873}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -179,6 +179,55 @@ MonoBehaviour:
   - status: 1
     action: 1
     amount: 50
+--- !u!114 &-5523317719578216873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b70192c7e809f444a31b10702fa268b, type: 3}
+  m_Name: Relationship
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 392, y: 696}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: -5523317719578216873}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -6952337779227060598}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: -5523317719578216873}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 774420141964810902}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  actions:
+  - character: 1
+    action: 2
+    amount: 0
 --- !u!114 &-5381850083790603095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,7 +516,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 9c6fa1685a536b692b2f778688b557d8, type: 3}
-  message: Let her go if you think I am not good enough for you.
+  message: 'Let her go if you think I am not good enough for you.
+
+    - Happiness
+    decrease 30%'
   choices: []
 --- !u!114 &-1781789135757671196
 MonoBehaviour:
@@ -621,7 +673,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 158588cd87544bbfe9cd78c2d1b690b0, type: 3}
-  message: This is bouquet which is representative of my love.
+  message: 'This is bouquet which is representative of my love.
+
+    - Happiness
+    increase 15%'
   choices: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -658,6 +713,9 @@ MonoBehaviour:
   - {fileID: 1372840729571187718}
   - {fileID: 14220437019399937}
   - {fileID: 5457542982395804341}
+  - {fileID: 259655172008231888}
+  - {fileID: -5523317719578216873}
+  - {fileID: 6972707752166100211}
   eventType: 0
 --- !u!114 &14220437019399937
 MonoBehaviour:
@@ -713,8 +771,73 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 158588cd87544bbfe9cd78c2d1b690b0, type: 3}
-  message: Let's eat Shabu to fulfill our love.
+  message: 'Let''s eat Shabu to fulfill our love.
+
+    - Happiness increase 5%'
   choices: []
+--- !u!114 &259655172008231888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549dc32614cbf5b40a9fc1f03b3298b1, type: 3}
+  m_Name: Condition
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -1336, y: 120}
+  ports:
+    keys:
+    - input
+    - resulttrue
+    - resultfalse
+    values:
+    - _fieldName: input
+      _node: {fileID: 259655172008231888}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: start
+        node: {fileID: -7664878808797345818}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: resulttrue
+      _node: {fileID: 259655172008231888}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 6105471914775552637}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: resultfalse
+      _node: {fileID: 259655172008231888}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 6972707752166100211}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  resulttrue: {fileID: 0}
+  resultfalse: {fileID: 0}
+  actions:
+  - condition: 3
+    compare: 0
+    amount: 1
 --- !u!114 &774420141964810902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,7 +851,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 504, y: 552}
+  position: {x: 728, y: 776}
   ports:
     keys:
     - input
@@ -741,7 +864,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: -6952337779227060598}
+        node: {fileID: -5523317719578216873}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -769,7 +892,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Sorry we can't get along.
+  message: 'Sorry we can''t get along.
+
+    - Happiness decrease 80%
+
+    - Girlfriend
+    locked!'
   choices: []
 --- !u!114 &1372840729571187718
 MonoBehaviour:
@@ -825,7 +953,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 9c6fa1685a536b692b2f778688b557d8, type: 3}
-  message: Let her go. You deserve better.
+  message: 'Let her go. You deserve better.
+
+    - HAppiness decrease 60%'
   choices: []
 --- !u!114 &2922305728186522931
 MonoBehaviour:
@@ -998,7 +1128,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 9c6fa1685a536b692b2f778688b557d8, type: 3}
-  message: I am just a bad guy who is not good for you.
+  message: 'I am just a bad guy who is not good for you.
+
+    - Happiness decrease
+    50%'
   choices: []
 --- !u!114 &6105471914775552637
 MonoBehaviour:
@@ -1027,8 +1160,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: start
-        node: {fileID: -7664878808797345818}
+      - fieldName: resulttrue
+        node: {fileID: 259655172008231888}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -1133,6 +1266,37 @@ MonoBehaviour:
   - status: 1
     action: 0
     amount: 25
+--- !u!114 &6972707752166100211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f620bb88e58ca57498d9eac864b19828, type: 3}
+  m_Name: Pick Event
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -1009.7308, y: 326.27393}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: 6972707752166100211}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: resultfalse
+        node: {fileID: 259655172008231888}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
 --- !u!114 &7538834210986077834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1285,5 +1449,6 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: 'If someone loves you, no matter what you are. '
+  message: "If someone loves you, no matter what you are. \n- Happiness increase
+    25%"
   choices: []

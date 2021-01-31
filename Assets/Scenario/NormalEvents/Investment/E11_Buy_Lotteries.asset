@@ -138,8 +138,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Lottery result has been organized with fixed numbers of course! How would
+  message: 'Lottery result has been organized with fixed numbers of course! How would
     i win this game!
+
+    - Happiness decrease 10%'
   choices: []
 --- !u!114 &-4296944062120590294
 MonoBehaviour:
@@ -416,7 +418,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: beebc9b22d4d556dc8e1a25bc530374f, type: 3}
-  message: I win the lottery! Woohoo!
+  message: 'I win the lottery! Woohoo!
+
+    - Gain money (2,000,000)
+
+    - Happiness
+    increase 50%'
   choices: []
 --- !u!114 &4219550179647339228
 MonoBehaviour:

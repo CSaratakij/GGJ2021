@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -792, y: 152}
+  position: {x: -1400, y: 152}
   ports:
     keys:
     - start
@@ -24,7 +24,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: 2850989802514318397}
+        node: {fileID: -587762361173365405}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -80,6 +80,37 @@ MonoBehaviour:
       _dynamic: 0
   input: {fileID: 0}
   output: {fileID: 0}
+--- !u!114 &-6416831317003078053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f620bb88e58ca57498d9eac864b19828, type: 3}
+  m_Name: Pick Event
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -702.48065, y: 368.24896}
+  ports:
+    keys:
+    - input
+    values:
+    - _fieldName: input
+      _node: {fileID: -6416831317003078053}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: resultfalse
+        node: {fileID: -587762361173365405}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
 --- !u!114 &-3298152907280890161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +160,69 @@ MonoBehaviour:
   - status: 0
     action: 1
     amount: 5000
+--- !u!114 &-587762361173365405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549dc32614cbf5b40a9fc1f03b3298b1, type: 3}
+  m_Name: Condition
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -1064, y: 152}
+  ports:
+    keys:
+    - input
+    - resulttrue
+    - resultfalse
+    values:
+    - _fieldName: input
+      _node: {fileID: -587762361173365405}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: start
+        node: {fileID: -7664878808797345818}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: resulttrue
+      _node: {fileID: -587762361173365405}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 2850989802514318397}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: resultfalse
+      _node: {fileID: -587762361173365405}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: -6416831317003078053}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  resulttrue: {fileID: 0}
+  resultfalse: {fileID: 0}
+  actions:
+  - condition: 3
+    compare: 0
+    amount: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +244,8 @@ MonoBehaviour:
   - {fileID: 2214010021766112655}
   - {fileID: 7720354283445849787}
   - {fileID: 5654617966268650812}
+  - {fileID: -587762361173365405}
+  - {fileID: -6416831317003078053}
   eventType: 0
 --- !u!114 &2179332422114432145
 MonoBehaviour:
@@ -275,8 +371,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: start
-        node: {fileID: -7664878808797345818}
+      - fieldName: resulttrue
+        node: {fileID: -587762361173365405}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -373,7 +469,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 9c6fa1685a536b692b2f778688b557d8, type: 3}
-  message: She's mad at you because you did not ask her to eat Moo-Gata (Thai barbecue).
+  message: 'She''s mad at you because you did not ask her to eat Moo-Gata (Thai barbecue).
+
+    -
+    Happiness decrease 10%'
   choices: []
 --- !u!114 &7720354283445849787
 MonoBehaviour:
@@ -429,5 +528,7 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 21300000, guid: 158588cd87544bbfe9cd78c2d1b690b0, type: 3}
-  message: So happy.
+  message: 'So happy.
+
+    - Happiness increase 20%'
   choices: []

@@ -2,6 +2,7 @@
 {
     MainMenu,
     Level,
+    Playground,
     GameOver
 }
 

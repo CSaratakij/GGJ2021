@@ -138,7 +138,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Must have!
+  message: 'Must have!
+
+    - Happiness increase 30%'
   choices: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -471,7 +473,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: See?! They Overhype their game too much. Think before buy.
+  message: 'See?! They Overhype their game too much. Think before buy.
+
+    - Happiness
+    increase 10%'
   choices: []
 --- !u!114 &6432190431816324529
 MonoBehaviour:
@@ -597,5 +602,5 @@ MonoBehaviour:
   eventImage: {fileID: 0}
   message: '*Hot head about Cyberpunk game*
 
-    (Happiness - 40%)'
+    - Happiness decrease 40%'
   choices: []

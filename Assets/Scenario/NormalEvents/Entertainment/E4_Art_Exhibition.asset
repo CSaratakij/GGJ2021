@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 808, y: -280}
+  position: {x: 1128, y: 200}
   ports:
     keys:
     - input
@@ -59,7 +59,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: output
-        node: {fileID: 6706234694598407580}
+        node: {fileID: -6178176056744512975}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -96,7 +96,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Traveled to the exhibition, you get fraud by the taxi driver.
+  message: 'Traveled to the exhibition, you get fraud by the taxi driver.
+
+    -
+    Loss extra money (40)
+
+    - Happiness decrease 10%'
   choices:
   - OK (40)
 --- !u!114 &-6178176056744512975
@@ -134,7 +139,10 @@ MonoBehaviour:
       _node: {fileID: -6178176056744512975}
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: -6700818049321286761}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -285,10 +293,7 @@ MonoBehaviour:
       _node: {fileID: 6706234694598407580}
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections:
-      - fieldName: input
-        node: {fileID: -6700818049321286761}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0

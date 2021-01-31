@@ -240,7 +240,9 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Faster than the devil.
+  message: 'Faster than the devil.
+
+    - Happiness increase 20%'
   choices: []
 --- !u!114 &-3046032692245999428
 MonoBehaviour:
@@ -296,7 +298,10 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: Damn! Get up early for nothing! The web is not responding!
+  message: 'Damn! Get up early for nothing! The web is not responding!
+
+    - Happiness
+    decrease 20%'
   choices: []
 --- !u!114 &-1926360289290455624
 MonoBehaviour:
