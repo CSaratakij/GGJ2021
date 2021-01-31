@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Salesman
   remark: Water filter man.
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 103ee10aa3984cd53b1c25bb52ab3f32, type: 3}

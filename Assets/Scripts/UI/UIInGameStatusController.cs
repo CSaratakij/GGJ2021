@@ -23,6 +23,9 @@ public class UIInGameStatusController : MonoBehaviour
     [SerializeField]
     ItemScriptableObject[] shopDetails;
 
+    [SerializeField]
+    RectTransform[] shopItems;
+
     [Header("Notification Setting")]
     [SerializeField]
     TextMeshProUGUI lblNotificationCount;
@@ -115,10 +118,13 @@ public class UIInGameStatusController : MonoBehaviour
             ActivateLastOptionalEvent();
         });
 
-        foreach (var item in shopDetails)
+        for (int i = 0; i < shopDetails.Length; ++i)
         {
-            var obj = Instantiate(shopListPrefabs);
-            obj.SetParent(shopShelf.transform);
+            var item = shopDetails[i];
+            var obj = shopItems[i];
+
+            /* var obj = Instantiate(shopListPrefabs); */
+            /* obj.SetParent(shopShelf.transform); */
 
             var image = obj.transform.GetChild(0).GetComponent<Image>();
             var text = obj.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
@@ -139,7 +145,7 @@ public class UIInGameStatusController : MonoBehaviour
                 buttonText.color = Color.white;
             });
 
-            obj.gameObject.SetActive(true);
+            /* obj.gameObject.SetActive(true); */
         }
     }
 

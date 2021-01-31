@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Cat
   remark: Meow~
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 4b20e77c0ba086f4f8b8704d08946c8c, type: 3}
