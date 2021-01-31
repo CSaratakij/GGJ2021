@@ -49,13 +49,13 @@ public class PlayerProfile
 
     public void BuyItem(ItemScriptableObject item)
     {
-        GameController.Instance.Player.money -= item.cost;
+        GameController.Instance.Player.RemoveMoney(item.cost);
         items.Add(item);
     }
 
     public void SellItem(ItemScriptableObject item)
     {
-        GameController.Instance.Player.money -= item.cost;
+        GameController.Instance.Player.AddMoney(item.cost);
         items.Remove(item);
     }
 
@@ -104,6 +104,10 @@ public class PlayerProfile
                             AddHappiness(amount);
                             break;
 
+                        case ResultAction.StatusType.Salary:
+                            AddSalary(amount);
+                            break;
+
                         default:
                             break;
                     }
@@ -118,6 +122,10 @@ public class PlayerProfile
 
                         case ResultAction.StatusType.Happiness:
                             RemoveHappiness(amount);
+                            break;
+
+                        case ResultAction.StatusType.Salary:
+                            RemoveSalary(amount);
                             break;
 
                         default:
@@ -136,6 +144,10 @@ public class PlayerProfile
                             SetHappiness(amount);
                             break;
 
+                        case ResultAction.StatusType.Salary:
+                            SetSalary(amount);
+                            break;
+
                         default:
                             break;
                     }
@@ -146,6 +158,28 @@ public class PlayerProfile
             }
 
         }
+    }
+
+    private void SetSalary(int amount)
+    {
+        salary = amount;
+    }
+
+    private void RemoveSalary(int amount)
+    {
+        if (salary - amount >= 0)
+        {
+            salary -= amount;
+        }
+        else
+        {
+            salary = 0;
+        }
+    }
+
+    private void AddSalary(int amount)
+    {
+        salary += amount;
     }
 
     public void EditResource(RelationshipAction[] actions)
@@ -265,7 +299,14 @@ public class PlayerProfile
 
     public void AddHappiness(int amount)
     {
-        happiness += amount;
+        if (happiness + amount <= 100)
+        {
+            happiness += amount;
+        }
+        else
+        {
+            happiness = 100;
+        }
     }
 
     public void AddMoney(int amount)
@@ -277,7 +318,14 @@ public class PlayerProfile
     {
         /* var result = (happiness - amount) < 0 ? 0 : (happiness - amount); */
         /* happiness = result; */
-        happiness -= amount;
+        if (happiness - amount > 0)
+        {
+            happiness -= amount;
+        }
+        else
+        {
+            happiness = 0;
+        }
     }
 
     public void RemoveMoney(int amount)

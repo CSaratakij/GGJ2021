@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1144, y: -152}
+  position: {x: 1128, y: -216}
   ports:
     keys:
     - input
@@ -129,6 +129,9 @@ MonoBehaviour:
   - status: 1
     action: 0
     amount: 10
+  - status: 2
+    action: 0
+    amount: 7000
 --- !u!114 &-4625302590651149592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +486,8 @@ MonoBehaviour:
   - {fileID: -603322650745126154}
   - {fileID: -4741180518064846956}
   - {fileID: -575418291392290823}
+  - {fileID: 8887158040978567087}
+  - {fileID: 2539870761248601568}
   eventType: 0
 --- !u!114 &2259735081320640761
 MonoBehaviour:
@@ -547,6 +552,52 @@ MonoBehaviour:
   - condition: 4
     compare: 0
     amount: 2
+--- !u!114 &2539870761248601568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a2c22cc5e3f3c9da43380d4c483066, type: 3}
+  m_Name: Result
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2248, y: -232}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 2539870761248601568}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: infos 0
+        node: {fileID: 8887158040978567087}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 2539870761248601568}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  actions:
+  - status: 2
+    action: 1
+    amount: 7000
 --- !u!114 &2850989802514318397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,10 +872,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: '7 days sick leaves in total. Your salary has been cut in half this month.
+  message: '7 days sick leaves in total. Your salary has been cut  this month.
 
     -
-    Happiness decrease 30%'
+    Happiness decrease 30%
+
+    - Salary decrease 5000'
   choices: []
 --- !u!114 &5387652488927733222
 MonoBehaviour:
@@ -862,7 +915,10 @@ MonoBehaviour:
       _node: {fileID: 5387652488927733222}
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: 8887158040978567087}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -880,9 +936,12 @@ MonoBehaviour:
   output: {fileID: 0}
   npc: {fileID: 0}
   eventImage: {fileID: 0}
-  message: 'Increase your salary 1.5x this month.
+  message: 'Increase your salary this month.
 
-    - Happiness increase 10%'
+    - Happiness increase 10%
+
+    -
+    Salary Increase 7000 for 1 month'
   choices: []
 --- !u!114 &6274334041606166783
 MonoBehaviour:
@@ -979,9 +1038,9 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   actions:
-  - status: 1
+  - status: 2
     action: 1
-    amount: 30
+    amount: 5000
 --- !u!114 &8068131201963571300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1061,3 +1120,71 @@ MonoBehaviour:
   shopCarts:
   - actionType: 0
     item: {fileID: 11400000, guid: d5c66720b3d8fd063b1e575ba78124ba, type: 2}
+--- !u!114 &8887158040978567087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb593eb65f4e471ae72f0eb376f6dc, type: 3}
+  m_Name: Late Result
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1880, y: -168}
+  ports:
+    keys:
+    - input
+    - output
+    - infos
+    - infos 0
+    values:
+    - _fieldName: input
+      _node: {fileID: 8887158040978567087}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: 5387652488927733222}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 8887158040978567087}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: infos
+      _node: {fileID: 8887158040978567087}
+      _typeQualifiedName: LateResultNode+LateInfo[], Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: infos 0
+      _node: {fileID: 8887158040978567087}
+      _typeQualifiedName: LateResultNode+LateInfo, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 2539870761248601568}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+  input: {fileID: 0}
+  output: {fileID: 0}
+  infos:
+  - duration: 2
+    amount: 1

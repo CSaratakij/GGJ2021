@@ -6,7 +6,8 @@ public class ResultAction
     public enum StatusType
     {
         Money,
-        Happiness
+        Happiness,
+        Salary
     }
 
     public enum ActionType

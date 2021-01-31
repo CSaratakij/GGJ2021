@@ -255,10 +255,12 @@ public class EventDirector : MonoBehaviour
         // Late event
         foreach (var key in lateEventQueue.Keys)
         {
-            if (date >= key) {
+            if (date >= key)
+            {
                 queueOfLateEvent = lateEventQueue[key];
             }
-            else {
+            else
+            {
                 break;
             }
         }
@@ -266,14 +268,16 @@ public class EventDirector : MonoBehaviour
         // Optional event
         bool shouldDecayOptionalEvent = (dayPass >= optionalDecayExpectDay);
 
-        if (shouldDecayOptionalEvent) {
+        if (shouldDecayOptionalEvent)
+        {
             optionalScenario = null;
             ingameStatusUI.NotifyNotification(false);
         }
 
         bool shouldEmitOptionalEvent = (optionalScenario == null) && (dayPass >= (optionalEventAfterDay * optionalEventOffset));
 
-        if (shouldEmitOptionalEvent) {
+        if (shouldEmitOptionalEvent)
+        {
             Random.InitState(Random.Range(0, 1000));
 
             int index = Random.Range(0, optionalScenarios.Length);
@@ -289,7 +293,8 @@ public class EventDirector : MonoBehaviour
         // Normal event
         bool shouldEmitNormalEvent = dayPass >= (normalEventAfterDay * normalEventOffset);
 
-        if (shouldEmitNormalEvent) {
+        if (shouldEmitNormalEvent)
+        {
             Random.InitState(Random.Range(0, 1000));
 
             int index = Random.Range(0, normalScenarios.Length);
@@ -301,8 +306,10 @@ public class EventDirector : MonoBehaviour
             StartScenario(result);
         }
 
-        if (shouldStartLateEventHere) {
-            if (queueOfLateEvent != null && queueOfLateEvent.Count > 0) {
+        if (shouldStartLateEventHere)
+        {
+            if (queueOfLateEvent != null && queueOfLateEvent.Count > 0)
+            {
                 var node = queueOfLateEvent.Dequeue();
                 StartLateScenario(node);
             }
@@ -405,12 +412,17 @@ public class EventDirector : MonoBehaviour
         }
 
         // Hacks, recursive start late event until done
-        if (queueOfLateEvent != null && queueOfLateEvent.Count > 0) {
+        if (queueOfLateEvent != null && queueOfLateEvent.Count > 0)
+        {
             var node = queueOfLateEvent.Dequeue();
             StartLateScenario(node);
         }
 
         // Hacks, game over here
+        if (GameController.Instance?.Player.happiness <= 0)
+        {
+            shouldEndGame = true;
+        }
         if (shouldEndGame)
         {
             GameController.Instance?.GameOver();
@@ -732,14 +744,17 @@ public class EventDirector : MonoBehaviour
             }
         }
 
-        if (queue.Count > 0) {
-            if (lateEventQueue.ContainsKey(date)) {
+        if (queue.Count > 0)
+        {
+            if (lateEventQueue.ContainsKey(date))
+            {
                 foreach (var item in queue)
                 {
                     lateEventQueue[date].Enqueue(item);
                 }
             }
-            else {
+            else
+            {
                 lateEventQueue.Add(date, queue);
             }
         }

@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Name: Message
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1704, y: -296}
+  position: {x: 1832, y: -280}
   ports:
     keys:
     - input
@@ -339,7 +339,9 @@ MonoBehaviour:
   message: 'Skill improved. Your salary has increased!
 
     - Happiness increase
-    20%'
+    20%
+
+    - Salary increase (1000)'
   choices: []
 --- !u!114 &2850989802514318397
 MonoBehaviour:
@@ -486,7 +488,7 @@ MonoBehaviour:
   m_Name: Result
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1368, y: -104}
+  position: {x: 1416, y: -200}
   ports:
     keys:
     - input
@@ -522,3 +524,6 @@ MonoBehaviour:
   - status: 1
     action: 0
     amount: 20
+  - status: 2
+    action: 0
+    amount: 1000
