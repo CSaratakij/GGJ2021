@@ -175,7 +175,7 @@ MonoBehaviour:
   eventImage: {fileID: 0}
   message: Your PC has broken!
   choices:
-  - Repair (50000)
+  - Repair (6000)
 --- !u!114 &4128257134466654191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,4 +224,4 @@ MonoBehaviour:
   actions:
   - status: 0
     action: 1
-    amount: 50000
+    amount: 6000
