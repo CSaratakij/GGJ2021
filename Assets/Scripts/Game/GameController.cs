@@ -156,7 +156,7 @@ public class GameController : MonoBehaviour
                 float randomNum = Random.Range(0f, 1f);
                 bool increase = randomNum > increaseRate;
                 Debug.Log("if (" + randomNum.ToString() + " > " + increaseRate.ToString() + ") happiness increase by direction to 50");
-                int direction = (player.happiness > 90) ? -1 : (player.happiness == 90) ? 0 : 1;
+                int direction = (player.happiness > 90f) ? -1 : (player.happiness == 90f) ? 0 : 1;
                 if (increase)
                 {
                     if(direction >= 0)
