@@ -95,11 +95,12 @@ public class UIInGameStatusController : MonoBehaviour
 
     void OnDayPass(DateTime date)
     {
-        daySlider.value += 1;
+        daySlider.value += 1.0f;
     }
 
     void OnMonthPass(DateTime date)
     {
+        daySlider.value = (date.Month - 1) * 30;
         monthLableBG[date.Month - 1].color = monthLableBGActiveColor;
     }
 }
