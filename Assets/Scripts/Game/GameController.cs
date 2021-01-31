@@ -66,10 +66,8 @@ public class GameController : MonoBehaviour
         player.happiness = profile.happiness;
         player.money = profile.money;
         player.salary = profile.salary;
-        player.haveCat = profile.haveCat;
-        player.haveGirlFriend = profile.haveGirlFriend;
-        player.haveBeggar = true;
-        player.haveSaleman = true;
+        player.cat = new NpcProfile(profile.haveCat);
+        player.girl = new NpcProfile(profile.haveGirlFriend);
 
         happiness = profile.happiness;
         return player;
