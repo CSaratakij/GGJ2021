@@ -382,6 +382,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8370354363182758706, guid: 11d1d4ad9bbb8a6b19ddeab23b9c654f,
+        type: 3}
+      propertyPath: startScene
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370354363182758706, guid: 11d1d4ad9bbb8a6b19ddeab23b9c654f,
+        type: 3}
+      propertyPath: endingPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: a63374601b45fa44aa46779b2d64cbf7,
+        type: 2}
+    - target: {fileID: 8370354363182758706, guid: 11d1d4ad9bbb8a6b19ddeab23b9c654f,
+        type: 3}
+      propertyPath: secondsUntilDay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8370354363182758707, guid: 11d1d4ad9bbb8a6b19ddeab23b9c654f,
         type: 3}
       propertyPath: m_Name

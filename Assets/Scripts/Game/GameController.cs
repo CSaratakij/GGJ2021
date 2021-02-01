@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
 
     [Header("Game time")]
     [SerializeField]
-    float secondsUntilDay = 3.0f;
+    float secondsUntilDay = 1.0f;
 
     public Action<GameState> OnGameStateChange;
     public GameState State => currentState;
