@@ -279,7 +279,7 @@ MonoBehaviour:
   resultfalse: {fileID: 0}
   actions:
   - condition: 2
-    compare: 4
+    compare: 2
     amount: 1
 --- !u!114 &8975544494531248826
 MonoBehaviour:
