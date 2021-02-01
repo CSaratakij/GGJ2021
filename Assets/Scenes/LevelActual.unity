@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 131.18076, g: 162.51416, b: 215.03313, a: 1}
+  m_IndirectSpecularColor: {r: 131.16855, g: 162.52502, b: 215.10977, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1727,7 +1727,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168218571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.967598, y: 1.7939116, z: 3.106327}
+  m_LocalPosition: {x: 16.967632, y: 1.7939116, z: 3.1063356}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 405591765}
@@ -7642,6 +7642,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0bd5539035ea91242929472fe3313429,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eacc728d8e24109c4acd9389ce342ce6, type: 2}
     - target: {fileID: 919132149155446097, guid: 0bd5539035ea91242929472fe3313429,
         type: 3}
       propertyPath: m_Name
@@ -20158,7 +20163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037846703}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.019999983, y: 1.196, z: 4.4800773}
+  m_LocalPosition: {x: 0.019999983, y: 1.196, z: 4.480086}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 405591765}
@@ -24203,8 +24208,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1660722679}
   m_HandleRect: {fileID: 1660722678}
   m_Direction: 2
-  m_Value: -0.00000023148407
-  m_Size: 0.2710025
+  m_Value: -0.00000011574203
+  m_Size: 0.2710878
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -33517,7 +33522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1582.014}
+  m_AnchoredPosition: {x: 0, y: 1582.0138}
   m_SizeDelta: {x: 0, y: 2170.3762}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1985451763
@@ -34986,7 +34991,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059789766}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5460234, y: 1.1960001, z: 2.542058}
+  m_LocalPosition: {x: 1.5460234, y: 1.1960001, z: 2.5420623}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 405591765}
