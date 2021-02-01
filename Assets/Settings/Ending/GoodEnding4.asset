@@ -16,4 +16,5 @@ MonoBehaviour:
   endingName: Good Ending 4
   condition: []
   sprite: {fileID: 21300000, guid: 8e42c04e6edb0ab2bb3a8a9521f47173, type: 3}
+  endingBGM: {fileID: 8300000, guid: ec252bc67f61bd456b3cdf77285703a4, type: 3}
   description: I'm alone but i very happy now.

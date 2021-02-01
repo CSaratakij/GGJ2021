@@ -9,8 +9,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class UIGameOverController : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField]
     GameObject dialogPopup;
 
@@ -26,33 +28,44 @@ public class UIGameOverController : MonoBehaviour
     [SerializeField]
     EndingPreset defaultEndingPreset;
 
+    AudioSource audioSource;
+    AudioClip endingClip;
+
     public float autopopupdelay = 1f;
 
-    private void Awake()
+    void Awake()
     {
         dialogPopup.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
     }
 
-    IEnumerable DelayPopup()
+    void Start()
     {
-        yield return new WaitForSeconds(autopopupdelay);
-        dialogPopup.SetActive(true);
-    }
+        var endingPreset = GameController.Instance?.endingPreset;
 
-    private void Start()
-    {
-        EndingPreset endingPreset = GameController.Instance?.endingPreset;
-        if(endingPreset == null)
+        if (endingPreset == null)
         {
             endingPreset = defaultEndingPreset;
         }
+
         if (endingPreset.sprite != null)
         {
             endingImage.sprite = endingPreset.sprite;
         }
+
         lblEnding.text = endingPreset.endingName;
         txtDescription.text = endingPreset.description;
-        StartCoroutine("DelayPopup");
+        endingClip = endingPreset.endingBGM;
+
+        StartCoroutine(DelayPopup());
+    }
+
+    IEnumerator DelayPopup()
+    {
+        yield return new WaitForSeconds(autopopupdelay);
+
+        dialogPopup.SetActive(true);
+        audioSource.PlayOneShot(endingClip);
     }
 
     public void BackToMainmenu()

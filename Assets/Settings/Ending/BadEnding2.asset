@@ -16,4 +16,5 @@ MonoBehaviour:
   endingName: Bad Ending 2
   condition: []
   sprite: {fileID: 21300000, guid: 034c5677e42557d2aafb47515390905b, type: 3}
+  endingBGM: {fileID: 8300000, guid: 77ca066c7b0a45d908ad3ddb340527fa, type: 3}
   description: My life is ruined.

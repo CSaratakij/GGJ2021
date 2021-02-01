@@ -13,6 +13,7 @@ public class EndingPreset : ScriptableObject
     public string endingName;
     public ConditionAction[] condition;
     public Sprite sprite;
+    public AudioClip endingBGM;
     [TextArea(5, 5)] public string description;
 }
 
