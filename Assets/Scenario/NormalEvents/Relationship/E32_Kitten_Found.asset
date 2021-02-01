@@ -67,7 +67,10 @@ MonoBehaviour:
       _node: {fileID: -6114157175174289223}
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: input
+        node: {fileID: 1392677694706611717}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -97,7 +100,54 @@ MonoBehaviour:
   - {fileID: -6114157175174289223}
   - {fileID: 2855337936885160538}
   - {fileID: 8975544494531248826}
+  - {fileID: 1392677694706611717}
   eventType: 0
+--- !u!114 &1392677694706611717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b70192c7e809f444a31b10702fa268b, type: 3}
+  m_Name: Relationship
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 825.45154, y: 87.2381}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 1392677694706611717}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: output
+        node: {fileID: -6114157175174289223}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 1392677694706611717}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  actions:
+  - character: 0
+    action: 0
+    amount: 2
 --- !u!114 &2850989802514318397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,8 +279,8 @@ MonoBehaviour:
   resultfalse: {fileID: 0}
   actions:
   - condition: 2
-    compare: 1
-    amount: 2
+    compare: 4
+    amount: 1
 --- !u!114 &8975544494531248826
 MonoBehaviour:
   m_ObjectHideFlags: 0
