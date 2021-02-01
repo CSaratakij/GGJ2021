@@ -22,7 +22,8 @@ public abstract class DialogNode : Node
         Shop,
         Relationship,
         Conditional,
-        PickEvent
+        PickEvent,
+        Audio
     }
 }
 

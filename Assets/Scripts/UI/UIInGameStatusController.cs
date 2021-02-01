@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+[RequireComponent(typeof(AudioSource))]
 public class UIInGameStatusController : MonoBehaviour
 {
     [Header("Shop Setting")]
@@ -25,6 +26,9 @@ public class UIInGameStatusController : MonoBehaviour
 
     [SerializeField]
     RectTransform[] shopItems;
+
+    [SerializeField]
+    AudioClip buyClip;
 
     [Header("Notification Setting")]
     [SerializeField]
@@ -62,6 +66,7 @@ public class UIInGameStatusController : MonoBehaviour
     [SerializeField]
     EventDirector eventDirector;
 
+    AudioSource audioSource;
     Button[] btnBuys;
 
     void Awake()
@@ -99,6 +104,8 @@ public class UIInGameStatusController : MonoBehaviour
         itemDialog.alpha = 0;
         itemDialog.blocksRaycasts = false;
         itemDialog.interactable = false;
+
+        audioSource = GetComponent<AudioSource>();
 
         foreach (var item in monthLableBG)
         {
@@ -149,6 +156,8 @@ public class UIInGameStatusController : MonoBehaviour
 
                 buttonText.SetText("Sold out");
                 buttonText.color = Color.white;
+
+                audioSource.PlayOneShot(buyClip);
             });
 
             /* obj.gameObject.SetActive(true); */

@@ -71,6 +71,7 @@ public class UIGameOverController : MonoBehaviour
     public void BackToMainmenu()
     {
         GameController gameController = GameController.Instance;
+
         if (gameController != null) {
             gameController.ChangeScene(SceneIndex.MainMenu);
         }

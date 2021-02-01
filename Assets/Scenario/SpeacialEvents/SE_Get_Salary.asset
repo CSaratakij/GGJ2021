@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -360, y: -8}
+  position: {x: -616, y: -8}
   ports:
     keys:
     - start
@@ -24,13 +24,14 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: input
-        node: {fileID: 4163910233950226352}
+        node: {fileID: 412584883775820007}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   start: {fileID: 0}
+  eventType: 0
 --- !u!114 &-7032479052881584977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +85,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: 'Nicely done.
 
     You get the salary~'
@@ -141,6 +143,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: 'Great month?
 
     You get the salary~'
@@ -198,6 +201,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: 'One month has passed.
 
     You get the salary~'
@@ -222,7 +226,55 @@ MonoBehaviour:
   - {fileID: 5528029711452293671}
   - {fileID: -7032479052881584977}
   - {fileID: -4546499950165348641}
+  - {fileID: 412584883775820007}
   eventType: 0
+--- !u!114 &412584883775820007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d9043b4b4eb23debea0d68c91777da, type: 3}
+  m_Name: Audio
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -360, y: -8}
+  ports:
+    keys:
+    - input
+    - output
+    values:
+    - _fieldName: input
+      _node: {fileID: 412584883775820007}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: start
+        node: {fileID: -7664878808797345818}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output
+      _node: {fileID: 412584883775820007}
+      _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: input
+        node: {fileID: 4163910233950226352}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  input: {fileID: 0}
+  output: {fileID: 0}
+  audioType: 0
+  sound: {fileID: 8300000, guid: 90acbe23ba1123b97b4e74aabd9e3e62, type: 3}
 --- !u!114 &2850989802514318397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +328,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: 'Congratulation!
 
     You get the salary~'
@@ -293,7 +346,7 @@ MonoBehaviour:
   m_Name: Random
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -88, y: -24}
+  position: {x: -104, y: 8}
   ports:
     keys:
     - input
@@ -304,8 +357,8 @@ MonoBehaviour:
       _typeQualifiedName: DialogNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: start
-        node: {fileID: -7664878808797345818}
+      - fieldName: output
+        node: {fileID: 412584883775820007}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -390,6 +443,7 @@ MonoBehaviour:
   input: {fileID: 0}
   output: {fileID: 0}
   npc: {fileID: 0}
+  eventImage: {fileID: 0}
   message: 'It''s a payday.
 
     You get the salary~'

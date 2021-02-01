@@ -52,6 +52,9 @@ public class EventDirector : MonoBehaviour
     [SerializeField]
     SoundManager soundManager;
 
+    [SerializeField]
+    AudioSource audioSource;
+
     [Header("Dependencies")]
     [SerializeField]
     UIInGameStatusController ingameStatusUI;
@@ -75,6 +78,7 @@ public class EventDirector : MonoBehaviour
         public RelationshipNode relationshipNode;
         public ConditionNode conditionNode;
         public PickEventNode pickEventNode;
+        public AudioNode audioNode;
     }
 
     public Action<EventType> OnStartScenario;
@@ -248,8 +252,13 @@ public class EventDirector : MonoBehaviour
         // Emit event
         dayPass += 1;
 
-        bool shouldStartLateEventHere = true;
+        bool shouldGetSalaryInstead = (date.Day == 1);
 
+        if (shouldGetSalaryInstead) {
+            return;
+        }
+
+        bool shouldStartLateEventHere = true;
         var nodes = new List<DialogNode>();
 
         // Late event
@@ -569,6 +578,13 @@ public class EventDirector : MonoBehaviour
                     }
                     break;
 
+                case DialogNode.Dialog.Audio:
+                    {
+                        cache.audioNode = (currentNode as AudioNode);
+                        ProcessAudioNode(cache.audioNode);
+                    }
+                break;
+
                 case DialogNode.Dialog.End:
                     {
                         EndScenario();
@@ -812,6 +828,18 @@ public class EventDirector : MonoBehaviour
         /* ------------------------------ */
 
         Debug.LogError("You cannot use prompt node...");
+        currentNode = currentScenario.GetNextNode(currentNode);
+    }
+
+    //TODO : fade current sound when other about to play
+    //TODO : play by type (sfx or bgm)
+    void ProcessAudioNode(AudioNode node)
+    {
+        if (audioSource.isPlaying) {
+            audioSource.Stop();
+        }
+
+        audioSource.PlayOneShot(node.sound);
         currentNode = currentScenario.GetNextNode(currentNode);
     }
 
